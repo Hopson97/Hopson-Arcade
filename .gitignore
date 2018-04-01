@@ -1,0 +1,6 @@
+Debug/
+Release/
+*.dll
+*.vcxproj
+*.filters
+*.user;
