@@ -1,10 +1,12 @@
 #include "Game.h"
 
 #include "States/StatePlaying.h"
+#include "DisplayInfo.h"
 
 Game::Game()
-:   m_window    ({1280, 720}, "GameNameHere")
+:   m_window    ({ WIDTH, HEIGHT}, "Space Invaders")
 {
+    m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
     pushState<StatePlaying>(*this);
 }
@@ -27,7 +29,6 @@ void Game::run()
         //Get times
         auto time = timer.getElapsedTime();
         auto elapsed = time - lastTime;
-
         lastTime = time;
         lag += elapsed;
 

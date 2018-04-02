@@ -2,7 +2,7 @@
 #define STATEPLAYING_H_INCLUDED
 
 #include "StateBase.h"
-#include "../GUI/StackMenu.h"
+#include "../Game/InvaderManager.h"
 
 class StatePlaying : public StateBase
 {
@@ -15,6 +15,7 @@ class StatePlaying : public StateBase
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
+        InvaderManager m_invaders;
 };
 
 #endif // STATEPLAYING_H_INCLUDED
