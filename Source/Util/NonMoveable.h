@@ -1,5 +1,5 @@
-#ifndef NONMOVEABLE_H_INCLUDED
-#define NONMOVEABLE_H_INCLUDED
+#pragma once
+
 
 struct NonMovable
 {

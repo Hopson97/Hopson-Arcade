@@ -1,5 +1,4 @@
-#ifndef ANIMATION_H_INCLUDED
-#define ANIMATION_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -32,5 +31,3 @@ class Animation
         const unsigned FRAME_SIZE;      //Size of frame in pixels height/width
 
 };
-
-#endif // ANIMATION_H_INCLUDED

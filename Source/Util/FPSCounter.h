@@ -1,5 +1,4 @@
-#ifndef FPSCOUNTER_H_INCLUDED
-#define FPSCOUNTER_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -23,5 +22,3 @@ class FPSCounter
 
         int m_frameCount = 0;
 };
-
-#endif // FPSCOUNTER_H_INCLUDED
