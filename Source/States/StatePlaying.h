@@ -1,5 +1,4 @@
-#ifndef STATEPLAYING_H_INCLUDED
-#define STATEPLAYING_H_INCLUDED
+#pragma once
 
 #include "StateBase.h"
 #include "../Game/InvaderManager.h"
@@ -17,5 +16,3 @@ class StatePlaying : public StateBase
     private:
         InvaderManager m_invaders;
 };
-
-#endif // STATEPLAYING_H_INCLUDED

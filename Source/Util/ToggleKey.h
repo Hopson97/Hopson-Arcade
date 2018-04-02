@@ -12,5 +12,4 @@ class ToggleKey
     private:
         sf::Keyboard::Key m_key;
         sf::Clock m_delayTimer;
-
 };

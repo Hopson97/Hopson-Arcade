@@ -1,6 +1,5 @@
 #pragma once
 
-
 constexpr float PI = 3.14159265f;
 constexpr float MIN_PI = 3.14f;
 
