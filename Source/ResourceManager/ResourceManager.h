@@ -1,9 +1,11 @@
-#ifndef RESOURCEMANAGER_H_INCLUDED
-#define RESOURCEMANAGER_H_INCLUDED
+#pragma once
 
 #include <unordered_map>
 #include <string>
 
+/**
+    Holds all the resources of the game
+*/
 template<typename Resource>
 class ResourceManager
 {
@@ -53,5 +55,3 @@ class ResourceManager
 
         std::unordered_map<std::string, Resource> m_resources;
 };
-
-#endif // RESOURCEMANAGER_H_INCLUDED

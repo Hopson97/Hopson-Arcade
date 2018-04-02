@@ -8,6 +8,11 @@
 #include "Util/FPSCounter.h"
 #include "States/StateBase.h"
 
+/**
+    Main controlling class of the game.
+    Handles state switches and the main loop, as well
+    as counting the FPS
+*/
 class Game
 {
     public:
