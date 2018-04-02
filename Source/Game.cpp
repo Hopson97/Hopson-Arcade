@@ -4,7 +4,7 @@
 #include "DisplayInfo.h"
 
 Game::Game()
-:   m_window    ({ WIDTH, HEIGHT}, "Space Invaders")
+:   m_window    ({ Display::WIDTH, Display::HEIGHT}, "Space Invaders")
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);

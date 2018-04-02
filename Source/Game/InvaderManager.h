@@ -14,15 +14,17 @@ class InvaderManager
         void drawInvaders(sf::RenderTarget& target);
 
     private:
+        void recalculateInvaderEdges();
+
         std::vector<Invader> m_invaders;
         sf::Clock m_stepTimer;
         sf::Time m_stepGap;
 
         bool m_isMovingLeft = false;
 
-        float m_invadersMinX = Invader::SIZE * 2;
-        float m_invadersMaxX = WIDTH - m_invadersCurrMinX;
-
-        float m_invadersCurrMinX = m_invadersMinX;
-        float m_invadersCurrMaxX;
+        float m_invadersMinX = 10;
+        float m_invadersMaxX = Display::WIDTH - m_invadersMinX;
+        
+        float m_invadersCurrMinX = 0;
+        float m_invadersCurrMaxX = Display::WIDTH;
 };

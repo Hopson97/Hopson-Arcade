@@ -10,10 +10,14 @@ void Invader::move(float x, float y)
     m_location += {x, y};
 }
 
+
+//temp for now//temp for now//temp for now//temp for now
 void Invader::draw(sf::RenderTarget & target)
 {
     sf::RectangleShape shape; 
-    shape.setSize({ SIZE, SIZE });
+
+    //temp for now
+    shape.setSize({ WIDTH, HEIGHT });
     shape.setPosition(m_location);
     target.draw(shape);
 }

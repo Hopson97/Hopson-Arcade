@@ -1,4 +1,7 @@
 #pragma once
 
-constexpr unsigned WIDTH = 1280;
-constexpr unsigned HEIGHT = 720;
+namespace Display 
+{
+    constexpr unsigned WIDTH = 1000;
+    constexpr unsigned HEIGHT = 800;
+}
