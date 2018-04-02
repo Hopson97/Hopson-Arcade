@@ -21,10 +21,5 @@ class InvaderManager
         sf::Time m_stepGap;
 
         bool m_isMovingLeft = false;
-
-        float m_invadersMinX = 10;
-        float m_invadersMaxX = Display::WIDTH - m_invadersMinX;
-        
-        float m_invadersCurrMinX = 0;
-        float m_invadersCurrMaxX = Display::WIDTH;
+        bool m_moveDown = false;
 };
