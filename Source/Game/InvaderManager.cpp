@@ -22,8 +22,8 @@ InvaderManager::InvaderManager()
     for (int y = 0; y < 5; y++) {
         for (int x = 0; x < 11; x++) {
             //calcuate position for invader
-            float invaderX = x * Invader::WIDTH + (GAP  * x * 2) + 10;
-            float invaderY = y * Invader::HEIGHT + (GAP * y) + 100;
+            float invaderX = x * Invader::WIDTH + (GAP  * x * 2) + Invader::WIDTH;
+            float invaderY = y * Invader::HEIGHT + (GAP * y) + Invader::HEIGHT * 3;
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }
@@ -43,6 +43,7 @@ void InvaderManager::tryStepInvaders()
         
         //Move the invaders
         for (auto& invader : m_invaders) {
+            if (!invader.isAlive()) continue;
             invader.move(step, 0.0f);
             if (m_moveDown) {
                 invader.move(0, Invader::HEIGHT / 2.0f);
@@ -61,15 +62,18 @@ void InvaderManager::tryStepInvaders()
 
 void InvaderManager::drawInvaders(sf::RenderTarget& target)
 {
+    const int frameWidth = 12;
+    const int frameHeight = 8;
     for (auto& invader : m_invaders) {
+        if (!invader.isAlive()) continue;
         //Calculate texture coords
         int invaderType = static_cast<int>(invader.getType());
-        int texLeft = (m_currFrame % 2) * 12; //texture coord left
-        int texTop = (invaderType * 8);
+        int texLeft = (m_currFrame % 2) * frameWidth;
+        int texTop = (invaderType * frameHeight);
 
         //Reposition and draw sprite
         m_invaderSprite.setPosition(invader.getPosition());
-        m_invaderSprite.setTextureRect({ texLeft, texTop, 12, 8 });
+        m_invaderSprite.setTextureRect({ texLeft, texTop, frameWidth, frameHeight });
         target.draw(m_invaderSprite);
     }
 }

@@ -29,6 +29,6 @@ class Invader
         Type m_type;
 
     public:
-        constexpr static float WIDTH = 50;
+        constexpr static float WIDTH = 48;
         constexpr static float HEIGHT = 32;
 };
