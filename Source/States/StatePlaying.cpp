@@ -15,6 +15,8 @@ StatePlaying::StatePlaying(Game& game)
 void StatePlaying::handleInput()
 {
     m_player.input();
+
+    //Fire projectiles
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) &&
         m_shootDelayTimer.getElapsedTime().asSeconds() > 0.5f) {
         auto point = m_player.getGunPosition();
@@ -35,11 +37,11 @@ void StatePlaying::update(sf::Time deltaTime)
         auto& projectile = *itr;
         if (!projectile.isActive()) {
             itr = m_projectiles.erase(itr);
+        }
+        else {
             if (projectile.tryCollideWith(m_player)) {
                 collisions.emplace_back(m_player.getGunPosition());
             }
-        }
-        else {
             projectile.update(deltaTime.asSeconds());
             itr++;
         }
@@ -49,6 +51,15 @@ void StatePlaying::update(sf::Time deltaTime)
 void StatePlaying::fixedUpdate(sf::Time deltaTime)
 {
     m_invaders.tryStepInvaders();
+
+    //Try and shoot a projectile from an enemy positions
+    if (m_invaderShotDelayTimer.getElapsedTime().asSeconds() >= 0.5 && 
+        m_rng.getIntInRange(0, 25) == 2) {
+        auto point = m_invaders.getRandomLowestInvaderPoint(m_rng);
+        auto type = static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));
+        m_projectiles.emplace_back(point, type, Projectile::Direction::Down);
+        m_invaderShotDelayTimer.restart();
+    }
 }
 
 void StatePlaying::render(sf::RenderTarget& renderer)

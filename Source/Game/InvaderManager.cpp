@@ -99,8 +99,9 @@ sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
     //Keep looping until an invader is found
     while (true) {
         auto invaderColumn = random.getIntInRange(0, 10);
-        for (int y = 5; y >= 0; y--) {
-            auto& invader = m_invaders[y * 11 + invaderColumn];
+        for (int y = 4; y >= 0; y--) {
+            int index = y * 11 + invaderColumn;
+            auto& invader = m_invaders.at(index);
             if (invader.isAlive()) {
                 auto& pos = invader.getPosition();
                 return {

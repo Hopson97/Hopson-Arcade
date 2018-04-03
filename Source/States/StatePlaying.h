@@ -19,6 +19,7 @@ class StatePlaying : public StateBase
         InvaderManager m_invaders;
         Player m_player;
 
+        sf::Clock m_invaderShotDelayTimer;
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
         sf::RectangleShape m_projectileSprite;
