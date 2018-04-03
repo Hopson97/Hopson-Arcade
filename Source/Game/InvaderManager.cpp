@@ -64,6 +64,7 @@ void InvaderManager::drawInvaders(sf::RenderTarget& target)
 {
     const int frameWidth = 12;
     const int frameHeight = 8;
+
     for (auto& invader : m_invaders) {
         if (!invader.isAlive()) continue;
         //Calculate texture coords

@@ -13,7 +13,7 @@ class InvaderManager
     public:
         InvaderManager();
 
-        //Moves all of the invaders to the left or right
+        //Moves all of the invaders to the left or right, if the clock has reached a certain time
         void tryStepInvaders();
 
         //Draws all of the alive invaders
