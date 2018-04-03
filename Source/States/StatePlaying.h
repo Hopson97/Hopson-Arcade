@@ -2,6 +2,8 @@
 
 #include "StateBase.h"
 #include "../Game/InvaderManager.h"
+#include "../Game/Player.h"
+#include "../Game/Projectile.h"
 
 class StatePlaying : public StateBase
 {
@@ -15,4 +17,9 @@ class StatePlaying : public StateBase
 
     private:
         InvaderManager m_invaders;
+        Player m_player;
+
+        sf::Clock m_shootDelayTimer;
+        std::vector<Projectile> m_projectiles;
+        sf::RectangleShape m_projectileSprite;
 };

@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+/**
+    Represents the player
+*/
 class Player
 {
     public:
@@ -10,6 +13,9 @@ class Player
         void input();
         void update(float dt);
         void draw(sf::RenderTarget& target);
+
+        //Gets the coordinates of the gun
+        sf::Vector2f getGunPosition() const;
 
     private:
         sf::RectangleShape m_sprite;
