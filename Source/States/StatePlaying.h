@@ -22,4 +22,6 @@ class StatePlaying : public StateBase
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
         sf::RectangleShape m_projectileSprite;
+
+        Random<> m_rng;
 };

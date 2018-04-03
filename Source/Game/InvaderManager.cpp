@@ -94,6 +94,24 @@ std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<
     return collisionPoints;
 }
 
+sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
+{
+    //Keep looping until an invader is found
+    while (true) {
+        auto invaderColumn = random.getIntInRange(0, 10);
+        for (int y = 5; y >= 0; y--) {
+            auto& invader = m_invaders[y * 11 + invaderColumn];
+            if (invader.isAlive()) {
+                auto& pos = invader.getPosition();
+                return {
+                    pos.x + Invader::WIDTH / 2,
+                    pos.y + Invader::HEIGHT + 5
+                };
+            }
+        }
+    }
+}
+
 bool InvaderManager::shouldMoveDown(const Invader& invader) const
 {
     
