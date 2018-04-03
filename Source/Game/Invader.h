@@ -25,7 +25,7 @@ class Invader : public Collidable
         bool isAlive() const { return m_isAlive; }
         Type getType() const { return m_type; }
 
-        void hit() { m_isAlive = false; }
+        void onCollide() override;
 
     private:
         sf::Vector2f m_location;

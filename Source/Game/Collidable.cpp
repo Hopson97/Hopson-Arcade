@@ -4,7 +4,17 @@ Collidable::Collidable(float width, float height)
     : m_size    (width, height)
 {}
 
-sf::FloatRect Collidable::getBox()
+bool Collidable::tryCollideWith(Collidable & other)
+{
+    if (getBox().intersects(other.getBox())) {
+        onCollide();
+        other.onCollide();
+        return true;
+    }
+    return false;
+}
+
+sf::FloatRect Collidable::getBox() const
 {
     return
     {

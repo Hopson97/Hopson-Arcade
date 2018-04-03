@@ -7,8 +7,11 @@ class Collidable
     public:
         Collidable(float width, float height);
 
+        bool tryCollideWith(Collidable& other);
+        sf::FloatRect getBox() const;
+
         virtual const sf::Vector2f& getPosition() const = 0;
-        sf::FloatRect getBox();
+        virtual void onCollide() = 0;
 
     private:
         sf::Vector2f m_size;

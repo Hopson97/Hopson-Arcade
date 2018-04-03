@@ -11,3 +11,8 @@ void Invader::move(float x, float y)
 {
     m_location += {x, y};
 }
+
+void Invader::onCollide()
+{
+    m_isAlive = false;
+}

@@ -81,24 +81,14 @@ void InvaderManager::drawInvaders(sf::RenderTarget& target)
 std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<Projectile>& projectiles)
 {
     std::vector<sf::Vector2f> collisionPoints;
-    for (auto itr = projectiles.begin(); itr != projectiles.end();) {
-        auto& projectile = *itr;
-        bool hit = false;
+    for (auto& projectile : projectiles) {
         for (auto& invader : m_invaders) {
-            if (!invader.isAlive()) continue;
-            if (invader.getBox().intersects(projectile.getBox())) {
-                invader.hit();
+            if (!invader.isAlive() || !projectile.isActive()) 
+                continue;
+            if (projectile.tryCollideWith(projectile)) {
                 m_aliveInvaders--;
                 collisionPoints.emplace_back(projectile.getPosition());
-                hit = true;
             }
-        }
-        //Remove projectile if the projectile has hit an invader
-        if (hit) {
-            itr = projectiles.erase(itr);
-        }
-        else {
-            itr++;
         }
     }
     return collisionPoints;

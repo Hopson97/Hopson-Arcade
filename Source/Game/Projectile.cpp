@@ -14,3 +14,8 @@ void Projectile::update(float dt)
     float speed = 500 * (float)m_direction * dt;
     m_position.y += speed;
 }
+
+void Projectile::onCollide()
+{
+    m_isActive = false;
+}
