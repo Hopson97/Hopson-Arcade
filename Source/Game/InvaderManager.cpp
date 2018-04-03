@@ -10,6 +10,7 @@ InvaderManager::InvaderManager()
     m_invaderSprite.setSize({ Invader::WIDTH, Invader::HEIGHT });
     m_invaderSprite.setTexture(&ResourceHolder::get().textures.get("invaders"));
 
+    //Layout of the invaders 
     Invader::Type types[] = {
         Invader::Type::Squid,
         Invader::Type::Flat,
@@ -17,7 +18,7 @@ InvaderManager::InvaderManager()
         Invader::Type::Bug,
         Invader::Type::Bug,
     };
-    //add invaders into the vector
+    //Add invaders into the std::vector
     const int GAP = 10;
     for (int y = 0; y < 5; y++) {
         for (int x = 0; x < 11; x++) {
