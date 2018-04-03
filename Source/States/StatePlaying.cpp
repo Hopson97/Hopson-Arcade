@@ -28,8 +28,17 @@ void StatePlaying::handleInput()
 void StatePlaying::update(sf::Time deltaTime)
 {
     m_player.update(deltaTime.asSeconds());
-    for (auto& proj : m_projectiles) {
-        proj.update(deltaTime.asSeconds());
+
+    //update the projectiles
+    for (auto itr = m_projectiles.begin(); itr != m_projectiles.end();) {
+        auto& projectile = *itr;
+        if (!projectile.isActive()) {
+            itr = m_projectiles.erase(itr);
+        }
+        else {
+            projectile.update(deltaTime.asSeconds());
+            itr++;
+        }
     }
 
     auto collisions = m_invaders.tryCollideWithProjectiles(m_projectiles);

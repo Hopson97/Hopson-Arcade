@@ -85,7 +85,7 @@ std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<
         for (auto& invader : m_invaders) {
             if (!invader.isAlive() || !projectile.isActive()) 
                 continue;
-            if (projectile.tryCollideWith(projectile)) {
+            if (projectile.tryCollideWith(invader)) {
                 m_aliveInvaders--;
                 collisionPoints.emplace_back(projectile.getPosition());
             }
