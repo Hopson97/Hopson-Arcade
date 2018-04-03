@@ -7,5 +7,3 @@ struct NonMovable
     NonMovable& operator = (NonCopyable&&) = delete;
     NonMovable(NonCopyable&&) = delete;
 };
-
-#endif // NONMOVEABLE_H_INCLUDED

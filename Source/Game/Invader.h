@@ -3,24 +3,32 @@
 #include <SFML/Graphics.hpp>
 
 /*
-
+    Class to represent a single invader
 */
 class Invader
 {
     public:
-        constexpr static float WIDTH = 50;
-        constexpr static float HEIGHT = 35;
+        enum class Type
+        {
+            Squid,
+            Flat,
+            Bug
+        };
 
-    public:
-        Invader(const sf::Vector2f& initialLocation);
+        Invader(const sf::Vector2f& initialLocation, Type type);
 
         void move(float x, float y);
-        void draw(sf::RenderTarget& target);
 
         const sf::Vector2f& getPosition() const { return m_location; }
         bool isAlive() const { return m_isAlive; }
+        Type getType() const { return m_type; }
 
     private:
         sf::Vector2f m_location;
         bool m_isAlive = true;
+        Type m_type;
+
+    public:
+        constexpr static float WIDTH = 50;
+        constexpr static float HEIGHT = 32;
 };

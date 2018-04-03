@@ -2,17 +2,29 @@
 
 #include <iostream>
 
+#include "../ResourceManager/ResourceHolder.h"
+
 InvaderManager::InvaderManager()
     : m_stepGap (sf::seconds(0.5f))
 {
+    m_invaderSprite.setSize({ Invader::WIDTH, Invader::HEIGHT });
+    m_invaderSprite.setTexture(&ResourceHolder::get().textures.get("invaders"));
+
+    Invader::Type types[] = {
+        Invader::Type::Squid,
+        Invader::Type::Flat,
+        Invader::Type::Flat,
+        Invader::Type::Bug,
+        Invader::Type::Bug,
+    };
     //add invaders into the vector
     const int GAP = 10;
     for (int y = 0; y < 5; y++) {
         for (int x = 0; x < 11; x++) {
             //calcuate position for invader
-            float invaderX = x * Invader::WIDTH + (GAP  * x * 2);
+            float invaderX = x * Invader::WIDTH + (GAP  * x * 2) + 10;
             float invaderY = y * Invader::HEIGHT + (GAP * y) + 100;
-            m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY });
+            m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }
 }
@@ -21,9 +33,10 @@ void InvaderManager::tryStepInvaders()
 {
     //Only step if clock is over timer
     if (m_stepTimer.getElapsedTime() > m_stepGap) {
+        m_currFrame++;
         //Calculate amount to step
         bool moveDown = false;
-        float step = m_isMovingLeft ? -10 : 10;
+        float step = m_isMovingLeft ? -10.0f : 10.0f;
         if (m_moveDown) {
             step *= -1;
         }
@@ -49,7 +62,15 @@ void InvaderManager::tryStepInvaders()
 void InvaderManager::drawInvaders(sf::RenderTarget& target)
 {
     for (auto& invader : m_invaders) {
-        invader.draw(target);
+        //Calculate texture coords
+        int invaderType = static_cast<int>(invader.getType());
+        int texLeft = (m_currFrame % 2) * 12; //texture coord left
+        int texTop = (invaderType * 8);
+
+        //Reposition and draw sprite
+        m_invaderSprite.setPosition(invader.getPosition());
+        m_invaderSprite.setTextureRect({ texLeft, texTop, 12, 8 });
+        target.draw(m_invaderSprite);
     }
 }
 

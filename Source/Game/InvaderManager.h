@@ -5,6 +5,9 @@
 
 #include <vector>
 
+/**
+    Class to manage the drawing and updating of invaders
+*/
 class InvaderManager
 {
     public:
@@ -23,6 +26,8 @@ class InvaderManager
         std::vector<Invader> m_invaders;
         sf::Clock m_stepTimer;
         sf::Time m_stepGap;
+        sf::RectangleShape m_invaderSprite;
+        unsigned m_currFrame = 0;
 
         bool m_isMovingLeft = false;
         bool m_moveDown = false;
