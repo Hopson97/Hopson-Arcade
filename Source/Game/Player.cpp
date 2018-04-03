@@ -2,10 +2,14 @@
 #include "../DisplayInfo.h"
 #include "../ResourceManager/ResourceHolder.h"
 
+namespace {
+    constexpr float BASE_Y = (float)Display::HEIGHT - 40.0f;
+}
+
 Player::Player()
 {
     m_sprite.setSize({ 44, 32 });
-    m_sprite.setPosition({ Display::WIDTH / 2, Display::HEIGHT - 40 });
+    m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
     m_sprite.setTexture(&ResourceHolder::get().textures.get("player"));
 }
 
@@ -27,8 +31,17 @@ void Player::input()
 
 void Player::update(float dt)
 {
+    auto w = m_sprite.getGlobalBounds().width;
     m_sprite.move(m_velocity * dt);
     m_velocity *= 0.95f;
+    if (m_sprite.getPosition().x <= 0) {
+        m_velocity.x = 1.0f;
+        m_sprite.setPosition(1.0f, BASE_Y);
+    }
+    else if (m_sprite.getPosition().x + w >= Display::WIDTH) {
+        m_velocity.x = -1.0f;
+        m_sprite.setPosition(Display::WIDTH - 1.0f - w, BASE_Y);
+    }
 }
 
 void Player::draw(sf::RenderTarget& target)

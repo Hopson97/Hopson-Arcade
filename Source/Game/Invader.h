@@ -2,10 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Collidable.h"
+
 /*
     Class to represent a single invader
 */
-class Invader
+class Invader : public Collidable
 {
     public:
         enum class Type
@@ -24,8 +26,6 @@ class Invader
         Type getType() const { return m_type; }
 
         void hit() { m_isAlive = false; }
-
-        sf::FloatRect getBox() const;
 
     private:
         sf::Vector2f m_location;

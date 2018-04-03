@@ -2,7 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-class Projectile
+#include "Collidable.h"
+
+class Projectile : public Collidable
 {
     public:
         constexpr static float HEIGHT = 32;
@@ -24,8 +26,7 @@ class Projectile
         Projectile(const sf::Vector2f& position, Type type, Direction direction);
         void update(float dt);
         const sf::Vector2f& getPosition() const { return m_position; }
-
-        sf::FloatRect getBox();
+        Type getType() const { return m_type; }
 
     private:
         sf::Vector2f m_position;

@@ -12,18 +12,15 @@ InvaderManager::InvaderManager()
 
     //Layout of the invaders 
     Invader::Type types[] = {
-        Invader::Type::Squid,
-        Invader::Type::Flat,
-        Invader::Type::Flat,
-        Invader::Type::Bug,
-        Invader::Type::Bug,
+        Invader::Type::Squid, Invader::Type::Flat, Invader::Type::Flat,
+        Invader::Type::Bug, Invader::Type::Bug,
     };
     //Add invaders into the std::vector
     const int GAP = 10;
     for (int y = 0; y < 5; y++) {
         for (int x = 0; x < 11; x++) {
             //calcuate position for invader
-            float invaderX = x * Invader::WIDTH + (GAP  * x * 2) + Invader::WIDTH;
+            float invaderX = x * Invader::WIDTH + (GAP  * x * 3) + Invader::WIDTH;
             float invaderY = y * Invader::HEIGHT + (GAP * y) + Invader::HEIGHT * 3;
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
