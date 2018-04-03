@@ -17,12 +17,10 @@ void Projectile::update(float dt)
     m_position.y += speed;
     if (m_position.y <= 0) {
         m_isActive = false;
-        std::cout << "off screen\n";
     }
 }
 
 void Projectile::onCollide()
 {
-    std::cout << "colliding\n";
     m_isActive = false;
 }

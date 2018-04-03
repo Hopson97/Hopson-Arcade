@@ -7,6 +7,7 @@ namespace {
 }
 
 Player::Player()
+    :   Collidable(44, 32)
 {
     m_sprite.setSize({ 44, 32 });
     m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
@@ -56,4 +57,9 @@ sf::Vector2f Player::getGunPosition() const
         m_sprite.getPosition().x + m_sprite.getGlobalBounds().width / 2,
         m_sprite.getPosition().y
     };
+}
+
+void Player::onCollide()
+{
+    //...
 }
