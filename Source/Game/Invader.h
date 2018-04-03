@@ -23,6 +23,10 @@ class Invader
         bool isAlive() const { return m_isAlive; }
         Type getType() const { return m_type; }
 
+        void hit() { m_isAlive = false; }
+
+        sf::FloatRect getBox() const;
+
     private:
         sf::Vector2f m_location;
         bool m_isAlive = true;

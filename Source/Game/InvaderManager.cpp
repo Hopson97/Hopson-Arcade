@@ -27,6 +27,7 @@ InvaderManager::InvaderManager()
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }
+    m_aliveInvaders = m_invaders.size();
 }
 
 void InvaderManager::tryStepInvaders()
@@ -77,6 +78,32 @@ void InvaderManager::drawInvaders(sf::RenderTarget& target)
         m_invaderSprite.setTextureRect({ texLeft, texTop, frameWidth, frameHeight });
         target.draw(m_invaderSprite);
     }
+}
+
+std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<Projectile>& projectiles)
+{
+    std::vector<sf::Vector2f> collisionPoints;
+    for (auto itr = projectiles.begin(); itr != projectiles.end();) {
+        auto& projectile = *itr;
+        bool hit = false;
+        for (auto& invader : m_invaders) {
+            if (!invader.isAlive()) continue;
+            if (invader.getBox().intersects(projectile.getBox())) {
+                invader.hit();
+                m_aliveInvaders--;
+                collisionPoints.emplace_back(projectile.getPosition());
+                hit = true;
+            }
+        }
+        //Remove projectile if the projectile has hit an invader
+        if (hit) {
+            itr = projectiles.erase(itr);
+        }
+        else {
+            itr++;
+        }
+    }
+    return collisionPoints;
 }
 
 bool InvaderManager::shouldMoveDown(const Invader& invader) const

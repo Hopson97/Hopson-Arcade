@@ -10,3 +10,14 @@ void Invader::move(float x, float y)
 {
     m_location += {x, y};
 }
+
+sf::FloatRect Invader::getBox() const
+{
+    return
+    {
+        m_location.x,
+        m_location.y,
+        Invader::WIDTH,
+        Invader::HEIGHT
+    };
+}

@@ -31,6 +31,8 @@ void StatePlaying::update(sf::Time deltaTime)
     for (auto& proj : m_projectiles) {
         proj.update(deltaTime.asSeconds());
     }
+
+    auto collisions = m_invaders.tryCollideWithProjectiles(m_projectiles);
 }
 
 void StatePlaying::fixedUpdate(sf::Time deltaTime)
