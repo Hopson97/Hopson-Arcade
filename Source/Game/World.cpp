@@ -1,12 +1,18 @@
 #include "World.h"
 #include "../ResourceManager/ResourceHolder.h"
-
+std::vector<sf::RectangleShape> temp;
 World::World()
 :    m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
     ResourceHolder::get().textures.get("projectile"))
 {
     m_explodeShape.setSize({ 52, 28 });
     m_explodeShape.setTexture(&ResourceHolder::get().textures.get("explosion"));
+
+    const int SECT_SIZE = (Display::WIDTH / 4);
+    for (int i = 0; i < 4; i++) {
+        
+        m_shields.emplace_back(i * SECT_SIZE +  SECT_SIZE / 2 - Shield::SIZE / 2);
+    }
 }
 
 void World::input()
@@ -64,6 +70,14 @@ void World::draw(sf::RenderTarget & target)
     for (auto& exp : m_explosions) {
         m_explodeShape.setPosition(exp.getPosition());
         target.draw(m_explodeShape);
+    }
+
+    for (auto& shield : m_shields) {
+        shield.draw(target);
+    }
+
+    for (auto& t : temp) {
+        target.draw(t);
     }
 }
 

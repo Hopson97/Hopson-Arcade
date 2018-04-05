@@ -7,8 +7,8 @@ Collidable::Collidable(float width, float height)
 bool Collidable::tryCollideWith(Collidable & other)
 {
     if (getBox().intersects(other.getBox())) {
-        onCollide();
-        other.onCollide();
+        onCollide(other);
+        other.onCollide(*this);
         return true;
     }
     return false;

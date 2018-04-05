@@ -3,6 +3,9 @@
 #include "StateBase.h"
 #include "../Game/World.h"
 
+/*
+    The main state; where all the gameplay happens
+*/
 class StatePlaying : public StateBase
 {
     //Helpful class to create some generic text stuff

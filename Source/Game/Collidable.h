@@ -11,7 +11,7 @@ class Collidable
         sf::FloatRect getBox() const;
 
         virtual const sf::Vector2f& getPosition() const = 0;
-        virtual void onCollide() = 0;
+        virtual void onCollide(const Collidable& other) = 0;
 
     private:
         sf::Vector2f m_size;

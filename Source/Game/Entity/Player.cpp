@@ -16,7 +16,7 @@ Player::Player()
     m_sprite.setTextureRect({ 0, 0, 11, 8 });
 
     for (int i = 0; i < 20; i++) {
-        m_deathAnimation.addFrame((i % 2) + 1, sf::seconds(0.1f));
+        m_deathAnimation.addFrame(float((i % 2) + 1), sf::seconds(0.1f));
     }
 }
 
@@ -86,7 +86,7 @@ const sf::Vector2f & Player::getPosition() const
     return m_sprite.getPosition();
 }
 
-void Player::onCollide()
+void Player::onCollide(const Collidable& other)
 {
     m_isAlive = false;
     m_deathTimer.restart();

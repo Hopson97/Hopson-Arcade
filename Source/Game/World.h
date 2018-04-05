@@ -7,6 +7,7 @@
 #include "Entity/Player.h"
 #include "Entity/Projectile.h"
 #include "Entity/Explosion.h"
+#include "Entity/Shield.h"
 
 
 class World
@@ -32,6 +33,7 @@ class World
 
         std::vector<Projectile> m_projectiles;
         std::vector<Explosion> m_explosions;
+        std::vector<Shield> m_shields;
 
         sf::RectangleShape m_explodeShape;
         sf::Clock m_invaderShotClock;

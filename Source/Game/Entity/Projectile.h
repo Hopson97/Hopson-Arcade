@@ -25,7 +25,7 @@ class Projectile : public Collidable
 
         Projectile(const sf::Vector2f& position, Type type, Direction direction);
         void update(float dt);
-        void onCollide() override;
+        void onCollide(const Collidable& other) override;
 
         const sf::Vector2f& getPosition() const;
         Type getType() const;

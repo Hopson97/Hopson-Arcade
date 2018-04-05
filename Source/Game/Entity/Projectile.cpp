@@ -20,7 +20,7 @@ void Projectile::update(float dt)
     }
 }
 
-void Projectile::onCollide()
+void Projectile::onCollide(const Collidable& other)
 {
     m_isActive = false;
 }
