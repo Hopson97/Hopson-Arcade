@@ -115,7 +115,6 @@ sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
 
 bool InvaderManager::shouldMoveDown(const Invader& invader) const
 {
-    
     return
         (invader.getPosition().x < 15 && m_isMovingLeft) || //Check invader left
         (invader.getPosition().x + Invader::WIDTH > Display::WIDTH - 15 && !m_isMovingLeft); //Check invader right

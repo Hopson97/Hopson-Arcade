@@ -1,15 +1,14 @@
 #include "StatePlaying.h"
 
-#include "../GUI/Button.h"
-#include "../GUI/Textbox.h"
 #include "../Game.h"
 
-#include <iostream>
+#include "../ResourceManager/ResourceHolder.h"
 
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
 {
     m_projectileSprite.setSize({ Projectile::WIDTH, Projectile::HEIGHT });
+    m_projectileSprite.setTexture(&ResourceHolder::get().textures.get("projectile"));
 }
 
 void StatePlaying::handleInput()
@@ -46,6 +45,7 @@ void StatePlaying::update(sf::Time deltaTime)
             itr++;
         }
     }
+    
 }
 
 void StatePlaying::fixedUpdate(sf::Time deltaTime)
@@ -61,13 +61,28 @@ void StatePlaying::fixedUpdate(sf::Time deltaTime)
         m_invaderShotDelayTimer.restart();
     }
 }
-
+int frame = 0;
 void StatePlaying::render(sf::RenderTarget& renderer)
 {
+    if (animTimer.getElapsedTime().asSeconds() >= 0.1) {
+        frame++;
+        animTimer.restart();
+    }
+
+    const int frameWidth = 4;
+    const int frameHeight = 8;
     m_invaders.drawInvaders(renderer);
     m_player.draw(renderer);
     for (auto& proj : m_projectiles) {
+
+        //tex coords
+        auto projType = static_cast<int>(proj.getType());
+        int texLeft = (frame % 2 == 0) * frameWidth;
+        int texTop = (projType * frameHeight);
+
+
         m_projectileSprite.setPosition(proj.getPosition());
+        m_projectileSprite.setTextureRect({ texLeft, texTop, frameWidth, frameHeight });
         renderer.draw(m_projectileSprite);
     }
 }

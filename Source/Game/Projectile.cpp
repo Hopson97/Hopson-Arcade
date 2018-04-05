@@ -13,7 +13,7 @@ Projectile::Projectile(const sf::Vector2f & position, Type type, Direction direc
 
 void Projectile::update(float dt)
 {
-    float speed = 750 * (float)m_direction * dt;
+    float speed = 550 * (float)m_direction * dt;
     m_position.y += speed;
     if (m_position.y <= 0 || m_position.y >= Display::HEIGHT) {
         m_isActive = false;

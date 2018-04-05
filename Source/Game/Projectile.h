@@ -7,8 +7,8 @@
 class Projectile : public Collidable
 {
     public:
-        constexpr static float HEIGHT = 32;
-        constexpr static float WIDTH = 8;
+        constexpr static float HEIGHT = 24;
+        constexpr static float WIDTH = 12;
 
         enum class Type
         {

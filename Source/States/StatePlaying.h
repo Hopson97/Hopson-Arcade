@@ -19,10 +19,13 @@ class StatePlaying : public StateBase
         InvaderManager m_invaders;
         Player m_player;
 
+
+        //TODO Move this OUT of this class
         sf::Clock m_invaderShotDelayTimer;
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
         sf::RectangleShape m_projectileSprite;
 
         Random<> m_rng;
+        sf::Clock animTimer;
 };
