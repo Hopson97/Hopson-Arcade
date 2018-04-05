@@ -10,6 +10,8 @@ StatePlaying::StatePlaying(Game& game)
 , m_projectileRenderer  (4, 8, Projectile::WIDTH, Projectile::HEIGHT,
     ResourceHolder::get().textures.get("projectile"))
 {
+    m_explodeShape.setSize({ 52, 28 });
+    m_explodeShape.setTexture(&ResourceHolder::get().textures.get("explosion"));
 }
 
 void StatePlaying::handleInput()
@@ -50,26 +52,41 @@ void StatePlaying::update(sf::Time deltaTime)
             m_scoreDisplay.update(m_score);
         }
 
-        //update the projectiles
-        for (auto itr = m_projectiles.begin(); itr != m_projectiles.end();) {
-            auto& projectile = *itr;
-            if (!projectile.isActive()) {
-                itr = m_projectiles.erase(itr);
-            }
-            else {
-                //Test for player getting hit 
-                if (projectile.tryCollideWith(m_player)) {
-                    collisions.emplace_back(m_player.getGunPosition());
-                    m_projectiles.clear();
-                    return;
-                }
-                projectile.update(deltaTime.asSeconds());
-                itr++;
-            }
-        }
+        updateProjectiles(deltaTime.asSeconds(), collisions);
+
 
         for (auto& location : collisions) {
-           
+            m_explosions.emplace_back(location);
+        }
+    }
+
+    //remove explosions
+    for (auto itr = m_explosions.begin(); itr != m_explosions.end(); ) {
+        if (itr->isLifeOver()) {
+            itr = m_explosions.erase(itr);
+        }
+        else {
+            itr++;
+        }
+    }
+}
+
+void StatePlaying::updateProjectiles(float dt, std::vector<sf::Vector2f>& collisionPoints)
+{
+    for (auto itr = m_projectiles.begin(); itr != m_projectiles.end();) {
+        auto& projectile = *itr;
+        if (!projectile.isActive()) {
+            itr = m_projectiles.erase(itr);
+        }
+        else {
+            //Test for player getting hit 
+            if (projectile.tryCollideWith(m_player)) {
+                collisionPoints.emplace_back(m_player.getGunPosition());
+                m_projectiles.clear();
+                return;
+            }
+            projectile.update(dt);
+            itr++;
         }
     }
 }
@@ -101,6 +118,11 @@ void StatePlaying::render(sf::RenderTarget& renderer)
     
     for (auto& proj : m_projectiles) {
         m_projectileRenderer.renderEntity(renderer, (int)proj.getType(), proj.getPosition());
+    }
+
+    for (auto& exp : m_explosions) {
+        m_explodeShape.setPosition(exp.getPosition());
+        renderer.draw(m_explodeShape);
     }
 
     m_lifeDisplay.draw(renderer, m_player.getLives());

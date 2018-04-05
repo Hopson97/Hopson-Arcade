@@ -5,6 +5,7 @@
 #include "../Game/Player.h"
 #include "../Game/Projectile.h"
 #include "../Game/AnimationRenderer.h"
+#include "../Game/Explosion.h"
 
 class StatePlaying : public StateBase
 {
@@ -49,6 +50,8 @@ class StatePlaying : public StateBase
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
+        void updateProjectiles(float dt, std::vector<sf::Vector2f>& collisionPoints);
+
         InvaderManager m_invaders;
         Player m_player;
 
@@ -56,6 +59,9 @@ class StatePlaying : public StateBase
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
         AnimationRenderer m_projectileRenderer;
+
+        sf::RectangleShape m_explodeShape;
+        std::vector<Explosion> m_explosions;
 
         Random<> m_rng;
         sf::Clock m_projectileAnimTimer;
