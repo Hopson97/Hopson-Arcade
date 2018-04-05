@@ -20,15 +20,13 @@ Player::Player()
     }
 }
 
-bool Player::restart()
+void Player::restart()
 {
     m_velocity *= 0.0f;
     m_sprite.setTextureRect({ 0, 0, 11, 8 });
     m_isAlive = true;
     m_livesLeft--;
     m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
-
-    return m_livesLeft == -1;
 }
 
 void Player::input()
@@ -102,7 +100,10 @@ bool Player::isAlive() const
     return m_isAlive;
 }
 
-bool Player::canBeRevived() const
+void Player::tryRevive()
 {
-    return m_deathTimer.getElapsedTime().asSeconds() >= 1.5f;
+    if (m_deathTimer.getElapsedTime().asSeconds() >= 1.5f) {
+        restart();
+    }
+
 }

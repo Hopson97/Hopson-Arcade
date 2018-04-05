@@ -16,10 +16,6 @@ class Player : public Collidable
 
         Player();
 
-        //Restart player after death
-        //Returns false if out of lives
-        bool restart();
-
         void input();
         void update(float dt);
         void draw(sf::RenderTarget& target);
@@ -33,9 +29,11 @@ class Player : public Collidable
         int getLives() const;
         bool isAlive() const;
 
-        bool canBeRevived() const;
+        void tryRevive();
 
     private:
+        void restart();
+
         sf::RectangleShape m_sprite;
         Animation m_deathAnimation;
         sf::Vector2f m_velocity;

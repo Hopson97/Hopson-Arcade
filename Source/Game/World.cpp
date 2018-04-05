@@ -15,10 +15,8 @@ void World::input()
         m_player.input();
         playerProjectileInput();
     } 
-    else if (m_player.canBeRevived()) {
-        if (!m_player.restart()) {
-            //game over lol
-        }
+    else {
+        m_player.tryRevive();
     }
 }
 

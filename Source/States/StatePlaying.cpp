@@ -19,6 +19,10 @@ void StatePlaying::handleInput()
 void StatePlaying::update(sf::Time deltaTime)
 {
     m_score += m_world.update(deltaTime.asSeconds());
+
+    if (m_world.getPlayer().getLives == -1) {
+
+    }
 }
 
 
