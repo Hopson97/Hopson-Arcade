@@ -6,7 +6,7 @@
 
 FPSCounter::FPSCounter()
 {
-    m_text.move(10, 10);
+    m_text.move(0, 0);
     m_text.setOutlineColor (sf::Color::Black);
     m_text.setFillColor({255,255,255});
     m_text.setOutlineThickness  (2);

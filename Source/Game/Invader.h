@@ -12,7 +12,7 @@ class Invader : public Collidable
     public:
         enum class Type
         {
-            Flat, Bug, Squid
+            Flat, Bug, Squid,
         };
 
         Invader(const sf::Vector2f& initialLocation, Type type);

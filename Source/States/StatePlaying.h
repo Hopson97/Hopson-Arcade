@@ -8,6 +8,12 @@
 
 class StatePlaying : public StateBase
 {
+    struct DisplayText
+    {
+        DisplayText();
+        sf::Text text;
+    };
+
     class LifeDisplay
     {
         public:
@@ -16,8 +22,22 @@ class StatePlaying : public StateBase
             void draw(sf::RenderTarget& window, int lives);
 
         private:
-            sf::Text m_label;
+            DisplayText m_label;
             sf::RectangleShape m_lifeStamp;
+    };
+
+    class ScoreDisplay
+    {
+        public:
+            ScoreDisplay();
+
+            void update(int newScore);
+
+            void draw(sf::RenderTarget& target);
+
+        private:
+            DisplayText m_label;
+
     };
 
     public:
@@ -43,4 +63,5 @@ class StatePlaying : public StateBase
         int m_score = 0;
 
         LifeDisplay m_lifeDisplay;
+        ScoreDisplay m_scoreDisplay;
 };
