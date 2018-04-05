@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Collidable.h"
-#include "../Util/Animation.h"
+#include "../Collidable.h"
+#include "../../Util/Animation.h"
 
 /**
     Represents the player

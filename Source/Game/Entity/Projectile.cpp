@@ -1,6 +1,6 @@
 #include "Projectile.h"
 
-#include "../DisplayInfo.h"
+#include "../../DisplayInfo.h"
 
 Projectile::Projectile(const sf::Vector2f & position, Type type, Direction direction)
     : Collidable    (WIDTH, HEIGHT)

@@ -1,6 +1,6 @@
 #include "Player.h"
-#include "../DisplayInfo.h"
-#include "../ResourceManager/ResourceHolder.h"
+#include "../../DisplayInfo.h"
+#include "../../ResourceManager/ResourceHolder.h"
 
 namespace {
     constexpr float BASE_Y = (float)Display::HEIGHT - 40.0f;

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Invader.h"
-#include "../DisplayInfo.h"
-#include "Projectile.h"
+#include "Entity/Projectile.h"
+#include "Entity/Invader.h"
 #include "AnimationRenderer.h"
+#include "../DisplayInfo.h"
 
 #include <vector>
 

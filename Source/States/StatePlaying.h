@@ -2,10 +2,10 @@
 
 #include "StateBase.h"
 #include "../Game/InvaderManager.h"
-#include "../Game/Player.h"
-#include "../Game/Projectile.h"
+#include "../Game/Entity/Player.h"
+#include "../Game/Entity/Projectile.h"
+#include "../Game/Entity/Explosion.h"
 #include "../Game/AnimationRenderer.h"
-#include "../Game/Explosion.h"
 
 class StatePlaying : public StateBase
 {

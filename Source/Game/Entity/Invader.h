@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Collidable.h"
+#include "../Collidable.h"
 
 /*
     Class to represent a single invader
