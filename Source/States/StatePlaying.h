@@ -5,6 +5,7 @@
 #include "../Game/Player.h"
 #include "../Game/Projectile.h"
 #include "../Game/AnimationRenderer.h"
+#include "../Game/ExplosionParticleSystem.h"
 
 class StatePlaying : public StateBase
 {
@@ -49,6 +50,7 @@ class StatePlaying : public StateBase
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
+        ExplosionParticleSystem m_explosions;
         InvaderManager m_invaders;
         Player m_player;
 

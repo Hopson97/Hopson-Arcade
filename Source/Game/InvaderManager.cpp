@@ -96,10 +96,10 @@ sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
             int index = y * 11 + invaderColumn;
             auto& invader = m_invaders.at(index);
             if (invader.isAlive()) {
-                auto& pos = invader.getPosition();
                 return {
-                    pos.x + Invader::WIDTH / 2,
-                    pos.y + Invader::HEIGHT + 5
+                    //transform to below the invader's center
+                    invader.getPosition().x + Invader::WIDTH / 2,
+                    invader.getPosition().y + Invader::HEIGHT + 5
                 };
             }
         }
