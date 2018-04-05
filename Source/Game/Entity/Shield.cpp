@@ -8,7 +8,7 @@
 
 Shield::Shield(float x)
     : Collidable((float)SIZE, (float)SIZE)
-    , m_position    (x, Display::HEIGHT - 200)
+    , m_position(x, Display::HEIGHT - 200)
 {
     using Sty = SectorStyle;
     for (float sy = 0; sy < 4; sy++) {
@@ -21,7 +21,7 @@ Shield::Shield(float x)
             if (xP == 1 && yP == 3) style = Sty::SlopeUnderUp;
             if (xP == 2 && yP == 3) style = Sty::SlopeUnderDown;
 
-            m_sections.emplace_back(x + sx * SECT_SIZE, 
+            m_sections.emplace_back(x + sx * SECT_SIZE,
                 m_position.y + sy * SECT_SIZE, style);
         }
     }
@@ -66,16 +66,16 @@ void Shield::destroyPoint(float relX, float relY)
     section.destroyArea((int)pixelX, (int)pixelY);
 }
 
-bool Shield::isTouching(Projectile& projectile) 
+bool Shield::isTouching(Projectile& projectile)
 {
     static Random<> rand;
     if (projectile.getBox().intersects(getBox())) {
         for (auto& sector : m_sections) {
             auto result = sector.isTouching(projectile);
-            if ((int)result.x == -1) 
+            if ((int)result.x == -1)
                 continue;
             else { //This means the projectile is touching the shield
-                //Get coordinate of collision point relative to top left of sheild
+                   //Get coordinate of collision point relative to top left of sheild
                 result.x -= m_position.x;
                 result.y -= m_position.y;
 

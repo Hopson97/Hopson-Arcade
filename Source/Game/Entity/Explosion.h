@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+/*
+    Represents a single explosion entity
+*/
 class Explosion
 {
     public:
@@ -11,6 +14,6 @@ class Explosion
         const sf::Vector2f& getPosition() const;
 
     private:
-        sf::Vector2f m_position;
-        sf::Clock m_lifetimeCounter;
+        sf::Vector2f m_position;        //The position of the explosion
+        sf::Clock m_lifetimeCounter;    //Clock for checking if the explosion is outlived
 };

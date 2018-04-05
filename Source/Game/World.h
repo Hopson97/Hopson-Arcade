@@ -9,7 +9,9 @@
 #include "Entity/Explosion.h"
 #include "Entity/Shield.h"
 
-
+/**
+    The class which manages the world and th interactions between different entites
+*/
 class World
 {
     public:
