@@ -8,10 +8,25 @@ namespace {
 
 Player::Player()
     :   Collidable(44, 32)
+    ,   m_deathAnimation(11, 8)
 {
     m_sprite.setSize({ 44, 32 });
     m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
     m_sprite.setTexture(&ResourceHolder::get().textures.get("player"));
+    m_sprite.setTextureRect({ 0, 0, 11, 8 });
+
+    for (int i = 0; i < 20; i++) {
+        m_deathAnimation.addFrame((i % 2) + 1, sf::seconds(0.1));
+    }
+}
+
+bool Player::restart()
+{
+    m_isAlive = true;
+    m_livesLeft--;
+    m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
+
+    return m_livesLeft == -1;
 }
 
 void Player::input()
@@ -32,21 +47,26 @@ void Player::input()
 
 void Player::update(float dt)
 {
-    auto w = m_sprite.getGlobalBounds().width;
-    m_sprite.move(m_velocity * dt);
-    m_velocity *= 0.95f;
-    if (m_sprite.getPosition().x <= 0) {
-        m_velocity.x = 1.0f;
-        m_sprite.setPosition(1.0f, BASE_Y);
-    }
-    else if (m_sprite.getPosition().x + w >= Display::WIDTH) {
-        m_velocity.x = -1.0f;
-        m_sprite.setPosition(Display::WIDTH - 1.0f - w, BASE_Y);
+    if (m_isAlive) {
+        auto w = m_sprite.getGlobalBounds().width;
+        m_sprite.move(m_velocity * dt);
+        m_velocity *= 0.95f;
+        if (m_sprite.getPosition().x <= 0) {
+            m_velocity.x = 1.0f;
+            m_sprite.setPosition(1.0f, BASE_Y);
+        }
+        else if (m_sprite.getPosition().x + w >= Display::WIDTH) {
+            m_velocity.x = -1.0f;
+            m_sprite.setPosition(Display::WIDTH - 1.0f - w, BASE_Y);
+        }
     }
 }
 
 void Player::draw(sf::RenderTarget& target)
 {
+    if (!m_isAlive) {
+        m_sprite.setTextureRect(m_deathAnimation.getFrame());
+    } 
     target.draw(m_sprite);
 }
 
@@ -59,7 +79,22 @@ sf::Vector2f Player::getGunPosition() const
     };
 }
 
+const sf::Vector2f & Player::getPosition() const
+{
+    return m_sprite.getPosition();
+}
+
 void Player::onCollide()
 {
-    //...
+    m_isAlive = false;
+}
+
+int Player::getLives() const
+{
+    return m_livesLeft;
+}
+
+bool Player::isAlive() const
+{
+    return m_isAlive;
 }

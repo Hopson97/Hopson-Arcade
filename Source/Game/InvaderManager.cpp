@@ -80,7 +80,7 @@ CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile
             if (projectile.tryCollideWith(invader)) {
                 m_aliveInvaders--;
                 result.second.emplace_back(projectile.getPosition());
-                result.first += ((int)invader.getType + 1) * 100;
+                result.first += ((int)invader.getType() + 1) * 100;
             }
         }
     }
