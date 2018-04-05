@@ -32,7 +32,7 @@ void StatePlaying::render(sf::RenderTarget& renderer)
 
 ///////////////////////////////////////////////
 //     display member functions       ///
-DisplayText::DisplayText()
+StatePlaying::DisplayText::DisplayText()
 {
     text.setFillColor(sf::Color::White);
     text.setOutlineColor({100, 150, 100});
@@ -43,7 +43,7 @@ DisplayText::DisplayText()
 
 
 
-LifeDisplay::LifeDisplay()
+StatePlaying::LifeDisplay::LifeDisplay()
 {
     m_lifeStamp.setSize({Player::WIDTH / 2, Player::WIDTH / 2});
     m_lifeStamp.setTexture(&ResourceHolder::get().textures.get("player"));
@@ -52,7 +52,7 @@ LifeDisplay::LifeDisplay()
     m_label.text.setString("LIVES");
 }
 
-void LifeDisplay::draw(sf::RenderTarget& window, int lives)
+void StatePlaying::LifeDisplay::draw(sf::RenderTarget& window, int lives)
 {
     float xOrigin = m_label.text.getPosition().x + 
         m_label.text.getGlobalBounds().width + 10;
@@ -65,18 +65,18 @@ void LifeDisplay::draw(sf::RenderTarget& window, int lives)
     }
 }
 
-ScoreDisplay::ScoreDisplay()
+StatePlaying::ScoreDisplay::ScoreDisplay()
 {
     m_label.text.setPosition(10, 10);
     m_label.text.setString("SCORE\n0");
 }
 
-void ScoreDisplay::update(int newScore)
+void StatePlaying::ScoreDisplay::update(int newScore)
 {
     m_label.text.setString("SCORE\n" + std::to_string(newScore));
 }
 
-void ScoreDisplay::draw(sf::RenderTarget & target)
+void StatePlaying::ScoreDisplay::draw(sf::RenderTarget & target)
 {
     target.draw(m_label.text);
 }
