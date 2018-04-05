@@ -39,12 +39,8 @@ int World::update(float dt)
     }
 
     for (auto itr = m_explosions.begin(); itr != m_explosions.end();) {
-        if (itr->isLifeOver()) {
-            itr = m_explosions.erase(itr);
-        }
-        else {
-            itr++;
-        }
+        if (itr->isLifeOver()) itr = m_explosions.erase(itr);
+        else itr++;
     }
 
 
@@ -99,6 +95,7 @@ void World::enemyProjectileFire()
         m_invaderShotClock.restart();
     }
 }
+//end of to-do
 
 CollisionResult World::getCollisionResult(float dt)
 {

@@ -2,7 +2,6 @@
 
 #include "StateBase.h"
 #include "../Game/World.h"
-#include "../Game/GameDisplays.h"
 
 class StatePlaying : public StateBase
 {
