@@ -29,8 +29,11 @@ void StatePlaying::handleInput()
 void StatePlaying::update(sf::Time deltaTime)
 {
     m_player.update(deltaTime.asSeconds());
-    auto collisions = m_invaders.tryCollideWithProjectiles(m_projectiles);
 
+    //Get points of collisions and increase score if one is hit
+    auto result = m_invaders.tryCollideWithProjectiles(m_projectiles);
+    auto& collisions = result.second;
+    m_score += result.first;
     //update the projectiles
     for (auto itr = m_projectiles.begin(); itr != m_projectiles.end();) {
         auto& projectile = *itr;
@@ -63,15 +66,14 @@ void StatePlaying::fixedUpdate(sf::Time deltaTime)
 }
 void StatePlaying::render(sf::RenderTarget& renderer)
 {
-    if (animTimer.getElapsedTime().asSeconds() >= 0.1) {
-        m_projectileRenderer.nextFrame();
-        animTimer.restart();
-    }
-
-    const int frameWidth = 4;
-    const int frameHeight = 8;
     m_invaders.drawInvaders(renderer);
     m_player.draw(renderer);
+
+    if (m_projectileAnimTimer.getElapsedTime().asSeconds() >= 0.1) {
+        m_projectileRenderer.nextFrame();
+        m_projectileAnimTimer.restart();
+    }
+
     for (auto& proj : m_projectiles) {
         m_projectileRenderer.renderEntity(renderer, (int)proj.getType(), proj.getPosition());
     }

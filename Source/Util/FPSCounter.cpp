@@ -10,8 +10,8 @@ FPSCounter::FPSCounter()
     m_text.setOutlineColor (sf::Color::Black);
     m_text.setFillColor({255,255,255});
     m_text.setOutlineThickness  (2);
-    m_text.setFont(ResourceHolder::get().fonts.get("arial"));
-    m_text.setCharacterSize(25);
+    m_text.setFont(ResourceHolder::get().fonts.get("arcade"));
+    m_text.setCharacterSize(15);
 }
 
 //updates the FPS variable
@@ -29,6 +29,6 @@ void FPSCounter::update()
 //Draws the FPS display to the window
 void FPSCounter::draw(sf::RenderTarget& renderer)
 {
-    m_text.setString("FPS: " + std::to_string((int)m_fps));
+    m_text.setString("FPS " + std::to_string((int)m_fps));
     renderer.draw(m_text);
 }

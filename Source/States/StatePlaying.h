@@ -20,12 +20,13 @@ class StatePlaying : public StateBase
         InvaderManager m_invaders;
         Player m_player;
 
-
         sf::Clock m_invaderShotDelayTimer;
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
         AnimationRenderer m_projectileRenderer;
 
         Random<> m_rng;
-        sf::Clock animTimer;
+        sf::Clock m_projectileAnimTimer;
+        
+        int m_score = 0;
 };

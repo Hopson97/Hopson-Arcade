@@ -9,6 +9,8 @@
 
 #include "../Util/Random.h"
 
+using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
+
 /**
     Class to manage the drawing and updating of invaders
 */
@@ -25,7 +27,7 @@ class InvaderManager
 
         //Tries to collide the invaders with the projectiles
         //Returns the points of collision
-        std::vector<sf::Vector2f> tryCollideWithProjectiles(std::vector<Projectile>& projectiles);
+        CollisionResult tryCollideWithProjectiles(std::vector<Projectile>& projectiles);
 
         //This is for firing projectiles from the enemy
         sf::Vector2f getRandomLowestInvaderPoint(Random<>& random);

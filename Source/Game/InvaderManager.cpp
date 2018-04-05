@@ -69,8 +69,9 @@ void InvaderManager::drawInvaders(sf::RenderTarget& target)
     }
 }
 
-std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<Projectile>& projectiles)
+CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile>& projectiles)
 {
+    CollisionResult result;
     std::vector<sf::Vector2f> collisionPoints;
     for (auto& projectile : projectiles) {
         for (auto& invader : m_invaders) {
@@ -78,11 +79,12 @@ std::vector<sf::Vector2f> InvaderManager::tryCollideWithProjectiles(std::vector<
                 continue;
             if (projectile.tryCollideWith(invader)) {
                 m_aliveInvaders--;
-                collisionPoints.emplace_back(projectile.getPosition());
+                result.second.emplace_back(projectile.getPosition());
+                result.first += ((int)invader.getType + 1) * 100;
             }
         }
     }
-    return collisionPoints;
+    return result;
 }
 
 sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
