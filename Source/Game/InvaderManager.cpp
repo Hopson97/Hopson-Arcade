@@ -5,11 +5,10 @@
 #include "../ResourceManager/ResourceHolder.h"
 
 InvaderManager::InvaderManager()
-    : m_stepGap (sf::seconds(0.5f))
+    : m_stepGap(sf::seconds(0.5f))
+    , m_invaderRenderer(12, 8, Invader::WIDTH, Invader::HEIGHT, 
+        ResourceHolder::get().textures.get("invaders"))
 {
-    m_invaderSprite.setSize({ Invader::WIDTH, Invader::HEIGHT });
-    m_invaderSprite.setTexture(&ResourceHolder::get().textures.get("invaders"));
-
     //Layout of the invaders 
     Invader::Type types[] = {
         Invader::Type::Squid, Invader::Type::Flat, Invader::Type::Flat,
@@ -32,7 +31,7 @@ void InvaderManager::tryStepInvaders()
 {
     //Only step if clock is over timer
     if (m_stepTimer.getElapsedTime() > m_stepGap) {
-        m_currFrame++;
+        m_invaderRenderer.nextFrame();
         //Calculate amount to step
         bool moveDown = false;
         float step = m_isMovingLeft ? -10.0f : 10.0f;
@@ -66,15 +65,7 @@ void InvaderManager::drawInvaders(sf::RenderTarget& target)
 
     for (auto& invader : m_invaders) {
         if (!invader.isAlive()) continue;
-        //Calculate texture coords
-        int invaderType = static_cast<int>(invader.getType());
-        int texLeft = (m_currFrame % 2) * frameWidth;
-        int texTop = (invaderType * frameHeight);
-
-        //Reposition and draw sprite
-        m_invaderSprite.setPosition(invader.getPosition());
-        m_invaderSprite.setTextureRect({ texLeft, texTop, frameWidth, frameHeight });
-        target.draw(m_invaderSprite);
+        m_invaderRenderer.renderEntity(target, (int)invader.getType(), invader.getPosition());
     }
 }
 

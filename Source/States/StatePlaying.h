@@ -4,6 +4,7 @@
 #include "../Game/InvaderManager.h"
 #include "../Game/Player.h"
 #include "../Game/Projectile.h"
+#include "../Game/AnimationRenderer.h"
 
 class StatePlaying : public StateBase
 {
@@ -20,11 +21,10 @@ class StatePlaying : public StateBase
         Player m_player;
 
 
-        //TODO Move this OUT of this class
         sf::Clock m_invaderShotDelayTimer;
         sf::Clock m_shootDelayTimer;
         std::vector<Projectile> m_projectiles;
-        sf::RectangleShape m_projectileSprite;
+        AnimationRenderer m_projectileRenderer;
 
         Random<> m_rng;
         sf::Clock animTimer;

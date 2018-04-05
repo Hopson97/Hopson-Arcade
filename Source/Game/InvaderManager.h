@@ -3,6 +3,7 @@
 #include "Invader.h"
 #include "../DisplayInfo.h"
 #include "Projectile.h"
+#include "AnimationRenderer.h"
 
 #include <vector>
 
@@ -36,8 +37,9 @@ class InvaderManager
         std::vector<Invader> m_invaders;
         sf::Clock m_stepTimer;
         sf::Time m_stepGap;
-        sf::RectangleShape m_invaderSprite;
-        unsigned m_currFrame = 0;
+
+
+        AnimationRenderer m_invaderRenderer;
         unsigned m_aliveInvaders;
 
         bool m_isMovingLeft = false;
