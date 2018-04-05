@@ -38,7 +38,6 @@ void StatePlaying::handleInput()
 
 void StatePlaying::update(sf::Time deltaTime)
 {
-    m_explosions.update(deltaTime.asSeconds());
     m_player.update(deltaTime.asSeconds());
     if (m_player.isAlive()) {
         //Get points of collisions and increase score if one is hit
@@ -70,7 +69,7 @@ void StatePlaying::update(sf::Time deltaTime)
         }
 
         for (auto& location : collisions) {
-            m_explosions.addParticles(100, location);
+           
         }
     }
 }
@@ -106,7 +105,6 @@ void StatePlaying::render(sf::RenderTarget& renderer)
 
     m_lifeDisplay.draw(renderer, m_player.getLives());
     m_scoreDisplay.draw(renderer);
-    m_explosions.draw(renderer);
 }
 
 ///////////////////////////////////////////////
