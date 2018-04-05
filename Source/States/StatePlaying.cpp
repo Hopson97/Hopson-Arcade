@@ -27,7 +27,11 @@ void StatePlaying::handleInput()
         }
     }
     else {
-
+        if (m_player.canBeRevived()) {
+            if (!m_player.restart()) {
+                //go to gameover state
+            }
+        }
     }
 }
 
@@ -47,8 +51,11 @@ void StatePlaying::update(sf::Time deltaTime)
                 itr = m_projectiles.erase(itr);
             }
             else {
+                //Test for player getting hit 
                 if (projectile.tryCollideWith(m_player)) {
                     collisions.emplace_back(m_player.getGunPosition());
+                    m_projectiles.clear();
+                    return;
                 }
                 projectile.update(deltaTime.asSeconds());
                 itr++;
@@ -77,14 +84,12 @@ void StatePlaying::render(sf::RenderTarget& renderer)
     m_invaders.drawInvaders(renderer);
     m_player.draw(renderer);
 
-    if (m_player.isAlive()) {
-        if (m_projectileAnimTimer.getElapsedTime().asSeconds() >= 0.1) {
-            m_projectileRenderer.nextFrame();
-            m_projectileAnimTimer.restart();
-        }
-
-        for (auto& proj : m_projectiles) {
-            m_projectileRenderer.renderEntity(renderer, (int)proj.getType(), proj.getPosition());
-        }
+    if (m_projectileAnimTimer.getElapsedTime().asSeconds() >= 0.1) {
+        m_projectileRenderer.nextFrame();
+        m_projectileAnimTimer.restart();
+    }
+    
+    for (auto& proj : m_projectiles) {
+        m_projectileRenderer.renderEntity(renderer, (int)proj.getType(), proj.getPosition());
     }
 }

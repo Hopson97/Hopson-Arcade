@@ -30,10 +30,13 @@ class Player : public Collidable
         int getLives() const;
         bool isAlive() const;
 
+        bool canBeRevived() const;
+
     private:
         sf::RectangleShape m_sprite;
         Animation m_deathAnimation;
         sf::Vector2f m_velocity;
+        sf::Clock m_deathTimer;
 
         bool m_isAlive = true;
         int m_livesLeft = 3;

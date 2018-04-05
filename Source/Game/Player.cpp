@@ -22,6 +22,8 @@ Player::Player()
 
 bool Player::restart()
 {
+    m_velocity *= 0.0f;
+    m_sprite.setTextureRect({ 0, 0, 11, 8 });
     m_isAlive = true;
     m_livesLeft--;
     m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
@@ -87,6 +89,7 @@ const sf::Vector2f & Player::getPosition() const
 void Player::onCollide()
 {
     m_isAlive = false;
+    m_deathTimer.restart();
 }
 
 int Player::getLives() const
@@ -97,4 +100,9 @@ int Player::getLives() const
 bool Player::isAlive() const
 {
     return m_isAlive;
+}
+
+bool Player::canBeRevived() const
+{
+    return m_deathTimer.getElapsedTime().asSeconds() >= 1.5f;
 }
