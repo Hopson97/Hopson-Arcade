@@ -11,6 +11,9 @@
 class Player : public Collidable
 {
     public:
+        constexpr static int WIDTH = 44;
+        constexpr static int HEIGHT = 32;
+
         Player();
 
         //Restart player after death

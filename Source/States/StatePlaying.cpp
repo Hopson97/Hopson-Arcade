@@ -1,7 +1,8 @@
 #include "StatePlaying.h"
 
-#include "../Game.h"
 
+#include <iostream>
+#include "../Game.h"
 #include "../ResourceManager/ResourceHolder.h"
 
 StatePlaying::StatePlaying(Game& game)
@@ -91,5 +92,33 @@ void StatePlaying::render(sf::RenderTarget& renderer)
     
     for (auto& proj : m_projectiles) {
         m_projectileRenderer.renderEntity(renderer, (int)proj.getType(), proj.getPosition());
+    }
+
+    m_lifeDisplay.draw(renderer, m_player.getLives());
+}
+
+///////////////////////////////////////////////
+//      Life display member functions       ///
+StatePlaying::LifeDisplay::LifeDisplay()
+{
+    m_lifeStamp.setSize({Player::WIDTH / 2, Player::WIDTH / 2});
+    m_lifeStamp.setTexture(&ResourceHolder::get().textures.get("player"));
+    m_lifeStamp.setTextureRect({ 0, 0, 11, 8 });
+
+    m_label.setFont(ResourceHolder::get().fonts.get("arcade"));
+    m_label.setCharacterSize(20);
+    m_label.setPosition(Display::WIDTH - (Player::WIDTH * 4), 10);
+    m_label.setString("LIVES");
+}
+
+void StatePlaying::LifeDisplay::draw(sf::RenderTarget& window, int lives)
+{
+    float xOrigin = m_label.getPosition().x + m_label.getGlobalBounds().width + 10;
+    float yOrigin = 10;
+
+    window.draw(m_label);
+    for (int i = 0; i < lives; i++) {
+        m_lifeStamp.setPosition(xOrigin + i * Player::WIDTH / 2 + i * 10, yOrigin);
+        window.draw(m_lifeStamp);
     }
 }

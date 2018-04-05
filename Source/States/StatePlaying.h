@@ -8,6 +8,18 @@
 
 class StatePlaying : public StateBase
 {
+    class LifeDisplay
+    {
+        public:
+            LifeDisplay();
+
+            void draw(sf::RenderTarget& window, int lives);
+
+        private:
+            sf::Text m_label;
+            sf::RectangleShape m_lifeStamp;
+    };
+
     public:
         StatePlaying(Game& game);
 
@@ -29,4 +41,6 @@ class StatePlaying : public StateBase
         sf::Clock m_projectileAnimTimer;
         
         int m_score = 0;
+
+        LifeDisplay m_lifeDisplay;
 };
