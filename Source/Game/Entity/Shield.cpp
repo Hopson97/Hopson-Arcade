@@ -57,13 +57,13 @@ void Shield::destroyPoint(float relX, float relY)
     auto& sectionPos = section.getPosition();
 
     //Transform to find the pixel coordinate
-    int sectionTopLeftX = sectionPos.x - m_position.x;
-    int sectionTopLeftY = sectionPos.y - m_position.y;
-    int pixelX = relX - sectionTopLeftX;
-    int pixelY = relY - sectionTopLeftY;
+    float sectionTopLeftX = sectionPos.x - m_position.x;
+    float sectionTopLeftY = sectionPos.y - m_position.y;
+    float pixelX = relX - sectionTopLeftX;
+    float pixelY = relY - sectionTopLeftY;
 
     //DESTROY
-    section.destroyArea(pixelX, pixelY);
+    section.destroyArea((int)pixelX, (int)pixelY);
 }
 
 bool Shield::isTouching(Projectile& projectile) 
