@@ -11,7 +11,6 @@ class StatePlaying : public StateBase
 
         void handleInput    ()                              override;
         void update         (sf::Time deltaTime)            override;
-        void fixedUpdate    (sf::Time deltaTime)            override;
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
@@ -19,6 +18,37 @@ class StatePlaying : public StateBase
 
         int m_score = 0;
 
-        LifeDisplay m_lifeDisplay;
-        ScoreDisplay m_scoreDisplay;
+        //Helpful class to create some generic text stuff
+        struct DisplayText
+        {
+            DisplayText();
+            sf::Text text;
+        };
+
+        //Displays how many lives the player has left
+        class LifeDisplay
+        {
+            public:
+                LifeDisplay();
+
+                void draw(sf::RenderTarget& window, int lives);
+
+            private:
+                DisplayText m_label;
+                sf::RectangleShape m_lifeStamp;
+        } m_lifeDisplay;
+
+        //Displays the Player's current score
+        class ScoreDisplay
+        {
+            public:
+                ScoreDisplay();
+
+                void update(int newScore);
+
+                void draw(sf::RenderTarget& target);
+
+            private:
+                DisplayText m_label;
+        } m_scoreDisplay;
 };

@@ -78,7 +78,6 @@ const Player & World::getPlayer() const
     return m_player;
 }
 
-
 //TODO GENERALISE THESE TWO FUNCTIONS VV
 void World::playerProjectileInput()
 {

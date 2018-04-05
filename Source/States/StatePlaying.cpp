@@ -22,9 +22,6 @@ void StatePlaying::update(sf::Time deltaTime)
 }
 
 
-void StatePlaying::fixedUpdate(sf::Time deltaTime)
-{ }
-
 void StatePlaying::render(sf::RenderTarget& renderer)
 {
     m_world.draw(renderer);
