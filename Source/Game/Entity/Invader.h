@@ -23,7 +23,7 @@ class Invader : public Collidable
         bool isAlive() const;
         Type getType() const;
 
-        void onCollide(const Collidable& other) override;
+        void onCollide(Collidable& other) override;
 
     private:
         sf::Vector2f m_location;

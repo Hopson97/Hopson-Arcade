@@ -24,7 +24,7 @@ class Player : public Collidable
         sf::Vector2f getGunPosition() const;
 
         const sf::Vector2f& getPosition() const;
-        void onCollide(const Collidable& other) override;
+        void onCollide(Collidable& other) override;
 
         int getLives() const;
         bool isAlive() const;

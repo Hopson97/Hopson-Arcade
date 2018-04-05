@@ -11,6 +11,8 @@ class Random
     using UniformIntDist = std::uniform_int_distribution<int>;
 
     public:
+        static Random gRand;
+
         Random(int seed = std::time(nullptr))
         :   m_prng  (seed)
         { }

@@ -27,7 +27,7 @@ Invader::Type Invader::getType() const
     return m_type;
 }
 
-void Invader::onCollide(const Collidable& other)
+void Invader::onCollide(Collidable& other)
 {
     m_isAlive = false;
 }

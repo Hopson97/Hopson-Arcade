@@ -63,6 +63,10 @@ void World::draw(sf::RenderTarget & target)
         m_animTimer.restart();
     }
 
+    for (auto& shield : m_shields) {
+        shield.draw(target);
+    }
+
     for (auto& proj : m_projectiles) {
         m_projectileRenderer.renderEntity(target, (int)proj.getType(), proj.getPosition());
     }
@@ -70,10 +74,6 @@ void World::draw(sf::RenderTarget & target)
     for (auto& exp : m_explosions) {
         m_explodeShape.setPosition(exp.getPosition());
         target.draw(m_explodeShape);
-    }
-
-    for (auto& shield : m_shields) {
-        shield.draw(target);
     }
 
     for (auto& t : temp) {
@@ -115,6 +115,16 @@ CollisionResult World::getCollisionResult(float dt)
 {
     auto result = m_invaders.tryCollideWithProjectiles(m_projectiles);
     updateProjectiles(dt, result.second);
+
+    for (auto& projectile : m_projectiles) {
+        for (auto& sheild : m_shields) {
+            if (sheild.isTouching(projectile)) {
+                result.second.emplace_back(projectile.getPosition());
+            }
+        }
+    }
+
+
     return result;
 }
 

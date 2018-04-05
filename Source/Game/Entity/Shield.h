@@ -7,7 +7,7 @@
 
 class Projectile;
 
-class Shield : public Collidable
+class Shield : private Collidable
 {
     constexpr static int SECT_SIZE = 20;
 
@@ -15,16 +15,24 @@ class Shield : public Collidable
     {
         Square, SlopeUp, SlopeDown, SlopeUnderUp, SlopeUnderDown
     };
-    class ShieldSection
+    class ShieldSection : public Collidable
     {
         public:
             ShieldSection(float tlX, float tlY, SectorStyle style);
 
             void draw(sf::RenderTarget& target);
 
+            const sf::Vector2f& getPosition() const;
+            void onCollide(Collidable& other) {}
+
+            sf::Vector2f isTouching(Projectile& other);
+
+            void destroyArea(int x, int y);
+
         private:
             void calculatePixelCoord(int x, int y, sf::Vertex& v, SectorStyle style);
             std::array<sf::Vertex, SECT_SIZE * SECT_SIZE> m_pixels;
+            sf::Vector2f m_position;
     };
 
     public:
@@ -33,11 +41,16 @@ class Shield : public Collidable
         Shield(float x);
 
         void draw(sf::RenderTarget& target);
+        bool isTouching(Projectile& projectile);
 
         const sf::Vector2f& getPosition() const;
-        void onCollide(const Collidable& other);
+        void onCollide(Collidable& other) {}
 
     private:
+        ShieldSection& getSection(int x, int y);
+
+        void destroyPoint(float relX, float relY);
+
         std::vector<ShieldSection> m_sections;
         sf::Vector2f m_position;
 };
