@@ -16,7 +16,7 @@ Player::Player()
     m_sprite.setTextureRect({ 0, 0, 11, 8 });
 
     for (int i = 0; i < 20; i++) {
-        m_deathAnimation.addFrame((i % 2) + 1, sf::seconds(0.1));
+        m_deathAnimation.addFrame((i % 2) + 1, sf::seconds(0.1f));
     }
 }
 
@@ -67,7 +67,9 @@ void Player::draw(sf::RenderTarget& target)
     if (!m_isAlive) {
         m_sprite.setTextureRect(m_deathAnimation.getFrame());
     } 
-    target.draw(m_sprite);
+    if (m_livesLeft >= 0) {
+        target.draw(m_sprite);
+    }
 }
 
 sf::Vector2f Player::getGunPosition() const

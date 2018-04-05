@@ -12,6 +12,21 @@ void Invader::move(float x, float y)
     m_location += {x, y};
 }
 
+const sf::Vector2f & Invader::getPosition() const
+{
+    return m_location;
+}
+
+bool Invader::isAlive() const
+{
+    return m_isAlive;
+}
+
+Invader::Type Invader::getType() const
+{
+    return m_type;
+}
+
 void Invader::onCollide()
 {
     m_isAlive = false;

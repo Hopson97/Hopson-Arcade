@@ -19,9 +19,9 @@ class Invader : public Collidable
 
         void move(float x, float y);
 
-        const sf::Vector2f& getPosition() const { return m_location; }
-        bool isAlive() const { return m_isAlive; }
-        Type getType() const { return m_type; }
+        const sf::Vector2f& getPosition() const;
+        bool isAlive() const;
+        Type getType() const;
 
         void onCollide() override;
 

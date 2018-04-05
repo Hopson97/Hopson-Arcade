@@ -24,3 +24,18 @@ void Projectile::onCollide()
 {
     m_isActive = false;
 }
+
+const sf::Vector2f & Projectile::getPosition() const
+{
+    return m_position;
+}
+
+Projectile::Type Projectile::getType() const
+{
+    return m_type;
+}
+
+bool Projectile::isActive() const
+{
+    return m_isActive;
+}

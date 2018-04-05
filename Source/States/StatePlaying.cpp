@@ -8,7 +8,11 @@
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
 {
-
+    m_gameOverText.text.setString("GAME OVER");
+    m_gameOverText.text.setPosition(
+        Display::WIDTH / 2 - m_gameOverText.text.getGlobalBounds().width / 2,
+        Display::HEIGHT / 2
+    );
 }
 
 void StatePlaying::handleInput()
@@ -18,9 +22,17 @@ void StatePlaying::handleInput()
 
 void StatePlaying::update(sf::Time deltaTime)
 {
-    m_score += m_world.update(deltaTime.asSeconds());
+    if (!m_isGameover) {
+        m_score += m_world.update(deltaTime.asSeconds());
+        m_scoreDisplay.update(m_score);
+    }
+    else if (m_gameOverClock.getElapsedTime().asSeconds() >= 3)
+    {
+        
+    }
 
     if (m_world.getPlayer().getLives() == -1) {
+        m_isGameover = true;
 
     }
 }
@@ -32,6 +44,10 @@ void StatePlaying::render(sf::RenderTarget& renderer)
 
     m_lifeDisplay.draw(renderer, m_world.getPlayer().getLives());
     m_scoreDisplay.draw(renderer);
+
+    if (m_isGameover) {
+        renderer.draw(m_gameOverText.text);
+    }
 }
 
 ///////////////////////////////////////////////

@@ -5,6 +5,13 @@
 
 class StatePlaying : public StateBase
 {
+    //Helpful class to create some generic text stuff
+    struct DisplayText
+    {
+        DisplayText();
+        sf::Text text;
+    };
+
     public:
         StatePlaying(Game& game);
 
@@ -16,13 +23,9 @@ class StatePlaying : public StateBase
         World m_world;
 
         int m_score = 0;
-
-        //Helpful class to create some generic text stuff
-        struct DisplayText
-        {
-            DisplayText();
-            sf::Text text;
-        };
+        bool m_isGameover;
+        sf::Clock m_gameOverClock;
+        DisplayText m_gameOverText;
 
         //Displays how many lives the player has left
         class LifeDisplay
