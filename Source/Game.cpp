@@ -9,6 +9,10 @@ Game::Game()
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
     pushState<StatePlaying>(*this);
+
+    sf::Image icon;
+    icon.loadFromFile("res/txrs/icon.png");
+    m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 //Runs the main loop

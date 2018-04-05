@@ -3,4 +3,5 @@ Release/
 *.dll
 *.vcxproj
 *.filters
-*.user;
+*.user
+*.aps
