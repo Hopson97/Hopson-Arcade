@@ -19,9 +19,16 @@ class StackMenu : public NonCopyable
         StackMenu(StackMenu&& other);
         StackMenu& operator =(StackMenu&& other);
 
-
         ~StackMenu() = default;
-        void addWidget(std::unique_ptr<Widget>);
+
+        void addWidget(std::unique_ptr<Widget> w);
+
+        template<typename T, typename... Args>
+        void addWidget(Args&&... args) {
+            auto w = std::make_unique<T>(std::forward<Args>(args)...);
+            initWidget(*w);
+            m_widgets.push_back(std::move(w));
+        }
 
         void handleEvent   (sf::Event e, const sf::RenderWindow& window);
         void render         (sf::RenderTarget& renderer);

@@ -11,7 +11,9 @@ StackMenu::StackMenu(const sf::RenderWindow& window, float baseY)
 :   m_basePosition  ((float)window.getSize().x / 2.0f, baseY)
 ,   m_baseSize      (300, 20)
 {
-    m_background.setFillColor({100, 100, 100, 128});
+    m_background.setOutlineThickness(2);
+    m_background.setOutlineColor(sf::Color::White);
+    m_background.setFillColor({100, 100, 100, 200});
     m_background.setSize(m_baseSize);
     m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, baseY - 30);
 }

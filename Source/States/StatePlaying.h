@@ -3,6 +3,8 @@
 #include "StateBase.h"
 #include "../Game/World.h"
 
+#include "../GUI/StackMenu.h"
+
 /*
     The main state; where all the gameplay happens
 */
@@ -18,6 +20,7 @@ class StatePlaying : public StateBase
     public:
         StatePlaying(Game& game);
 
+        void handleEvent    (sf::Event e)                   override;
         void handleInput    ()                              override;
         void update         (sf::Time deltaTime)            override;
         void render         (sf::RenderTarget& renderer)    override;
@@ -29,6 +32,8 @@ class StatePlaying : public StateBase
         bool m_isGameover;
         sf::Clock m_gameOverClock;
         DisplayText m_gameOverText;
+
+        gui::StackMenu m_gameOverMenu;
 
         //Displays how many lives the player has left
         class LifeDisplay

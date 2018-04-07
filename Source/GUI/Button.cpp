@@ -16,7 +16,6 @@ Button::Button(ButtonSize s)
             m_button.setSize({128, 64});
             break;
     }
-
 }
 
 void Button::setFunction(std::function<void(void)>func)

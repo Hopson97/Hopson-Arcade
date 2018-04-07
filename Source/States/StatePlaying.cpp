@@ -5,15 +5,33 @@
 #include "../Game.h"
 #include "../ResourceManager/ResourceHolder.h"
 
+#include "../GUI/Button.h"
+
 StatePlaying::StatePlaying(Game& game)
 :   StateBase       (game)
 ,   m_gameOverText  (30)
+,   m_gameOverMenu  (game.getWindow(), Display::HEIGHT / 3)
 {
+    m_gameOverText.text.setOutlineColor(sf::Color::Black);
+    m_gameOverText.text.setOutlineThickness(1);
     m_gameOverText.text.setString("GAME OVER");
     m_gameOverText.text.setPosition(
         Display::WIDTH / 2 - m_gameOverText.text.getGlobalBounds().width / 2,
-        Display::HEIGHT / 2
+        Display::HEIGHT / 3 - 35
     );
+
+    auto mmButton = std::make_unique<gui::Button>();
+    mmButton->setText("Main Menu\n");
+
+    auto exitButton = std::make_unique<gui::Button>();
+    exitButton->setText("Exit game\n");
+    m_gameOverMenu.addWidget(std::move(mmButton));
+    m_gameOverMenu.addWidget(std::move(exitButton));
+}
+
+void StatePlaying::handleEvent(sf::Event e)
+{
+    m_gameOverMenu.handleEvent(e, m_pGame->getWindow());
 }
 
 void StatePlaying::handleInput()
@@ -39,9 +57,10 @@ void StatePlaying::render(sf::RenderTarget& renderer)
     m_lifeDisplay.draw(renderer, m_world.getPlayer().getLives());
     m_scoreDisplay.draw(renderer);
 
-    if (m_isGameover) {
+    //if (m_isGameover) {
+        m_gameOverMenu.render(renderer);
         renderer.draw(m_gameOverText.text);
-    }
+    //}
 }
 
 ///////////////////////////////////////////////
@@ -50,7 +69,7 @@ StatePlaying::DisplayText::DisplayText(int size)
 {
     text.setFillColor(sf::Color::White);
     text.setOutlineColor({100, 150, 100});
-    text.setOutlineThickness(1);
+    //text.setOutlineThickness(1);
     text.setFont(ResourceHolder::get().fonts.get("arcade"));
     text.setCharacterSize(size);
 }
