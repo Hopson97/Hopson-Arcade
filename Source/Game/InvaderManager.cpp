@@ -27,7 +27,7 @@ InvaderManager::InvaderManager(World& world)
         for (int x = 0; x < 11; x++) {
             //calcuate position for invader
             float invaderX = x * Invader::WIDTH + (GAP  * x * 3) + Invader::WIDTH;
-            float invaderY = y * Invader::HEIGHT + (GAP * y) + Invader::HEIGHT * 3;
+            float invaderY = y * Invader::HEIGHT + (GAP * y) + Invader::HEIGHT * 4;
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }

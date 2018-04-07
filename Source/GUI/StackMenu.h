@@ -13,7 +13,7 @@ namespace gui
 class StackMenu : public NonCopyable
 {
     public:
-        StackMenu(const sf::RenderWindow& window);
+        StackMenu(const sf::RenderWindow& window, float baseY);
         StackMenu(const sf::Vector2f& position);
 
         StackMenu(StackMenu&& other);

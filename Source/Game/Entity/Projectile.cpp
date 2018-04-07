@@ -3,7 +3,7 @@
 #include "../../DisplayInfo.h"
 
 Projectile::Projectile(const sf::Vector2f & position, Type type, Direction direction)
-    : Collidable    (WIDTH, HEIGHT)
+    : Collidable    (WIDTH / 1.5, HEIGHT)
     , m_position    (position)
     , m_type        (type)
     , m_direction   (direction)

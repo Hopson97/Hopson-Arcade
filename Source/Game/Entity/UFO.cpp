@@ -6,7 +6,7 @@
 namespace {
     constexpr float WIDTH = 72;
     constexpr float HEIGHT = 36;
-    constexpr float Y_POS = 25;
+    constexpr float Y_POS = 45;
 }
 
 UFO::UFO(Random<>& rand)

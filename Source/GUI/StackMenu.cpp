@@ -7,13 +7,13 @@ constexpr float BASE_Y = 95.0f;
 namespace gui
 {
 
-StackMenu::StackMenu(const sf::RenderWindow& window)
-:   m_basePosition  ((float)window.getSize().x / 2.0f, BASE_Y)
+StackMenu::StackMenu(const sf::RenderWindow& window, float baseY)
+:   m_basePosition  ((float)window.getSize().x / 2.0f, baseY)
 ,   m_baseSize      (300, 20)
 {
     m_background.setFillColor({100, 100, 100, 128});
     m_background.setSize(m_baseSize);
-    m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, BASE_Y - 30);
+    m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, baseY - 30);
 }
 
 StackMenu::StackMenu(const sf::Vector2f& position)

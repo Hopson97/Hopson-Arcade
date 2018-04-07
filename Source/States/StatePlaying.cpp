@@ -62,15 +62,17 @@ StatePlaying::LifeDisplay::LifeDisplay()
     m_lifeStamp.setSize({Player::WIDTH / 2, Player::WIDTH / 2});
     m_lifeStamp.setTexture(&ResourceHolder::get().textures.get("player"));
     m_lifeStamp.setTextureRect({ 0, 0, 11, 8 });
-    m_label.text.setPosition(Display::WIDTH - (Player::WIDTH * 4), 10);
+    m_label.text.setPosition(Display::WIDTH - (Player::WIDTH * 4.5), 10);
     m_label.text.setString("LIVES");
+    m_label.text.setOutlineThickness(0);
 }
 
 void StatePlaying::LifeDisplay::draw(sf::RenderTarget& window, int lives)
 {
     float xOrigin = m_label.text.getPosition().x + 
         m_label.text.getGlobalBounds().width + 10;
-    float yOrigin = 10;
+    float yOrigin = m_label.text.getPosition().y +
+        m_label.text.getGlobalBounds().height / 2;
 
     window.draw(m_label.text);
     for (int i = 0; i < lives; i++) {
@@ -82,12 +84,13 @@ void StatePlaying::LifeDisplay::draw(sf::RenderTarget& window, int lives)
 StatePlaying::ScoreDisplay::ScoreDisplay()
 {
     m_label.text.setPosition(10, 10);
-    m_label.text.setString("SCORE\n0");
+    m_label.text.setString("SCORE   0");
+    m_label.text.setOutlineThickness(0);
 }
 
 void StatePlaying::ScoreDisplay::update(int newScore)
 {
-    m_label.text.setString("SCORE\n" + std::to_string(newScore));
+    m_label.text.setString("SCORE   " + std::to_string(newScore));
 }
 
 void StatePlaying::ScoreDisplay::draw(sf::RenderTarget & target)

@@ -38,7 +38,7 @@ int World::update(float dt)
         m_player.update(dt);
         if (m_player.isAlive()) {
             m_invaders.tryStepInvaders();
-            //enemyProjectileFire();
+            enemyProjectileFire();
 
             //pair of score gained and points of collision list
             auto collisionResult = getCollisionResult(dt);
@@ -63,31 +63,6 @@ int World::update(float dt)
         m_explosions.clear();
     }
     return score;
-}
-
-void World::draw(sf::RenderTarget & target)
-{
-    m_invaders.drawInvaders(target);
-    m_player.draw(target);
-    m_ufo.draw(target);
-
-    if (m_animTimer.getElapsedTime().asSeconds() > 0.2) {
-        m_projectileRenderer.nextFrame();
-        m_animTimer.restart();
-    }
-
-    for (auto& shield : m_shields) {
-        shield.draw(target);
-    }
-
-    for (auto& proj : m_projectiles) {
-        m_projectileRenderer.renderEntity(target, (int)proj.getType(), proj.getPosition());
-    }
-
-    for (auto& exp : m_explosions) {
-        m_explodeShape.setPosition(exp.getPosition());
-        target.draw(m_explodeShape);
-    }
 }
 
 const Player & World::getPlayer() const
@@ -179,4 +154,29 @@ void World::updateProjectiles(float dt, std::vector<sf::Vector2f>& collisionPoin
             itr++;
         }
     }
+}
+
+void World::draw(sf::RenderTarget & target)
+{
+    if (m_animTimer.getElapsedTime().asSeconds() > 0.2) {
+        m_projectileRenderer.nextFrame();
+        m_animTimer.restart();
+    }
+
+    for (auto& shield : m_shields) {
+        shield.draw(target);
+    }
+
+    for (auto& proj : m_projectiles) {
+        m_projectileRenderer.renderEntity(target, (int)proj.getType(), proj.getPosition());
+    }
+
+    for (auto& exp : m_explosions) {
+        m_explodeShape.setPosition(exp.getPosition());
+        target.draw(m_explodeShape);
+    }
+
+    m_invaders.drawInvaders(target);
+    m_player.draw(target);
+    m_ufo.draw(target);
 }
