@@ -11,7 +11,7 @@ World::World()
     const int SECT_SIZE = (Display::WIDTH / 4);
     for (int i = 0; i < 4; i++) {
         
-        m_shields.emplace_back(i * SECT_SIZE +  SECT_SIZE / 2 - Shield::SIZE / 2);
+        m_shields.emplace_back(float(i * SECT_SIZE +  SECT_SIZE / 2 - Shield::SIZE / 2));
     }
 }
 
@@ -74,10 +74,6 @@ void World::draw(sf::RenderTarget & target)
     for (auto& exp : m_explosions) {
         m_explodeShape.setPosition(exp.getPosition());
         target.draw(m_explodeShape);
-    }
-
-    for (auto& t : temp) {
-        target.draw(t);
     }
 }
 
