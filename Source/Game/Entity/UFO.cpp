@@ -1,19 +1,27 @@
 #include "UFO.h"
 
 #include "../../DisplayInfo.h"
+#include "../../ResourceManager/ResourceHolder.h"
 
 namespace {
-    constexpr float WIDTH = 50;
-    constexpr float HEIGHT = 25;
-    constexpr float Y_POS = 50;
+    constexpr float WIDTH = 72;
+    constexpr float HEIGHT = 36;
+    constexpr float Y_POS = 25;
 }
 
 UFO::UFO(Random<>& rand)
 : Collidable    (WIDTH, HEIGHT)
 , m_rng         (rand)
+, m_animation   (16, 8)
 {
     m_sprite.setSize({ WIDTH, HEIGHT });
     m_sprite.setPosition((float)Display::WIDTH, Y_POS);
+    m_sprite.setTexture(&ResourceHolder::get().textures.get("ufo"));
+
+    for (int i = 0; i < 3; i++) {
+        m_animation.addFrame(i, sf::seconds(0.2));
+    }
+
 }
 
 UFO::State UFO::getState() const
@@ -55,6 +63,7 @@ void UFO::update(float dt)
 void UFO::draw(sf::RenderTarget & window)
 {
     if (m_state == State::Flying) {
+        m_sprite.setTextureRect(m_animation.getFrame());
         window.draw(m_sprite);
     }
 }

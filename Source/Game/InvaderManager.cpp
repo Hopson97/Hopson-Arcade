@@ -11,8 +11,8 @@ InvaderManager::InvaderManager()
 {
     //Layout of the invaders 
     Invader::Type types[] = {
-        Invader::Type::Squid, Invader::Type::Bug, Invader::Type::Bug,
-        Invader::Type::Flat, Invader::Type::Flat
+        Invader::Type::Squid, Invader::Type::Crab, Invader::Type::Crab,
+        Invader::Type::Octopus, Invader::Type::Octopus
     };
     //Add invaders into the std::vector
     const int GAP = 10;

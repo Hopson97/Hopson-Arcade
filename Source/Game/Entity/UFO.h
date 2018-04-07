@@ -4,6 +4,7 @@
 
 #include "../Collidable.h"
 #include "../../Util/Random.h"
+#include "../../Util/Animation.h"
 
 class UFO : public Collidable
 {
@@ -32,5 +33,5 @@ class UFO : public Collidable
        sf::RectangleShape m_sprite;
        float m_vx;
        State m_state;
-       bool m_hasStateBeenGotSinceDeath;
+       Animation m_animation;
 };
