@@ -31,6 +31,16 @@ InvaderManager::InvaderManager(World& world)
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }
+
+    //load sounds
+    for (int i = 0; i < 4; i++) {
+        m_stepSounds[i].setBuffer(
+            ResourceHolder::get().soundBuffers.get("fastinvader" + std::to_string(i + 1)));
+    }
+    m_invaderKilledSound.setBuffer(
+        ResourceHolder::get().soundBuffers.get("invaderkilled"));
+
+    
 }
 
 void InvaderManager::tryStepInvaders()
@@ -44,6 +54,7 @@ void InvaderManager::tryStepInvaders()
         if (m_moveDown) {
             step *= -1;
         }
+        m_stepSounds[m_ticks++ % 4].play();
         
         //Move the invaders
         for (auto& invader : m_invaders) {
@@ -82,6 +93,7 @@ CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile
                 continue;
             if (projectile.tryCollideWith(invader)) {
                 m_aliveInvaders--;
+                m_invaderKilledSound.play();
                 if (m_aliveInvaders == 0) {
                     m_hasAllInvadersBeenAdded = false;
                 }

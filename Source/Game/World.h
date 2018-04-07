@@ -48,6 +48,8 @@ class World
         sf::Clock m_playerShotClock;
         sf::Clock m_animTimer;
 
+        sf::Sound m_playerShoot;
+
         Random<> m_rng;
 
         bool m_isGameOver = false;

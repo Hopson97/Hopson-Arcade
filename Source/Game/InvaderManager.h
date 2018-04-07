@@ -6,6 +6,7 @@
 #include "../DisplayInfo.h"
 
 #include <vector>
+#include <SFML/Audio.hpp>
 
 #include "../Util/Random.h"
 
@@ -68,4 +69,8 @@ class InvaderManager
 
         int m_initX = 0;
         int m_initY = 4;
+        int m_ticks = 0;
+
+        sf::Sound m_stepSounds[4];
+        sf::Sound m_invaderKilledSound;
 };

@@ -15,6 +15,8 @@ World::World()
         
         m_shields.emplace_back(float(i * SECT_SIZE +  SECT_SIZE / 2 - Shield::SIZE / 2));
     }
+
+    m_playerShoot.setBuffer(ResourceHolder::get().soundBuffers.get("shoot"));
 }
 
 void World::input()
@@ -85,6 +87,7 @@ void World::playerProjectileInput()
         point.x -= Projectile::WIDTH / 2.0f;
         m_projectiles.emplace_back(point, Projectile::Type::Rectangle, Projectile::Direction::Up);
         m_playerShotClock.restart();
+        m_playerShoot.play();
     }
 }
 

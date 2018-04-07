@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
+#include <SFML/Audio.hpp>
 #include "../Collidable.h"
 #include "../../Util/Random.h"
 #include "../../Util/Animation.h"
@@ -34,4 +34,6 @@ class UFO : public Collidable
        float m_vx;
        State m_state;
        Animation m_animation;
+
+       sf::Sound m_flyingSound;
 };

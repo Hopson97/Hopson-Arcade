@@ -19,9 +19,10 @@ UFO::UFO(Random<>& rand)
     m_sprite.setTexture(&ResourceHolder::get().textures.get("ufo"));
 
     for (int i = 0; i < 3; i++) {
-        m_animation.addFrame(i, sf::seconds(0.2));
+        m_animation.addFrame(i, sf::seconds(0.2f));
     }
-
+    m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("ufo_lowpitch"));
+    m_flyingSound.setVolume(25);
 }
 
 UFO::State UFO::getState() const
@@ -40,6 +41,10 @@ void UFO::update(float dt)
             m_sprite.move(m_vx * dt, 0);
             if (getPosition().x <= -WIDTH || getPosition().x >= Display::WIDTH + WIDTH) {
                 m_state = State::Waiting;
+            }
+            if ((int)m_flyingSound.getStatus() != (int)sf::Sound::Status::Playing ||
+                m_flyingSound.getPlayingOffset() >= sf::seconds(1.5)) {
+                m_flyingSound.play();
             }
             break;
 

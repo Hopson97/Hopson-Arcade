@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <SFML/Audio.hpp>
+
 #include "../Collidable.h"
 #include "../../Util/Animation.h"
 
@@ -42,4 +44,5 @@ class Player : public Collidable
         bool m_isAlive = true;
         int m_livesLeft = 3;
 
+        sf::Sound m_deathSound;
 };

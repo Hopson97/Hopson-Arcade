@@ -18,6 +18,8 @@ Player::Player()
     for (int i = 0; i < 20; i++) {
         m_deathAnimation.addFrame(((i % 2) + 1), sf::seconds(0.1f));
     }
+
+    m_deathSound.setBuffer(ResourceHolder::get().soundBuffers.get("explosion"));
 }
 
 void Player::restart()
@@ -90,6 +92,7 @@ void Player::onCollide(Collidable& other)
 {
     m_isAlive = false;
     m_deathTimer.restart();
+    m_deathSound.play();
 }
 
 int Player::getLives() const
