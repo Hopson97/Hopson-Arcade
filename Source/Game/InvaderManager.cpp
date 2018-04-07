@@ -148,7 +148,7 @@ bool InvaderManager::areInvadersAlive() const
 
 void InvaderManager::updateStepDelay()
 {
-    m_stepGap = sf::seconds((float)m_aliveInvaders / 100.0f);
+    m_stepGap = sf::seconds((float)m_aliveInvaders / 90.0f);
 }
 
 bool InvaderManager::testInvaderPosition(const Invader& invader) const

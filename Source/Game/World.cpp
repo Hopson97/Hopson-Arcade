@@ -104,7 +104,7 @@ bool World::isGameOver() const
 void World::playerProjectileInput()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) &&
-        m_playerShotClock.getElapsedTime().asSeconds() > 0.1f) {
+        m_playerShotClock.getElapsedTime().asSeconds() > 0.5f) {
         auto point = m_player.getGunPosition();
         point.y -= Projectile::HEIGHT;
         point.x -= Projectile::WIDTH / 2.0f;
