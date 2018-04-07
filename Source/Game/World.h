@@ -8,6 +8,7 @@
 #include "Entity/Projectile.h"
 #include "Entity/Explosion.h"
 #include "Entity/Shield.h"
+#include "Entity/UFO.h"
 
 /**
     The class which manages the world and th interactions between different entites
@@ -32,6 +33,7 @@ class World
         AnimationRenderer m_projectileRenderer;
         InvaderManager m_invaders;
         Player m_player;
+        UFO m_ufo;
 
         std::vector<Projectile> m_projectiles;
         std::vector<Explosion> m_explosions;

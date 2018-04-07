@@ -2,8 +2,9 @@
 #include "../ResourceManager/ResourceHolder.h"
 
 World::World()
-:    m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
-    ResourceHolder::get().textures.get("projectile"))
+    : m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
+        ResourceHolder::get().textures.get("projectile"))
+    , m_ufo(m_rng)
 {
     m_explodeShape.setSize({ 52, 28 });
     m_explodeShape.setTexture(&ResourceHolder::get().textures.get("explosion"));
@@ -42,6 +43,8 @@ int World::update(float dt)
                 m_explosions.emplace_back(point);
             }
         }
+
+        m_ufo.update(dt);
     }
 
     for (auto itr = m_explosions.begin(); itr != m_explosions.end();) {
@@ -57,6 +60,7 @@ void World::draw(sf::RenderTarget & target)
 {
     m_invaders.drawInvaders(target);
     m_player.draw(target);
+    m_ufo.draw(target);
 
     if (m_animTimer.getElapsedTime().asSeconds() > 0.2) {
         m_projectileRenderer.nextFrame();
@@ -119,6 +123,10 @@ CollisionResult World::getCollisionResult(float dt)
                 projectile.destroy();
                 result.second.emplace_back(projectile.getPosition());
             }
+        }
+        if (m_ufo.tryCollideWith(projectile)) {
+            result.second.emplace_back(m_ufo.getPosition());
+            result.first += 200;
         }
     }
 
