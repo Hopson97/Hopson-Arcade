@@ -16,11 +16,16 @@ void Projectile::update(float dt)
     float speed = 550 * (float)m_direction * dt;
     m_position.y += speed;
     if (m_position.y <= 0 || m_position.y >= Display::HEIGHT) {
-        m_isActive = false;
+        destroy();
     }
 }
 
 void Projectile::onCollide(Collidable& other)
+{
+    destroy();
+}
+
+void Projectile::destroy()
 {
     m_isActive = false;
 }
@@ -38,4 +43,9 @@ Projectile::Type Projectile::getType() const
 bool Projectile::isActive() const
 {
     return m_isActive;
+}
+
+Projectile::Direction Projectile::getDirection() const
+{
+    return m_direction;
 }

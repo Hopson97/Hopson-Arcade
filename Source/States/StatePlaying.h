@@ -11,7 +11,7 @@ class StatePlaying : public StateBase
     //Helpful class to create some generic text stuff
     struct DisplayText
     {
-        DisplayText();
+        DisplayText(int size = 20);
         sf::Text text;
     };
 

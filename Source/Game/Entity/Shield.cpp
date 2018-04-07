@@ -66,7 +66,8 @@ void Shield::destroyPoint(float relX, float relY)
     section.destroyArea((int)pixelX, (int)pixelY);
 }
 
-bool Shield::isTouching(Projectile& projectile)
+
+bool Shield::isTouching(const Projectile& projectile)
 {
     static Random<> rand;
     if (projectile.getBox().intersects(getBox())) {
@@ -75,7 +76,8 @@ bool Shield::isTouching(Projectile& projectile)
             if ((int)result.x == -1)
                 continue;
             else { //This means the projectile is touching the shield
-                   //Get coordinate of collision point relative to top left of sheild
+                
+                //Get coordinate of collision point relative to top left of sheild
                 result.x -= m_position.x;
                 result.y -= m_position.y;
 
@@ -89,13 +91,12 @@ bool Shield::isTouching(Projectile& projectile)
                 }
 
                 //blast damge
-                for (int i = 0; i < 10; i++) {
-                    float newRelativeX = result.x + rand.getFloatInRange(-10, 10);
-                    float newRelativeY = result.y + rand.getFloatInRange(-10, 10);
+                float radius = 12.0f;
+                for (int i = 0; i < 35; i++) {
+                    float newRelativeX = result.x + rand.getFloatInRange(-radius, radius);
+                    float newRelativeY = result.y + rand.getFloatInRange(-radius, radius);
                     destroyPoint(newRelativeX, newRelativeY);
                 }
-
-                projectile.onCollide(*this);
                 return true;
             }
         }
@@ -127,7 +128,7 @@ const sf::Vector2f & Shield::ShieldSection::getPosition() const
     return m_position;
 }
 
-sf::Vector2f Shield::ShieldSection::isTouching(Projectile & other)
+sf::Vector2f Shield::ShieldSection::isTouching(const  Projectile & other)
 {
     for (auto& px : m_pixels) {
         if (other.getBox().contains(px.position) && px.color == sf::Color::Green) {
@@ -136,6 +137,8 @@ sf::Vector2f Shield::ShieldSection::isTouching(Projectile & other)
     }
     return { -1, -1 };
 }
+
+//Blacks out an area around the inputted point
 void Shield::ShieldSection::destroyArea(int x, int y)
 {
     for (int oY = -2; oY <= 2; oY++) {

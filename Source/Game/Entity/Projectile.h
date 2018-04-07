@@ -26,10 +26,12 @@ class Projectile : public Collidable
         Projectile(const sf::Vector2f& position, Type type, Direction direction);
         void update(float dt);
         void onCollide(Collidable& other) override;
+        void destroy();
 
         const sf::Vector2f& getPosition() const;
         Type getType() const;
         bool isActive() const;
+        Direction getDirection() const;
 
     private:
         sf::Vector2f m_position;

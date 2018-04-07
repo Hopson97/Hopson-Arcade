@@ -1,6 +1,6 @@
 #include "World.h"
 #include "../ResourceManager/ResourceHolder.h"
-std::vector<sf::RectangleShape> temp;
+
 World::World()
 :    m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
     ResourceHolder::get().textures.get("projectile"))
@@ -101,9 +101,10 @@ void World::playerProjectileInput()
 
 void World::enemyProjectileFire()
 {
-    if (m_invaderShotClock.getElapsedTime().asSeconds() >= 0.5 &&
+    if (m_invaderShotClock.getElapsedTime().asSeconds() >= 0.1 &&
         m_rng.getIntInRange(0, 25) == 2) {
         auto point = m_invaders.getRandomLowestInvaderPoint(m_rng);
+        if ((int)point.x == -1) return;
         auto type = static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));
         m_projectiles.emplace_back(point, type, Projectile::Direction::Down);
         m_invaderShotClock.restart();
@@ -119,6 +120,7 @@ CollisionResult World::getCollisionResult(float dt)
     for (auto& projectile : m_projectiles) {
         for (auto& sheild : m_shields) {
             if (sheild.isTouching(projectile)) {
+                projectile.destroy();
                 result.second.emplace_back(projectile.getPosition());
             }
         }

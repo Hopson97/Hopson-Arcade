@@ -89,6 +89,7 @@ CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile
 
 sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
 {
+    if (m_aliveInvaders == 0) return { -1, -1 };
     //Keep looping until an invader is found
     while (true) {
         auto invaderColumn = random.getIntInRange(0, 10);

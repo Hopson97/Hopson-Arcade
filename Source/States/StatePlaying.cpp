@@ -6,7 +6,8 @@
 #include "../ResourceManager/ResourceHolder.h"
 
 StatePlaying::StatePlaying(Game& game)
-:   StateBase   (game)
+:   StateBase       (game)
+,   m_gameOverText  (30)
 {
     m_gameOverText.text.setString("GAME OVER");
     m_gameOverText.text.setPosition(
@@ -52,13 +53,13 @@ void StatePlaying::render(sf::RenderTarget& renderer)
 
 ///////////////////////////////////////////////
 //     display member functions       ///
-StatePlaying::DisplayText::DisplayText()
+StatePlaying::DisplayText::DisplayText(int size)
 {
     text.setFillColor(sf::Color::White);
     text.setOutlineColor({100, 150, 100});
     text.setOutlineThickness(1);
     text.setFont(ResourceHolder::get().fonts.get("arcade"));
-    text.setCharacterSize(20);
+    text.setCharacterSize(size);
 }
 
 
