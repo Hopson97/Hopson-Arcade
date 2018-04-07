@@ -5,6 +5,7 @@ World::World()
     : m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
         ResourceHolder::get().textures.get("projectile"))
     , m_ufo(m_rng)
+    , m_invaders(*this)
 {
     m_explodeShape.setSize({ 52, 28 });
     m_explodeShape.setTexture(&ResourceHolder::get().textures.get("explosion"));
@@ -19,8 +20,10 @@ World::World()
 void World::input()
 {
     if (m_player.isAlive()) {
-        m_player.input();
-        playerProjectileInput();
+        if (m_invaders.areInvadersAlive()) {
+            m_player.input();
+            playerProjectileInput();
+        }   
     } 
     else {
         m_player.tryRevive();
@@ -30,29 +33,35 @@ void World::input()
 int World::update(float dt)
 {
     int score = 0;
-    m_player.update(dt);
-    if (m_player.isAlive()) {
-        m_invaders.tryStepInvaders();
-        enemyProjectileFire();
+    
+    if (m_invaders.areInvadersAlive()) {
+        m_player.update(dt);
+        if (m_player.isAlive()) {
+            m_invaders.tryStepInvaders();
+            //enemyProjectileFire();
 
-        //pair of score gained and points of collision list
-        auto collisionResult = getCollisionResult(dt);
-        if (collisionResult.second.size() > 0) {
-            score += collisionResult.first;
-            for (auto& point : collisionResult.second) {
-                m_explosions.emplace_back(point);
+            //pair of score gained and points of collision list
+            auto collisionResult = getCollisionResult(dt);
+            if (collisionResult.second.size() > 0) {
+                score += collisionResult.first;
+                for (auto& point : collisionResult.second) {
+                    m_explosions.emplace_back(point);
+                }
             }
+
+            m_ufo.update(dt);
         }
 
-        m_ufo.update(dt);
+        for (auto itr = m_explosions.begin(); itr != m_explosions.end();) {
+            if (itr->isLifeOver()) itr = m_explosions.erase(itr);
+            else itr++;
+        }
     }
-
-    for (auto itr = m_explosions.begin(); itr != m_explosions.end();) {
-        if (itr->isLifeOver()) itr = m_explosions.erase(itr);
-        else itr++;
+    else {
+        m_invaders.initAddInvader();
+        m_projectiles.clear();
+        m_explosions.clear();
     }
-
-
     return score;
 }
 
@@ -86,11 +95,16 @@ const Player & World::getPlayer() const
     return m_player;
 }
 
+bool World::isGameOver() const
+{
+    return m_player.getLives() == -1 || m_isGameOver;
+}
+
 //TODO GENERALISE THESE TWO FUNCTIONS VV
 void World::playerProjectileInput()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) &&
-        m_playerShotClock.getElapsedTime().asSeconds() > 0.5f) {
+        m_playerShotClock.getElapsedTime().asSeconds() > 0.1f) {
         auto point = m_player.getGunPosition();
         point.y -= Projectile::HEIGHT;
         point.x -= Projectile::WIDTH / 2.0f;

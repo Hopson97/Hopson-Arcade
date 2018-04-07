@@ -3,9 +3,16 @@
 #include <iostream>
 
 #include "../ResourceManager/ResourceHolder.h"
+#include "World.h"
 
-InvaderManager::InvaderManager()
-    : m_stepGap(sf::seconds(0.5f))
+namespace
+{
+    const int MAX_INVADERS = 55;
+}
+
+InvaderManager::InvaderManager(World& world)
+    : m_stepGap (sf::seconds(0.5f))
+    , m_world   (world)
     , m_invaderRenderer(12, 8, Invader::WIDTH, Invader::HEIGHT, 
         ResourceHolder::get().textures.get("invaders"))
 {
@@ -24,7 +31,6 @@ InvaderManager::InvaderManager()
             m_invaders.emplace_back(sf::Vector2f{ invaderX, invaderY }, types[y]);
         }
     }
-    m_aliveInvaders = m_invaders.size();
 }
 
 void InvaderManager::tryStepInvaders()
@@ -48,7 +54,7 @@ void InvaderManager::tryStepInvaders()
             }
             else if (!moveDown) {
                 //Check invader position to see if all should move down
-                moveDown = shouldMoveDown(invader); 
+                moveDown = testInvaderPosition(invader);
             }
         }
 
@@ -60,9 +66,6 @@ void InvaderManager::tryStepInvaders()
 
 void InvaderManager::drawInvaders(sf::RenderTarget& target)
 {
-    const int frameWidth = 12;
-    const int frameHeight = 8;
-
     for (auto& invader : m_invaders) {
         if (!invader.isAlive()) continue;
         m_invaderRenderer.renderEntity(target, (int)invader.getType(), invader.getPosition());
@@ -79,6 +82,9 @@ CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile
                 continue;
             if (projectile.tryCollideWith(invader)) {
                 m_aliveInvaders--;
+                if (m_aliveInvaders == 0) {
+                    m_hasAllInvadersBeenAdded = false;
+                }
                 result.second.emplace_back(invader.getPosition());
                 result.first += ((int)invader.getType() + 1) * 100;
                 updateStepDelay();
@@ -108,13 +114,49 @@ sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
     }
 }
 
+int InvaderManager::getAliveInvadersCount() const
+{
+    return m_aliveInvaders;
+}
+
+void InvaderManager::initAddInvader()
+{
+    static sf::Clock delay;
+    if (delay.getElapsedTime().asSeconds() > 0.03) {
+        m_invaders.at(m_initY * 11 + m_initX).makeAlive();
+        m_aliveInvaders++;
+        m_initX++;
+        if (m_initX == 11) {
+            m_initX = 0;
+            m_initY--;
+        }
+        delay.restart();
+    }
+
+    if (m_aliveInvaders == MAX_INVADERS) {
+        m_hasAllInvadersBeenAdded = true;
+        m_initX = 0;
+        m_initY = 4;
+        updateStepDelay();
+    }
+}
+
+bool InvaderManager::areInvadersAlive() const
+{
+    return m_hasAllInvadersBeenAdded;
+}
+
 void InvaderManager::updateStepDelay()
 {
     m_stepGap = sf::seconds((float)m_aliveInvaders / 100.0f);
 }
 
-bool InvaderManager::shouldMoveDown(const Invader& invader) const
+bool InvaderManager::testInvaderPosition(const Invader& invader) const
 {
+    if (invader.getPosition().y > Display::HEIGHT - 150) {
+        m_world.setGameIsOver();
+        std::cout << "lol rip earth xDDD " << invader.getPosition().y << "\n";
+    }
     return
         (invader.getPosition().x < 15 && m_isMovingLeft) || //Check invader left
         (invader.getPosition().x + Invader::WIDTH > Display::WIDTH - 15 && !m_isMovingLeft); //Check invader right

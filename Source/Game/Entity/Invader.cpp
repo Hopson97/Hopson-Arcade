@@ -4,6 +4,7 @@ Invader::Invader(const sf::Vector2f & initialLocation, Type type)
     :   Collidable    (WIDTH, HEIGHT)
     ,   m_location  (initialLocation)
     ,   m_type      (type)
+    ,   m_initialPosition (initialLocation)
 {
 }
 

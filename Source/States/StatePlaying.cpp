@@ -27,15 +27,8 @@ void StatePlaying::update(sf::Time deltaTime)
         m_score += m_world.update(deltaTime.asSeconds());
         m_scoreDisplay.update(m_score);
     }
-    else if (m_gameOverClock.getElapsedTime().asSeconds() >= 3)
-    {
-        
-    }
 
-    if (m_world.getPlayer().getLives() == -1) {
-        m_isGameover = true;
-
-    }
+    m_isGameover = m_world.isGameOver();
 }
 
 

@@ -24,6 +24,10 @@ class World
 
         const Player& getPlayer() const;
 
+        bool isGameOver() const;
+
+        void setGameIsOver() { m_isGameOver = true;  }
+
     private:
         void playerProjectileInput();
         void enemyProjectileFire();
@@ -45,4 +49,6 @@ class World
         sf::Clock m_animTimer;
 
         Random<> m_rng;
+
+        bool m_isGameOver = false;
 };
