@@ -3,6 +3,7 @@
 #include "StateBase.h"
 #include "../GUI/StackMenu.h"
 #include "../GUI/Widget.h"
+#include "../Game/StarryBackground.h"
 
 class StateHighscores : public StateBase
 {
@@ -55,6 +56,8 @@ class StateHighscores : public StateBase
 
         std::vector<Entry> m_scores;
         std::vector<EntryBox> m_entryBoxes;
+
+        StarryBackground m_background;
 
         State m_state;
 

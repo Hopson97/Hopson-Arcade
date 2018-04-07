@@ -3,6 +3,7 @@
 #include "StateBase.h"
 #include "../GUI/StackMenu.h"
 #include "../Util/Random.h"
+#include "../Game/StarryBackground.h"
 
 class StateMainMenu : public StateBase
 {
@@ -15,13 +16,8 @@ class StateMainMenu : public StateBase
         void render(sf::RenderTarget& renderer) override;
 
     private:
-        void giveStarRandomStartLocation(sf::Vertex& v);
-
         gui::StackMenu m_mainMenu;
-
         sf::RectangleShape m_banner;
 
-        std::vector<sf::Vertex> m_stars;
-
-        Random<> m_rng;
+        StarryBackground m_background;
 };

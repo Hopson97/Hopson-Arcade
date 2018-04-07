@@ -36,10 +36,14 @@ void StateHighscores::handleEvent(sf::Event e)
     m_pActiveMenu->handleEvent(e, m_pGame->getWindow());
 }
 
-void StateHighscores::update(sf::Time deltaTime) {}
+void StateHighscores::update(sf::Time deltaTime) 
+{
+    m_background.update(deltaTime.asSeconds());
+}
 
 void StateHighscores::render(sf::RenderTarget & renderer)
 {
+    m_background.draw(renderer);
     m_pActiveMenu->render(renderer);
     if (m_state == State::Viewing) {
         for (auto& entry : m_entryBoxes) {
