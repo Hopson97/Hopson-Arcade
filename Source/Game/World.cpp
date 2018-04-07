@@ -118,15 +118,28 @@ CollisionResult World::getCollisionResult(float dt)
     updateProjectiles(dt, result.second);
 
     for (auto& projectile : m_projectiles) {
+
+        //Projectile verses sheild collisons
         for (auto& sheild : m_shields) {
             if (sheild.isTouching(projectile)) {
                 projectile.destroy();
                 result.second.emplace_back(projectile.getPosition());
             }
         }
+
+        //Projectile verses UFO collisons
         if (m_ufo.tryCollideWith(projectile)) {
             result.second.emplace_back(m_ufo.getPosition());
             result.first += 200;
+        }
+
+        //Projectile verses projectile collisions
+        for (auto& otherProjectile : m_projectiles) {
+            if (otherProjectile.getID() != projectile.getID()) {
+                if (otherProjectile.tryCollideWith(projectile)) {
+                    result.second.emplace_back(projectile.getPosition());
+                }
+            }
         }
     }
 

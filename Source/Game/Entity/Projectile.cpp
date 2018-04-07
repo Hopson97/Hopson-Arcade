@@ -8,7 +8,8 @@ Projectile::Projectile(const sf::Vector2f & position, Type type, Direction direc
     , m_type        (type)
     , m_direction   (direction)
 {
-
+    static int ID = 0;
+    m_id = ID++;
 }
 
 void Projectile::update(float dt)
@@ -48,4 +49,9 @@ bool Projectile::isActive() const
 Projectile::Direction Projectile::getDirection() const
 {
     return m_direction;
+}
+
+int Projectile::getID() const
+{
+    return m_id;
 }

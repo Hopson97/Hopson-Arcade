@@ -33,9 +33,12 @@ class Projectile : public Collidable
         bool isActive() const;
         Direction getDirection() const;
 
+        int getID() const;
+
     private:
         sf::Vector2f m_position;
         Type m_type;
         Direction m_direction;
         bool m_isActive = true;
+        int m_id;
 };

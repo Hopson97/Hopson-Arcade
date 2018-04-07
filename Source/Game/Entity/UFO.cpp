@@ -67,4 +67,5 @@ const sf::Vector2f & UFO::getPosition() const
 void UFO::onCollide(Collidable & other)
 {
     m_state = State::Destroyed;
+    m_sprite.setPosition(-1000, 0); //Move offscreen so it cannot be collided with projectiles
 }
