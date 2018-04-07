@@ -119,10 +119,11 @@ int InvaderManager::getAliveInvadersCount() const
     return m_aliveInvaders;
 }
 
+//Adds invaders to scene 1 at a time
 void InvaderManager::initAddInvader()
 {
     static sf::Clock delay;
-    if (delay.getElapsedTime().asSeconds() > 0.03) {
+    if (delay.getElapsedTime().asSeconds() > 0.02) {
         m_invaders.at(m_initY * 11 + m_initX).makeAlive();
         m_aliveInvaders++;
         m_initX++;

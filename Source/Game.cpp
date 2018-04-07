@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include "States/StatePlaying.h"
+#include "States/StateMainMenu.h"
 #include "DisplayInfo.h"
 
 #include <iostream>
@@ -10,7 +10,7 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StatePlaying>(*this);
+    pushState<StateMainMenu>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");
@@ -67,13 +67,19 @@ void Game::run()
 //Tries to pop the current game state
 void Game::tryPop()
 {
-    
     if (m_shouldPop) {
+        m_shouldPop = false;
         if (m_shouldExit) {
             m_states.clear();
             return;
         }
-        m_shouldPop = false;
+        else if (m_shouldChageState) {
+            m_shouldChageState = false;
+            m_states.pop_back();
+            pushState(std::move(m_change));
+            return;
+        }
+        
         m_states.pop_back();
     }
 }
@@ -103,6 +109,10 @@ StateBase& Game::getCurrentState()
     return *m_states.back();
 }
 
+void Game::pushState(std::unique_ptr<StateBase> state)
+{
+}
+
 //Flags a boolean for the game to pop state
 void Game::popState()
 {
@@ -114,6 +124,7 @@ void Game::exitGame()
     m_shouldPop = true;
     m_shouldExit = true;
 }
+
 
 //on tin
 const sf::RenderWindow& Game::getWindow() const

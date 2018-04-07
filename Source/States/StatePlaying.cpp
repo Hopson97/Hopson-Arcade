@@ -7,6 +7,8 @@
 
 #include "../GUI/Button.h"
 
+#include "StateHighScores.h"
+
 StatePlaying::StatePlaying(Game& game)
 :   StateBase       (game)
 ,   m_gameOverMenu  (game.getWindow(), Display::HEIGHT / 3)
@@ -15,6 +17,12 @@ StatePlaying::StatePlaying(Game& game)
     mmButton->setText("Main Menu\n");
     mmButton->setFunction([&]() {
         m_pGame->popState();
+    });
+
+    auto submitBtn = std::make_unique<gui::Button>();
+    submitBtn->setText("Submit Score");
+    submitBtn->setFunction([&]() {
+        m_pGame->changeState<StateHighscores>(*m_pGame, m_score);
     });
 
     auto exitButton = std::make_unique<gui::Button>();
