@@ -1,5 +1,6 @@
 #include "Game.h"
 
+#include "States/StateHighscores.h"
 #include "States/StateMainMenu.h"
 #include "DisplayInfo.h"
 
@@ -10,7 +11,8 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StateMainMenu>(*this);
+    //pushState<StateMainMenu>(*this);
+    pushState<StateHighscores>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");

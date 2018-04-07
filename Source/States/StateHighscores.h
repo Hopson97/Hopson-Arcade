@@ -5,6 +5,8 @@
 
 class StateHighscores : public StateBase
 {
+    using Entry = std::pair<std::string, int>;
+
     enum class State {
         Submitting,
         Viewing
@@ -23,11 +25,18 @@ class StateHighscores : public StateBase
         void initViewMenu();
         void initSubmitMenu();
 
+        void loadScores();
+        void writeScores();
+        void sortScores();
+
         gui::StackMenu m_submitScoreMenu;
         gui::StackMenu m_highscoreMenu;
         gui::StackMenu* m_pActiveMenu;
 
+        std::vector<Entry> m_scores;
+
         State m_state;
 
         std::string m_submitString;
+        int m_scoreToSubmit = 0;
 };

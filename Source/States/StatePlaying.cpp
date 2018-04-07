@@ -13,6 +13,7 @@ StatePlaying::StatePlaying(Game& game)
 :   StateBase       (game)
 ,   m_gameOverMenu  (game.getWindow(), Display::HEIGHT / 3)
 {
+    
     auto mmButton = std::make_unique<gui::Button>();
     mmButton->setText("Main Menu\n");
     mmButton->setFunction([&]() {
