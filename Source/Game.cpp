@@ -3,6 +3,8 @@
 #include "States/StatePlaying.h"
 #include "DisplayInfo.h"
 
+#include <iostream>
+
 Game::Game()
 :   m_window    ({ Display::WIDTH, Display::HEIGHT}, "Space Invaders")
 {
@@ -65,7 +67,13 @@ void Game::run()
 //Tries to pop the current game state
 void Game::tryPop()
 {
+    
     if (m_shouldPop) {
+        if (m_shouldExit) {
+            m_states.clear();
+            return;
+        }
+        m_shouldPop = false;
         m_states.pop_back();
     }
 }
@@ -99,6 +107,12 @@ StateBase& Game::getCurrentState()
 void Game::popState()
 {
     m_shouldPop = true;
+}
+
+void Game::exitGame()
+{
+    m_shouldPop = true;
+    m_shouldExit = true;
 }
 
 //on tin

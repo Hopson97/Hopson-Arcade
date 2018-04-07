@@ -12,19 +12,19 @@ StatePlaying::StatePlaying(Game& game)
 ,   m_gameOverText  (30)
 ,   m_gameOverMenu  (game.getWindow(), Display::HEIGHT / 3)
 {
-    m_gameOverText.text.setOutlineColor(sf::Color::Black);
-    m_gameOverText.text.setOutlineThickness(1);
-    m_gameOverText.text.setString("GAME OVER");
-    m_gameOverText.text.setPosition(
-        Display::WIDTH / 2 - m_gameOverText.text.getGlobalBounds().width / 2,
-        Display::HEIGHT / 3 - 35
-    );
-
     auto mmButton = std::make_unique<gui::Button>();
     mmButton->setText("Main Menu\n");
+    mmButton->setFunction([&]() {
+        m_pGame->popState();
+    });
 
     auto exitButton = std::make_unique<gui::Button>();
     exitButton->setText("Exit game\n");
+    exitButton->setFunction([&]() {
+        
+    });
+
+    m_gameOverMenu.setTitle("GAME  OVER");
     m_gameOverMenu.addWidget(std::move(mmButton));
     m_gameOverMenu.addWidget(std::move(exitButton));
 }

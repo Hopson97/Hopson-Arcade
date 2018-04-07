@@ -21,8 +21,8 @@ class Game
 
         template<typename T, typename... Args>
         void pushState(Args&&... args);
-
         void popState();
+        void exitGame();
 
         const sf::RenderWindow& getWindow() const;
 
@@ -38,6 +38,7 @@ class Game
         FPSCounter counter;
 
         bool m_shouldPop = false;
+        bool m_shouldExit = false;
 
 };
 

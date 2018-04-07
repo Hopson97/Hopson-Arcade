@@ -16,7 +16,6 @@ namespace gui
 
             virtual sf::Vector2f getSize() const = 0;
 
-        protected:
             class Text : public sf::Text
             {
                 public:

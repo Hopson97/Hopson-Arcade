@@ -6,7 +6,9 @@ namespace gui {
 
 Button::Button(ButtonSize s)
 {
-    m_button.setFillColor({52, 152, 219});
+    m_button.setOutlineThickness(1);
+    m_button.setOutlineColor(sf::Color::Green);
+    m_button.setFillColor(sf::Color::Black);
     switch (s) {
         case ButtonSize::Wide:
             m_button.setSize({256, 64});

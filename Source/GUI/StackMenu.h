@@ -22,16 +22,18 @@ class StackMenu : public NonCopyable
         ~StackMenu() = default;
 
         void addWidget(std::unique_ptr<Widget> w);
-
+        /*
         template<typename T, typename... Args>
         void addWidget(Args&&... args) {
             auto w = std::make_unique<T>(std::forward<Args>(args)...);
             initWidget(*w);
             m_widgets.push_back(std::move(w));
-        }
+        }*/
+
+        void setTitle(const std::string& title);
 
         void handleEvent   (sf::Event e, const sf::RenderWindow& window);
-        void render         (sf::RenderTarget& renderer);
+        void render        (sf::RenderTarget& renderer);
 
     private:
         void initWidget(Widget& w);
@@ -41,6 +43,8 @@ class StackMenu : public NonCopyable
 
         sf::Vector2f m_basePosition;
         sf::Vector2f m_baseSize;
+
+        Widget::Text m_titleText;
 };
 
 }
