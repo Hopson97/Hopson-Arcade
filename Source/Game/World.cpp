@@ -17,6 +17,7 @@ World::World()
     }
 
     m_playerShoot.setBuffer(ResourceHolder::get().soundBuffers.get("shoot"));
+    m_playerShoot.setVolume(25);
 }
 
 void World::input()
@@ -94,7 +95,7 @@ void World::playerProjectileInput()
 void World::enemyProjectileFire()
 {
     if (m_invaderShotClock.getElapsedTime().asSeconds() >= 0.1 &&
-        1){//m_rng.getIntInRange(0, 25) == 2) {
+        m_rng.getIntInRange(0, 30) == 2) {
         auto point = m_invaders.getRandomLowestInvaderPoint(m_rng);
         if ((int)point.x == -1) return;
         auto type = static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));
@@ -121,7 +122,7 @@ CollisionResult World::getCollisionResult(float dt)
 
         //Projectile verses UFO collisons
         if (m_ufo.tryCollideWith(projectile)) {
-            result.second.emplace_back(m_ufo.getPosition());
+            result.second.emplace_back(projectile.getPosition());
             result.first += 200;
         }
 

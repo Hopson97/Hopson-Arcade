@@ -22,7 +22,7 @@ UFO::UFO(Random<>& rand)
         m_animation.addFrame(i, sf::seconds(0.2f));
     }
     m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("ufo_lowpitch"));
-    m_flyingSound.setVolume(25);
+    m_flyingSound.setVolume(10);
 }
 
 UFO::State UFO::getState() const
@@ -44,6 +44,7 @@ void UFO::update(float dt)
             }
             if ((int)m_flyingSound.getStatus() != (int)sf::Sound::Status::Playing ||
                 m_flyingSound.getPlayingOffset() >= sf::seconds(1.5)) {
+                m_flyingSound.setPlayingOffset(sf::seconds(0.2f));
                 m_flyingSound.play();
             }
             break;

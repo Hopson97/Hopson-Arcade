@@ -20,6 +20,7 @@ Player::Player()
     }
 
     m_deathSound.setBuffer(ResourceHolder::get().soundBuffers.get("explosion"));
+    
 }
 
 void Player::restart()
