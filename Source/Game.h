@@ -18,7 +18,6 @@ class Game : public NonCopyable, public NonMovable
 {
     public:
         Game();
-        ~Game();
 
         void run();
 
@@ -33,7 +32,6 @@ class Game : public NonCopyable, public NonMovable
         const sf::RenderWindow& getWindow() const;
 
     private:
-        void initDiscord();
         void handleEvent();
         void tryPop();
 
@@ -54,7 +52,7 @@ class Game : public NonCopyable, public NonMovable
 template<typename T, typename... Args>
 inline void Game::pushState(Args&&... args)
 {
-    m_states.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+    pushState(std::make_unique<T>(std::forward<Args>(args)...));
 }
 
 template<typename T, typename ...Args>

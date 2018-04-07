@@ -9,8 +9,9 @@ class Game;
 class StateBase : public NonCopyable
 {
     public:
-        StateBase(Game& game)
-        :   m_pGame   (&game)
+        StateBase(Game& game, const char* name)
+            : m_pGame(&game)
+            , m_name(name)
         {}
 
         virtual ~StateBase() = default;
@@ -21,6 +22,9 @@ class StateBase : public NonCopyable
         virtual void fixedUpdate(sf::Time deltaTime) {}
         virtual void render(sf::RenderTarget& renderer) = 0;
 
+        const std::string& getName() { return m_name;  }
+
     protected:
         Game* m_pGame;
+        std::string m_name;
 };

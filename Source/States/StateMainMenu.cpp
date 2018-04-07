@@ -7,7 +7,7 @@
 #include "StateHighscores.h"
 
 StateMainMenu::StateMainMenu(Game & game)
-    :   StateBase   (game)
+    :   StateBase   (game, "Main Menu")
     ,   m_mainMenu  (game.getWindow(), Display::HEIGHT / 2 - 100)
 {
     m_banner.setSize({ (float)Display::WIDTH, 200 });

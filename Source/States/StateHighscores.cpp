@@ -19,7 +19,7 @@ StateHighscores::StateHighscores(Game & game, int score)
 }
 
 StateHighscores::StateHighscores(Game & game)
-    :   StateBase(game)
+    :   StateBase(game, "Highscores")
     , m_submitScoreMenu(game.getWindow(), 100.0f)
     , m_highscoreMenu(game.getWindow(), Display::HEIGHT - 100.0f)
     , m_state (State::Viewing)

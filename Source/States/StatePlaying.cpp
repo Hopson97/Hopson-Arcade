@@ -10,7 +10,7 @@
 #include "StateHighScores.h"
 
 StatePlaying::StatePlaying(Game& game)
-:   StateBase       (game)
+:   StateBase       (game, "Playing the game")
 ,   m_gameOverMenu  (game.getWindow(), Display::HEIGHT / 3)
 ,   m_scoreDisplay(Display::WIDTH / 8, "Score")
 ,   m_highestScoreDisplay(Display::WIDTH / 2, "HighScore")
