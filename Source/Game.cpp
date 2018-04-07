@@ -12,7 +12,7 @@ Game::Game()
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
     //pushState<StateMainMenu>(*this);
-    pushState<StateHighscores>(*this);
+    pushState<StateHighscores>(*this, 5);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");

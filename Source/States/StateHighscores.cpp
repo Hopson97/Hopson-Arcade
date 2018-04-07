@@ -98,19 +98,21 @@ void StateHighscores::loadScores()
         }
     }
     sortScores();
+    writeScores();
 }
 
 void StateHighscores::writeScores()
 {
     std::ofstream outFile("res/scores.txt");
-
+    sortScores();
     for (auto& entry : m_scores) {
-        outFile << entry.first << "," << entry.second;
+        outFile << entry.first << "," << entry.second << ",";
     }
 }
 
 void StateHighscores::sortScores()
 {
+
     std::sort(m_scores.begin(), m_scores.end(), [](Entry& a, Entry& b) {
         return a.second > b.second;
     });

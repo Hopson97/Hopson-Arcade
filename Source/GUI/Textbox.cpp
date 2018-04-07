@@ -1,5 +1,6 @@
 #include "Textbox.h"
 
+#include <iostream>
 
 namespace gui {
 
@@ -81,28 +82,31 @@ void TextBox::handleClick (sf::Event e, const sf::RenderWindow& window)
 
 void TextBox::handleTextInput (sf::Event e)
 {
-    switch(e.type) {
-        case sf::Event::TextEntered:
-            if (m_isActive) {
-                //Get the key that was entered
-                unsigned char keyCode = e.text.unicode;
+    switch (e.type) {
+    case sf::Event::TextEntered:
+        if (m_isActive) {
+            //Get the key that was entered
+            unsigned char keyCode = e.text.unicode;
 
-                if (isValidCharacter(keyCode)) {
-                    m_pModString->push_back(keyCode);
-                }
-                else if (isBackspace(keyCode)) {
-                    //prevents popping back an empty string
-                    if (m_pModString->length() > 0)
-                        m_pModString->pop_back();
-                }
-                m_text.setString(*m_pModString);
+            if (isValidCharacter(keyCode)) {
+                m_pModString->push_back(keyCode);
+
             }
-            break;
+            else if (isBackspace(keyCode)) {
+                //prevents popping back an empty string
+                if (m_pModString->length() > 0)
+                    m_pModString->pop_back();
+            }
+            std::cout << *m_pModString << "\n";
+            m_text.setString(*m_pModString);
+            std::cout << *m_pModString << "\n\n";
+        }
+        break;
 
-        default:
-            break;
+    default:
+        break;
     }
-
+    /*
 
     if (e.type == sf::Event::TextEntered && m_isActive)
     {
@@ -121,7 +125,7 @@ void TextBox::handleTextInput (sf::Event e)
                 m_pModString->pop_back();
         }
         m_text.setString(*m_pModString);
-    }
+    }*/
 }
 
  //return true if the character is within the valid keys eg aA to zZ and 0 to 9
