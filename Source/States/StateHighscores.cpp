@@ -16,8 +16,6 @@ StateHighscores::StateHighscores(Game & game, int score)
     m_scoreToSubmit = score;
     m_pActiveMenu = &m_submitScoreMenu;
     m_state = State::Submitting;
-    m_banner.setSize({ (float)Display::WIDTH, 200 });
-    m_banner.setTexture(&ResourceHolder::get().textures.get("highscores"));
 }
 
 StateHighscores::StateHighscores(Game & game)
@@ -28,6 +26,9 @@ StateHighscores::StateHighscores(Game & game)
 {
     initViewMenu();
     m_pActiveMenu = &m_highscoreMenu;
+    m_banner.setSize({ (float)Display::WIDTH, 200 });
+    m_banner.setTexture(&ResourceHolder::get().textures.get("highscores"));
+    createHighscoreView();
 }
 
 void StateHighscores::handleEvent(sf::Event e)
@@ -52,7 +53,6 @@ int StateHighscores::getHighestScore()
 {
     std::ifstream inFile("res/scores.txt");
     std::string buffer;
-    int score;
 
     std::getline(inFile, buffer, ',');
     std::getline(inFile, buffer, ',');
@@ -108,9 +108,10 @@ void StateHighscores::switchToViewMenu()
 
 void StateHighscores::createHighscoreView()
 {
+    loadScores();
     sortScores();
     m_entryBoxes.clear();
-    for (int i = 0; i < m_scores.size(); i++) {
+    for (unsigned i = 0; i < m_scores.size(); i++) {
         auto& name = m_scores[i].first;
         auto score = m_scores[i].second;
 
@@ -130,7 +131,6 @@ void StateHighscores::loadScores()
     while (std::getline(inFile, line, ',')) {
         if (switcher++ % 2 == 0) {
             name = line;
-            std::cout << "LOAD: " << name << "\n";
         }
         else {
             score = std::stoi(line);
@@ -146,7 +146,6 @@ void StateHighscores::writeScores()
     std::ofstream outFile("res/scores.txt");
     for (auto& entry : m_scores) {
         outFile << entry.first << "," << entry.second << ",";
-        std::cout << entry.first << "," << entry.second << "\n";
     }
 }
 
@@ -171,8 +170,8 @@ StateHighscores::EntryBox::EntryBox(int position, const std::string & name, int 
     m_background.setSize({ Display::WIDTH / 1.5f, size });
     m_background.setPosition({ Display::WIDTH / 2 - m_background.getGlobalBounds().width / 2, y });
 
-    m_nameText.setCharacterSize(size - 5);
-    m_scoreText.setCharacterSize(size - 5);
+    m_nameText.setCharacterSize((unsigned)size - 5);
+    m_scoreText.setCharacterSize((unsigned)size - 5);
 
     m_nameText.setString (std::to_string(position) + "     " + name);
     m_scoreText.setString(std::to_string(score));

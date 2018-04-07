@@ -44,13 +44,19 @@ class StatePlaying : public StateBase
         class ScoreDisplay
         {
             public:
-                ScoreDisplay();
+                ScoreDisplay(float centreX, const std::string& text);
 
                 void update(int newScore);
 
                 void draw(sf::RenderTarget& target);
 
+                int getCurrentScoreDisplayed() const;
             private:
+                void updateDisplay();
+
                 gui::Widget::Text m_label;
-        } m_scoreDisplay;
+                std::string m_text;
+                int m_currentScore;
+                float m_centerPosition;
+        } m_scoreDisplay, m_highestScoreDisplay;
 };

@@ -91,7 +91,7 @@ void World::playerProjectileInput()
 void World::enemyProjectileFire()
 {
     if (m_invaderShotClock.getElapsedTime().asSeconds() >= 0.1 &&
-        m_rng.getIntInRange(0, 25) == 2) {
+        1){//m_rng.getIntInRange(0, 25) == 2) {
         auto point = m_invaders.getRandomLowestInvaderPoint(m_rng);
         if ((int)point.x == -1) return;
         auto type = static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));

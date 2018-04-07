@@ -99,9 +99,7 @@ void TextBox::handleTextInput (sf::Event e)
                 if (m_pModString->length() > 0)
                     m_pModString->pop_back();
             }
-            std::cout << *m_pModString << "\n";
             m_text.setString(*m_pModString);
-            std::cout << *m_pModString << "\n\n";
         }
         break;
 

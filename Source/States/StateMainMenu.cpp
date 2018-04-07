@@ -4,6 +4,7 @@
 
 #include "../GUI/Button.h"
 #include "StatePlaying.h"
+#include "StateHighscores.h"
 
 StateMainMenu::StateMainMenu(Game & game)
     :   StateBase   (game)
@@ -16,7 +17,13 @@ StateMainMenu::StateMainMenu(Game & game)
     auto play = std::make_unique<gui::Button>();
     play->setText("Play game");
     play->setFunction([&]() {
-        m_pGame->pushState<StatePlaying>(game);
+        m_pGame->pushState<StatePlaying>(*m_pGame);
+    });
+
+    auto highscores = std::make_unique<gui::Button>();
+    highscores->setText("Highscores");
+    highscores->setFunction([&]() {
+        m_pGame->pushState<StateHighscores>(*m_pGame);
     });
 
     auto ex = std::make_unique<gui::Button>();
@@ -26,6 +33,7 @@ StateMainMenu::StateMainMenu(Game & game)
     });
 
     m_mainMenu.addWidget(std::move(play));
+    m_mainMenu.addWidget(std::move(highscores));
     m_mainMenu.addWidget(std::move(ex));
     m_mainMenu.setTitle("Choose Action");
 }

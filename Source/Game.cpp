@@ -11,8 +11,7 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    //pushState<StateMainMenu>(*this);
-    pushState<StateHighscores>(*this, 5);
+    pushState<StateMainMenu>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");
@@ -113,6 +112,7 @@ StateBase& Game::getCurrentState()
 
 void Game::pushState(std::unique_ptr<StateBase> state)
 {
+    m_states.push_back(std::move(state));
 }
 
 //Flags a boolean for the game to pop state

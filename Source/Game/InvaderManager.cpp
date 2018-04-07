@@ -156,7 +156,6 @@ bool InvaderManager::testInvaderPosition(const Invader& invader) const
 {
     if (invader.getPosition().y > Display::HEIGHT - 150) {
         m_world.setGameIsOver();
-        std::cout << "lol rip earth xDDD " << invader.getPosition().y << "\n";
     }
     return
         (invader.getPosition().x < 15 && m_isMovingLeft) || //Check invader left
