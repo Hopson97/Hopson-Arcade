@@ -33,6 +33,9 @@ class InvaderManager
         sf::Vector2f getRandomLowestInvaderPoint(Random<>& random);
 
     private:
+        //Changes time between the alien's steps based on number alive
+        void updateStepDelay();
+
         //Checks the invaders position to see if all the aliens should move down
         bool shouldMoveDown(const Invader& invader) const;
 

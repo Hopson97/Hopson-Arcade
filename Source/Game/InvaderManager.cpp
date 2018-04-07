@@ -81,6 +81,7 @@ CollisionResult InvaderManager::tryCollideWithProjectiles(std::vector<Projectile
                 m_aliveInvaders--;
                 result.second.emplace_back(invader.getPosition());
                 result.first += ((int)invader.getType() + 1) * 100;
+                updateStepDelay();
             }
         }
     }
@@ -105,6 +106,11 @@ sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<>& random)
             }
         }
     }
+}
+
+void InvaderManager::updateStepDelay()
+{
+    m_stepGap = sf::seconds((float)m_aliveInvaders / 100.0f);
 }
 
 bool InvaderManager::shouldMoveDown(const Invader& invader) const
