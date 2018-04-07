@@ -10,13 +10,6 @@
 */
 class StatePlaying : public StateBase
 {
-    //Helpful class to create some generic text stuff
-    struct DisplayText
-    {
-        DisplayText(int size = 25);
-        sf::Text text;
-    };
-
     public:
         StatePlaying(Game& game);
 
@@ -31,7 +24,6 @@ class StatePlaying : public StateBase
         int m_score = 0;
         bool m_isGameover;
         sf::Clock m_gameOverClock;
-        DisplayText m_gameOverText;
 
         gui::StackMenu m_gameOverMenu;
 
@@ -44,7 +36,7 @@ class StatePlaying : public StateBase
                 void draw(sf::RenderTarget& window, int lives);
 
             private:
-                DisplayText m_label;
+                gui::Widget::Text m_label;
                 sf::RectangleShape m_lifeStamp;
         } m_lifeDisplay;
 
@@ -59,6 +51,6 @@ class StatePlaying : public StateBase
                 void draw(sf::RenderTarget& target);
 
             private:
-                DisplayText m_label;
+                gui::Widget::Text m_label;
         } m_scoreDisplay;
 };
