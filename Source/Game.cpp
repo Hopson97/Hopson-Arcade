@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+#include <discord_rpc.h>
+
 Game::Game()
 :   m_window    ({ Display::WIDTH, Display::HEIGHT}, "Space Invaders")
 {
@@ -16,6 +18,26 @@ Game::Game()
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+}
+
+Game::~Game()
+{
+    Discord_Shutdown();
+}
+
+void Game::initDiscord()
+{
+    DiscordEventHandlers handle;
+    memset(&handle, 0, sizeof(handle));
+    handle.ready = []() {};
+    handle.errored = [](int, const char*) {};
+    handle.disconnected = [](int, const char*) {};
+    handle.joinGame = [](const char*) {};
+    handle.spectateGame = [](const char*) {};
+    handle.joinRequest = [](const DiscordJoinRequest*) {};
+
+    Discord_Initialize("432288450016968704", &handle, false, "1234");
+
 }
 
 //Runs the main loop

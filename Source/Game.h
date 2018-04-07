@@ -6,16 +6,19 @@
 
 #include "Util/FPSCounter.h"
 #include "States/StateBase.h"
+#include "Util/NonMoveable.h"
+
 
 /**
     Main controlling class of the game.
     Handles state switches and the main loop, as well
     as counting the FPS
 */
-class Game
+class Game : public NonCopyable, public NonMovable
 {
     public:
         Game();
+        ~Game();
 
         void run();
 
@@ -30,6 +33,7 @@ class Game
         const sf::RenderWindow& getWindow() const;
 
     private:
+        void initDiscord();
         void handleEvent();
         void tryPop();
 
