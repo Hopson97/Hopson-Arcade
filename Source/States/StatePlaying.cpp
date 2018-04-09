@@ -7,7 +7,7 @@
 
 #include "../GUI/Button.h"
 
-#include "StateHighScores.h"
+#include "StateHighscores.h"
 
 StatePlaying::StatePlaying(Game& game)
 :   StateBase       (game, "Playing the game")
