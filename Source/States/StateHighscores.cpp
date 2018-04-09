@@ -68,22 +68,22 @@ void StateHighscores::initViewMenu()
 {
     loadScores();
 
-    auto back = std::make_unique<gui::Button>();
-    back->setText("Main Menu");
-    back->setFunction([&]() {
+    auto backBtn = gui::makeButton();
+    backBtn->setText("Main Menu");
+    backBtn->setFunction([&]() {
         m_pGame->popState();
     });
-    m_highscoreMenu.addWidget(std::move(back));
+    m_highscoreMenu.addWidget(std::move(backBtn));
 }
 
 void StateHighscores::initSubmitMenu()
 {
-    auto nameBox = std::make_unique<gui::TextBox>(m_submitString);
-    nameBox->setLabel("Click text box to enter name");
+    auto nameTextBox = gui::makeTextBox(m_submitString);
+    nameTextBox->setLabel("Click text box to enter name");
 
-    auto submit = std::make_unique<gui::Button>();
-    submit->setText("Submit Score");
-    submit->setFunction([&]() {
+    auto submitBtn = gui::makeButton();
+    submitBtn->setText("Submit Score");
+    submitBtn->setFunction([&]() {
         if (!m_submitString.empty()) {
             submitScore();
             switchToViewMenu();
@@ -91,16 +91,16 @@ void StateHighscores::initSubmitMenu()
     });
     
 
-    auto back = std::make_unique<gui::Button>();
-    back->setText("View HighScores");
-    back->setFunction([&]() {
+    auto backBtn = gui::makeButton();
+    backBtn->setText("View HighScores");
+    backBtn->setFunction([&]() {
         loadScores();
         switchToViewMenu();
     });
 
-    m_submitScoreMenu.addWidget(std::move(nameBox));
-    m_submitScoreMenu.addWidget(std::move(submit));
-    m_submitScoreMenu.addWidget(std::move(back));
+    m_submitScoreMenu.addWidget(std::move(nameTextBox));
+    m_submitScoreMenu.addWidget(std::move(submitBtn));
+    m_submitScoreMenu.addWidget(std::move(backBtn));
 }
 
 void StateHighscores::switchToViewMenu()

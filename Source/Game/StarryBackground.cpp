@@ -4,7 +4,7 @@
 
 StarryBackground::StarryBackground()
 {
-    for (int i = 0; i < 250; i++) {
+    for (int i = 0; i < 500; i++) {
         sf::Vertex star;
         giveStarRandomStartLocation(star);
         star.position.y -= Display::HEIGHT;

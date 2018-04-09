@@ -36,4 +36,6 @@ namespace gui
             std::function<void(void)> m_function = [](){};
 
     };
+
+    inline std::unique_ptr<Button> makeButton() { return std::make_unique<Button>(); }
 }

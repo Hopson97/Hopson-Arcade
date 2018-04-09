@@ -14,27 +14,27 @@ StateMainMenu::StateMainMenu(Game & game)
     m_banner.setTexture(&ResourceHolder::get().textures.get("logo"));
 
 
-    auto play = std::make_unique<gui::Button>();
-    play->setText("Play game");
-    play->setFunction([&]() {
+    auto playBtn = gui::makeButton();
+    playBtn->setText("Play game");
+    playBtn->setFunction([&]() {
         m_pGame->pushState<StatePlaying>(*m_pGame);
     });
 
-    auto highscores = std::make_unique<gui::Button>();
-    highscores->setText("Highscores");
-    highscores->setFunction([&]() {
+    auto highscoresBtn = gui::makeButton();
+    highscoresBtn->setText("Highscores");
+    highscoresBtn->setFunction([&]() {
         m_pGame->pushState<StateHighscores>(*m_pGame);
     });
 
-    auto ex = std::make_unique<gui::Button>();
-    ex->setText("Exit game");
-    ex->setFunction([&]() {
+    auto exitBtn = gui::makeButton();
+    exitBtn->setText("Exit game");
+    exitBtn->setFunction([&]() {
         m_pGame->exitGame();
     });
 
-    m_mainMenu.addWidget(std::move(play));
-    m_mainMenu.addWidget(std::move(highscores));
-    m_mainMenu.addWidget(std::move(ex));
+    m_mainMenu.addWidget(std::move(playBtn));
+    m_mainMenu.addWidget(std::move(highscoresBtn));
+    m_mainMenu.addWidget(std::move(exitBtn));
     m_mainMenu.setTitle("Choose Action");
 }
 

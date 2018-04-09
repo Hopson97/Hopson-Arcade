@@ -34,6 +34,7 @@ namespace gui
             std::string*    m_pModString;
 
             bool m_isActive = false;
-
     };
+
+    inline std::unique_ptr<TextBox> makeTextBox(std::string& modStr) { return std::make_unique<TextBox>(modStr); }
 }
