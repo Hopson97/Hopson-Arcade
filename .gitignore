@@ -1,10 +1,7 @@
 Debug/
 Release/
 *.dll
-*.vcxproj
+
 *.filters
 *.user
 *.aps
-
-Space\ Invaders/
-*.zip
