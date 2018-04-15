@@ -3,12 +3,13 @@
 #include <SFML/Graphics.hpp>
 
 #include "../Collidable.h"
-
-/*
-    Class to represent a single invader
-*/
-class Invader : public Collidable
+namespace SpaceInvaders
 {
+    /*
+        Class to represent a single invader
+    */
+    class Invader : public Collidable
+    {
     public:
         enum class Type
         {
@@ -25,9 +26,9 @@ class Invader : public Collidable
 
         void onCollide(Collidable& other) override;
 
-        void makeAlive() 
-        { 
-            m_isAlive = true; 
+        void makeAlive()
+        {
+            m_isAlive = true;
             m_location = m_initialPosition;
         }
 
@@ -40,4 +41,5 @@ class Invader : public Collidable
     public:
         constexpr static float WIDTH = 48;
         constexpr static float HEIGHT = 32;
-};
+    };
+}

@@ -5,3 +5,7 @@ Release/
 *.filters
 *.user
 *.aps
+
+HopsonArcade/
+
+*.zip

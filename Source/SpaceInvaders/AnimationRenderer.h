@@ -2,15 +2,17 @@
 
 #include <SFML/Graphics.hpp>
 
-/*
-    Utility class for rendering a large number of entites which share
-    the same animation
-*/
-class AnimationRenderer
+namespace SpaceInvaders
 {
+    /*
+        Utility class for rendering a large number of entites which share
+        the same animation
+    */
+    class AnimationRenderer
+    {
     public:
-        AnimationRenderer(int frameWidth, int frameHeight, 
-            float entityWidth, float entityHeight, 
+        AnimationRenderer(int frameWidth, int frameHeight,
+            float entityWidth, float entityHeight,
             const sf::Texture& spriteSheet);
 
         //Changes to the next frame
@@ -24,4 +26,5 @@ class AnimationRenderer
         int m_currentFrame;
         const int m_frameWidth;
         const int m_frameHeight;
-};
+    };
+}

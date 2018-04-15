@@ -5,8 +5,10 @@
 #include "../../Framework/Util/Random.h"
 #include "../StarryBackground.h"
 
-class StateMainMenu : public StateBase
+namespace SpaceInvaders
 {
+    class StateMainMenu : public StateBase
+    {
     public:
         StateMainMenu(Game& game);
 
@@ -20,4 +22,5 @@ class StateMainMenu : public StateBase
         sf::RectangleShape m_banner;
 
         StarryBackground m_background;
-};
+    };
+}

@@ -6,8 +6,10 @@
 #include "../../Framework/Util/Animation.h"
 #include "../../Framework/Util/Random.h"
 
-class UFO : public Collidable
+namespace SpaceInvaders
 {
+    class UFO : public Collidable
+    {
     public:
         enum class State
         {
@@ -28,12 +30,13 @@ class UFO : public Collidable
         void onCollide(Collidable& other);
 
     private:
-       Random<>& m_rng;
+        Random<>& m_rng;
 
-       sf::RectangleShape m_sprite;
-       float m_vx;
-       State m_state;
-       Animation m_animation;
+        sf::RectangleShape m_sprite;
+        float m_vx;
+        State m_state;
+        Animation m_animation;
 
-       sf::Sound m_flyingSound;
-};
+        sf::Sound m_flyingSound;
+    };
+}

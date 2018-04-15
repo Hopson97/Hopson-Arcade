@@ -4,8 +4,10 @@
 
 #include "../Collidable.h"
 
-class Projectile : public Collidable
+namespace SpaceInvaders
 {
+    class Projectile : public Collidable
+    {
     public:
         constexpr static float HEIGHT = 24;
         constexpr static float WIDTH = 12;
@@ -41,4 +43,5 @@ class Projectile : public Collidable
         Direction m_direction;
         bool m_isActive = true;
         int m_id;
-};
+    };
+}

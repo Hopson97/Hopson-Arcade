@@ -2,11 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-/*
-    Represents a single explosion entity
-*/
-class Explosion
+namespace SpaceInvaders
 {
+    /*
+        Represents a single explosion entity
+    */
+    class Explosion
+    {
     public:
         Explosion(const sf::Vector2f& position);
 
@@ -16,4 +18,5 @@ class Explosion
     private:
         sf::Vector2f m_position;        //The position of the explosion
         sf::Clock m_lifetimeCounter;    //Clock for checking if the explosion is outlived
-};
+    };
+}

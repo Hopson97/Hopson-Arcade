@@ -10,7 +10,7 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StateMainMenu>(*this);
+    pushState<SpaceInvaders::StateMainMenu>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");

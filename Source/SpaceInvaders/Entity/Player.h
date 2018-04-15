@@ -7,11 +7,13 @@
 #include "../Collidable.h"
 #include "../../Framework/Util/Animation.h"
 
-/**
-    Represents the player
-*/
-class Player : public Collidable
+namespace SpaceInvaders
 {
+    /**
+        Represents the player
+    */
+    class Player : public Collidable
+    {
     public:
         constexpr static int WIDTH = 44;
         constexpr static int HEIGHT = 32;
@@ -45,4 +47,5 @@ class Player : public Collidable
         int m_livesLeft = 3;
 
         sf::Sound m_deathSound;
-};
+    };
+}

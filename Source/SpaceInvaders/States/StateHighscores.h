@@ -4,13 +4,14 @@
 #include "../../Framework/GUI/StackMenu.h"
 #include "../../Framework/GUI/Widget.h"
 #include "../StarryBackground.h"
-
-class StateHighscores : public StateBase
+namespace SpaceInvaders
 {
-    using Entry = std::pair<std::string, int>;
-
-    struct EntryBox 
+    class StateHighscores : public StateBase
     {
+        using Entry = std::pair<std::string, int>;
+
+        struct EntryBox
+        {
         public:
             EntryBox(int position, const std::string& name, int score);
 
@@ -21,12 +22,12 @@ class StateHighscores : public StateBase
             gui::Widget::Text m_nameText;
             gui::Widget::Text m_scoreText;
 
-    };
+        };
 
-    enum class State {
-        Submitting,
-        Viewing
-    };
+        enum class State {
+            Submitting,
+            Viewing
+        };
 
     public:
         StateHighscores(Game& game, int score);
@@ -65,4 +66,5 @@ class StateHighscores : public StateBase
         int m_scoreToSubmit = 0;
 
         sf::RectangleShape m_banner;
-};
+    };
+}

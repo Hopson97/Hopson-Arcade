@@ -2,8 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 
-class Collidable
+namespace SpaceInvaders
 {
+    class Collidable
+    {
     public:
         Collidable(float width, float height);
 
@@ -15,4 +17,5 @@ class Collidable
 
     private:
         sf::Vector2f m_size;
-};
+    };
+}

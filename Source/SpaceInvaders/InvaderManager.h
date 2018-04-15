@@ -10,15 +10,17 @@
 
 #include "../Framework/Util/Random.h"
 
-class World;
-
-using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
-
-/**
-    Class to manage the drawing and updating of invaders
-*/
-class InvaderManager
+namespace SpaceInvaders 
 {
+    class World;
+
+    using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
+
+    /**
+        Class to manage the drawing and updating of invaders
+    */
+    class InvaderManager
+    {
     public:
         InvaderManager(World& world);
 
@@ -73,4 +75,5 @@ class InvaderManager
 
         sf::Sound m_stepSounds[4];
         sf::Sound m_invaderKilledSound;
-};
+    };
+}

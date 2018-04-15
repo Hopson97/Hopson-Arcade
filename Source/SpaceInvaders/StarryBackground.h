@@ -3,8 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "../Framework/Util/Random.h"
 
-class StarryBackground
+namespace SpaceInvaders
 {
+
+    class StarryBackground
+    {
     public:
         StarryBackground();
 
@@ -18,4 +21,5 @@ class StarryBackground
         std::vector<sf::Vertex> m_stars;
 
         Random<> m_rng;
-};
+    };
+}

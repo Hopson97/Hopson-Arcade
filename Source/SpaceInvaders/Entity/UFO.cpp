@@ -3,36 +3,39 @@
 #include "../DisplayInfo.h"
 #include "../../Framework/ResourceManager/ResourceHolder.h"
 
-namespace {
-    constexpr float WIDTH = 72;
-    constexpr float HEIGHT = 36;
-    constexpr float Y_POS = 45;
-}
-
-UFO::UFO(Random<>& rand)
-: Collidable    (WIDTH, HEIGHT)
-, m_rng         (rand)
-, m_animation   (16, 8)
+namespace SpaceInvaders
 {
-    m_sprite.setSize({ WIDTH, HEIGHT });
-    m_sprite.setPosition((float)Display::WIDTH, Y_POS);
-    m_sprite.setTexture(&ResourceHolder::get().textures.get("ufo"));
-
-    for (int i = 0; i < 3; i++) {
-        m_animation.addFrame(i, sf::seconds(0.2f));
+    namespace
+    {
+        constexpr float WIDTH = 72;
+        constexpr float HEIGHT = 36;
+        constexpr float Y_POS = 45;
     }
-    m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("ufo_lowpitch"));
-    m_flyingSound.setVolume(10);
-}
 
-UFO::State UFO::getState() const
-{
-    return m_state;
-}
+    UFO::UFO(Random<>& rand)
+        : Collidable(WIDTH, HEIGHT)
+        , m_rng(rand)
+        , m_animation(16, 8)
+    {
+        m_sprite.setSize({ WIDTH, HEIGHT });
+        m_sprite.setPosition((float)Display::WIDTH, Y_POS);
+        m_sprite.setTexture(&ResourceHolder::get().textures.get("ufo"));
 
-void UFO::update(float dt)
-{
-    switch (m_state) {
+        for (int i = 0; i < 3; i++) {
+            m_animation.addFrame(i, sf::seconds(0.2f));
+        }
+        m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("ufo_lowpitch"));
+        m_flyingSound.setVolume(10);
+    }
+
+    UFO::State UFO::getState() const
+    {
+        return m_state;
+    }
+
+    void UFO::update(float dt)
+    {
+        switch (m_state) {
         case State::Destroyed:
             m_state = State::Waiting;
             break;
@@ -64,23 +67,24 @@ void UFO::update(float dt)
             }
             break;
         }
-}
-
-void UFO::draw(sf::RenderTarget & window)
-{
-    if (m_state == State::Flying) {
-        m_sprite.setTextureRect(m_animation.getFrame());
-        window.draw(m_sprite);
     }
-}
 
-const sf::Vector2f & UFO::getPosition() const
-{
-    return m_sprite.getPosition();
-}
+    void UFO::draw(sf::RenderTarget & window)
+    {
+        if (m_state == State::Flying) {
+            m_sprite.setTextureRect(m_animation.getFrame());
+            window.draw(m_sprite);
+        }
+    }
 
-void UFO::onCollide(Collidable & other)
-{
-    m_state = State::Destroyed;
-    m_sprite.setPosition(-1000, 0); //Move offscreen so it cannot be collided with projectiles
+    const sf::Vector2f & UFO::getPosition() const
+    {
+        return m_sprite.getPosition();
+    }
+
+    void UFO::onCollide(Collidable & other)
+    {
+        m_state = State::Destroyed;
+        m_sprite.setPosition(-1000, 0); //Move offscreen so it cannot be collided with projectiles
+    }
 }

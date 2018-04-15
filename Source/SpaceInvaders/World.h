@@ -10,11 +10,13 @@
 #include "Entity/Shield.h"
 #include "Entity/UFO.h"
 
-/**
-    The class which manages the world and th interactions between different entites
-*/
-class World
+namespace SpaceInvaders
 {
+    /**
+        The class which manages the world and th interactions between different entites
+    */
+    class World
+    {
     public:
         World();
 
@@ -26,7 +28,7 @@ class World
 
         bool isGameOver() const;
 
-        void setGameIsOver() { m_isGameOver = true;  }
+        void setGameIsOver() { m_isGameOver = true; }
 
     private:
         void playerProjectileInput();
@@ -53,4 +55,5 @@ class World
         Random<> m_rng;
 
         bool m_isGameOver = false;
-};
+    };
+}

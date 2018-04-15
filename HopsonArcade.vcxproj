@@ -208,7 +208,7 @@
     <Image Include="res\txrs\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SpaceInvaders.rc" />
+    <ResourceCompile Include="HopsonArcade.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

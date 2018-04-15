@@ -1,26 +1,29 @@
 #include "Collidable.h"
 
-Collidable::Collidable(float width, float height)
-    : m_size    (width, height)
-{}
-
-bool Collidable::tryCollideWith(Collidable & other)
+namespace SpaceInvaders
 {
-    if (getBox().intersects(other.getBox())) {
-        onCollide(other);
-        other.onCollide(*this);
-        return true;
-    }
-    return false;
-}
+    Collidable::Collidable(float width, float height)
+        : m_size(width, height)
+    {}
 
-sf::FloatRect Collidable::getBox() const
-{
-    return
+    bool Collidable::tryCollideWith(Collidable & other)
     {
-        getPosition().x,
-        getPosition().y,
-        m_size.x,
-        m_size.y
-    };
+        if (getBox().intersects(other.getBox())) {
+            onCollide(other);
+            other.onCollide(*this);
+            return true;
+        }
+        return false;
+    }
+
+    sf::FloatRect Collidable::getBox() const
+    {
+        return
+        {
+            getPosition().x,
+            getPosition().y,
+            m_size.x,
+            m_size.y
+        };
+    }
 }
