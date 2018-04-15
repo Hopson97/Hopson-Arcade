@@ -4,9 +4,9 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#include "Util/FPSCounter.h"
-#include "States/StateBase.h"
-#include "Util/NonMoveable.h"
+#include "../Framework/Util/FPSCounter.h"
+#include "../Framework/States/StateBase.h"
+#include "../Framework/Util/NonMoveable.h"
 
 
 /**

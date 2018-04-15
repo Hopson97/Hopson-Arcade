@@ -141,12 +141,12 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Framework\Game.cpp" />
+    <ClCompile Include="Source\Arcade\Game.cpp" />
     <ClCompile Include="Source\Framework\GUI\Button.cpp" />
     <ClCompile Include="Source\Framework\GUI\StackMenu.cpp" />
     <ClCompile Include="Source\Framework\GUI\Textbox.cpp" />
     <ClCompile Include="Source\Framework\GUI\Widget.cpp" />
-    <ClCompile Include="Source\Framework\Main.cpp" />
+    <ClCompile Include="Source\Arcade\Main.cpp" />
     <ClCompile Include="Source\Framework\ResourceManager\ResourceHolder.cpp" />
     <ClCompile Include="Source\Framework\Util\Animation.cpp" />
     <ClCompile Include="Source\Framework\Util\FileUtil.cpp" />
@@ -171,7 +171,7 @@
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Source\DisplayInfo.h" />
-    <ClInclude Include="Source\Framework\Game.h" />
+    <ClInclude Include="Source\Arcade\Game.h" />
     <ClInclude Include="Source\Framework\GUI\Button.h" />
     <ClInclude Include="Source\Framework\GUI\StackMenu.h" />
     <ClInclude Include="Source\Framework\GUI\Textbox.h" />
