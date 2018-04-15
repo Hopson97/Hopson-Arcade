@@ -19,4 +19,4 @@ This is based on the 1978 arcade game created by Tomohiro Nishikad.
 
 This was the first game added to this project.
 
-[!Space Invaders](https://i.imgur.com/b7KAzXo.png)
+![Space Invaders](https://i.imgur.com/b7KAzXo.png)
