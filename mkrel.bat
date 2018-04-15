@@ -1,2 +1,2 @@
-robocopy .\res\ .\SpaceInvaders\res\ /E
-robocopy .\..\Release\ .\SpaceInvaders\ SpaceInvaders.exe
+robocopy .\res\ .\HopsonArcade\res\ /E
+robocopy .\..\Release\ .\HopsonArcade\ HopsonArcade.exe
