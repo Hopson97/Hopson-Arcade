@@ -16,7 +16,7 @@ namespace SpaceInvaders
         : m_stepGap(sf::seconds(0.5f))
         , m_world(world)
         , m_invaderRenderer(12, 8, Invader::WIDTH, Invader::HEIGHT,
-            ResourceHolder::get().textures.get("invaders"))
+            ResourceHolder::get().textures.get("si/invaders"))
     {
         //Layout of the invaders 
         Invader::Type types[] = {
@@ -37,10 +37,10 @@ namespace SpaceInvaders
         //load sounds
         for (int i = 0; i < 4; i++) {
             m_stepSounds[i].setBuffer(
-                ResourceHolder::get().soundBuffers.get("fastinvader" + std::to_string(i + 1)));
+                ResourceHolder::get().soundBuffers.get("si/fastinvader" + std::to_string(i + 1)));
         }
         m_invaderKilledSound.setBuffer(
-            ResourceHolder::get().soundBuffers.get("invaderkilled"));
+            ResourceHolder::get().soundBuffers.get("si/invaderkilled"));
 
 
     }

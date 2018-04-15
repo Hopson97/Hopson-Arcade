@@ -13,7 +13,7 @@ namespace SpaceInvaders
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
     {
         m_banner.setSize({ (float)Display::WIDTH, 200 });
-        m_banner.setTexture(&ResourceHolder::get().textures.get("logo"));
+        m_banner.setTexture(&ResourceHolder::get().textures.get("si/logo"));
 
 
         auto playBtn = gui::makeButton();

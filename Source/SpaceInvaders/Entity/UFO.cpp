@@ -19,12 +19,12 @@ namespace SpaceInvaders
     {
         m_sprite.setSize({ WIDTH, HEIGHT });
         m_sprite.setPosition((float)Display::WIDTH, Y_POS);
-        m_sprite.setTexture(&ResourceHolder::get().textures.get("ufo"));
+        m_sprite.setTexture(&ResourceHolder::get().textures.get("si/ufo"));
 
         for (int i = 0; i < 3; i++) {
             m_animation.addFrame(i, sf::seconds(0.2f));
         }
-        m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("ufo_lowpitch"));
+        m_flyingSound.setBuffer(ResourceHolder::get().soundBuffers.get("si/ufo_lowpitch"));
         m_flyingSound.setVolume(10);
     }
 

@@ -89,7 +89,7 @@ namespace SpaceInvaders
     StatePlaying::LifeDisplay::LifeDisplay()
     {
         m_lifeStamp.setSize({ Player::WIDTH / 2, Player::WIDTH / 2 });
-        m_lifeStamp.setTexture(&ResourceHolder::get().textures.get("player"));
+        m_lifeStamp.setTexture(&ResourceHolder::get().textures.get("si/player"));
         m_lifeStamp.setTextureRect({ 0, 0, 11, 8 });
         m_label.setPosition(Display::WIDTH - (Player::WIDTH * 5), 10);
         m_label.setString("LIVES");

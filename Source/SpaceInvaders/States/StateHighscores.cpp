@@ -8,8 +8,15 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+
+
 namespace SpaceInvaders
 {
+    namespace
+    {
+        const auto scoresPath = "res/si/scores.txt";
+    }
+
     StateHighscores::StateHighscores(Game & game, int score)
         : StateHighscores(game)
     {
@@ -28,7 +35,7 @@ namespace SpaceInvaders
         initViewMenu();
         m_pActiveMenu = &m_highscoreMenu;
         m_banner.setSize({ (float)Display::WIDTH, 200 });
-        m_banner.setTexture(&ResourceHolder::get().textures.get("highscores"));
+        m_banner.setTexture(&ResourceHolder::get().textures.get("si/highscores"));
         createHighscoreView();
     }
 
@@ -56,7 +63,7 @@ namespace SpaceInvaders
 
     int StateHighscores::getHighestScore()
     {
-        std::ifstream inFile("res/scores.txt");
+        std::ifstream inFile(scoresPath);
         std::string buffer;
 
         std::getline(inFile, buffer, ',');
@@ -128,7 +135,7 @@ namespace SpaceInvaders
     void StateHighscores::loadScores()
     {
         m_scores.clear();
-        std::ifstream inFile("res/scores.txt");
+        std::ifstream inFile(scoresPath);
         std::string line;
         int switcher = 0;
         std::string name;
@@ -148,7 +155,7 @@ namespace SpaceInvaders
     void StateHighscores::writeScores()
     {
         sortScores();
-        std::ofstream outFile("res/scores.txt");
+        std::ofstream outFile(scoresPath);
         for (auto& entry : m_scores) {
             outFile << entry.first << "," << entry.second << ",";
         }

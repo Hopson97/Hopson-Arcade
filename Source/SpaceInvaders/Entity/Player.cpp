@@ -15,14 +15,14 @@ namespace SpaceInvaders
     {
         m_sprite.setSize({ 44, 32 });
         m_sprite.setPosition({ Display::WIDTH / 2, BASE_Y });
-        m_sprite.setTexture(&ResourceHolder::get().textures.get("player"));
+        m_sprite.setTexture(&ResourceHolder::get().textures.get("si/player"));
         m_sprite.setTextureRect({ 0, 0, 11, 8 });
 
         for (int i = 0; i < 20; i++) {
             m_deathAnimation.addFrame(((i % 2) + 1), sf::seconds(0.1f));
         }
 
-        m_deathSound.setBuffer(ResourceHolder::get().soundBuffers.get("explosion"));
+        m_deathSound.setBuffer(ResourceHolder::get().soundBuffers.get("si/explosion"));
 
     }
 
