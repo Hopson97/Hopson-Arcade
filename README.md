@@ -8,6 +8,8 @@ SFML 2.4.2 and C++17 supporting compiler
 
 # Games
 
+List of all the games in the "arcade".
+
 ## Space Invaders
 
 [Source](https://github.com/Hopson97/Hopson-Arcade/tree/master/Source/SpaceInvaders)
