@@ -1,2 +1,2 @@
 robocopy .\res\ .\HopsonArcade\res\ /E
-robocopy .\..\Release\ .\HopsonArcade\ HopsonArcade.exe
+robocopy .\Release\ .\HopsonArcade\ HopsonArcade.exe
