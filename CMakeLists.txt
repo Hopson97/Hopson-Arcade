@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-	CXX_STANDARD 17
-	CXX_STANDARD_REQUIRED ON
-	CXX_EXTENSIONS OFF
-)
-
 project(HopsonArcade)
+set (CMAKE_CXX_STANDARD 14)
 
 #Add files
 file(GLOB_RECURSE SRC 
@@ -55,7 +50,6 @@ source_group("SpaceInvaders" FILES ${SRC_SPACE_INVADERS})
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 2 REQUIRED COMPONENTS network audio graphics window system)
-target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
