@@ -1,16 +1,16 @@
 #include "Game.h"
 
-#include "../SpaceInvaders/States/StateMainMenu.h"
+#include "GameSelection/StateGameSelect.h"
 #include "../SpaceInvaders/DisplayInfo.h"
 
 #include <iostream>
 
 Game::Game()
-:   m_window    ({ 1600, 900}, "Hopson Arcade")
+:   m_window    ({ 1280, 720}, "Hopson Arcade")
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<SpaceInvaders::StateMainMenu>(*this);
+    pushState<StateGameSelect>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");

@@ -14,7 +14,7 @@ namespace SpaceInvaders
 {
     namespace
     {
-        const auto scoresPath = "res/si/scores.txt";
+        const auto scoresPath = "res/SpaceInvaders/scores.txt";
     }
 
     StateHighscores::StateHighscores(Game & game, int score)

@@ -1,0 +1,6 @@
+name
+Space Invaders
+
+desc
+Based on the 1978 arcade game.
+Shoot down aliens trying to invade the Earth!
