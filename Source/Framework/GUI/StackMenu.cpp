@@ -68,10 +68,10 @@ void StackMenu::initWidget(Widget& widget)
     m_background.setSize(m_baseSize);
 }
 
-void StackMenu::setTitle(const std::string & title)
+void StackMenu::setTitle(const std::string & title, const sf::RenderTarget& target)
 {
     m_titleText.setString(title);
-    m_titleText.setPosition(Display::WIDTH / 2 - m_titleText.getGlobalBounds().width / 2,
+    m_titleText.setPosition(target.getSize().x / 2 - m_titleText.getGlobalBounds().width / 2,
         m_titleText.getPosition().y);
 }
 

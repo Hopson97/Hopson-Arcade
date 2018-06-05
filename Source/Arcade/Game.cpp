@@ -6,7 +6,7 @@
 #include <iostream>
 
 Game::Game()
-:   m_window    ({ Display::WIDTH, Display::HEIGHT}, "Space Invaders")
+:   m_window    ({ 1600, 900}, "Hopson Arcade")
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
@@ -131,4 +131,10 @@ void Game::exitGame()
 const sf::RenderWindow& Game::getWindow() const
 {
     return m_window;
+}
+
+void Game::resizeWindow(unsigned width, unsigned height)
+{
+    m_window.close();
+    m_window.create({ width, height }, "Hopson Arcade");
 }

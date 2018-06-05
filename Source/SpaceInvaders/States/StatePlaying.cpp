@@ -36,7 +36,7 @@ namespace SpaceInvaders
             m_pGame->exitGame();
         });
 
-        m_gameOverMenu.setTitle("GAME  OVER");
+        m_gameOverMenu.setTitle("GAME  OVER", game.getWindow());
         m_gameOverMenu.addWidget(std::move(mmButton));
         m_gameOverMenu.addWidget(std::move(submitBtn));
         m_gameOverMenu.addWidget(std::move(exitButton));

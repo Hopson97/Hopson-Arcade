@@ -9,7 +9,7 @@
 namespace SpaceInvaders
 {
     StateMainMenu::StateMainMenu(Game & game)
-        : StateBase(game, "Main Menu")
+        : StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
     {
         m_banner.setSize({ (float)Display::WIDTH, 200 });
@@ -37,7 +37,9 @@ namespace SpaceInvaders
         m_mainMenu.addWidget(std::move(playBtn));
         m_mainMenu.addWidget(std::move(highscoresBtn));
         m_mainMenu.addWidget(std::move(exitBtn));
-        m_mainMenu.setTitle("Choose Action");
+        m_mainMenu.setTitle("Choose Action", game.getWindow());
+
+        
     }
 
     void StateMainMenu::handleEvent(sf::Event e)

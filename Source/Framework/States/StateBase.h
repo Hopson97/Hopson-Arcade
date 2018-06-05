@@ -9,15 +9,14 @@ class Game;
 class StateBase : public NonCopyable
 {
     public:
-        StateBase(Game& game, const char* name)
-            : m_pGame(&game)
-            , m_name(name)
-        {}
+        StateBase(Game& game, const char* name);
+
+        StateBase(Game& game, const char* name, unsigned resizeWindowWidth, unsigned resizeWindowHeight);
 
         virtual ~StateBase() = default;
 
         virtual void handleEvent(sf::Event e) {}
-        virtual void handleInput() = 0;
+        virtual void handleInput() {}
         virtual void update(sf::Time deltaTime) {}
         virtual void fixedUpdate(sf::Time deltaTime) {}
         virtual void render(sf::RenderTarget& renderer) = 0;
