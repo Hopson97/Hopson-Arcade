@@ -5,11 +5,7 @@
 StateGameSelect::StateGameSelect(Game& game)
     :   StateBase(game, "Game Select", 1280, 720)
 {
-    registerGame(std::make_unique<SpaceInvadersSelect>("SpaceInvaders"));
-    registerGame(std::make_unique<SpaceInvadersSelect>("SpaceInvaders"));
-    registerGame(std::make_unique<SpaceInvadersSelect>("SpaceInvaders"));
-    registerGame(std::make_unique<SpaceInvadersSelect>("SpaceInvaders"));
-    registerGame(std::make_unique<SpaceInvadersSelect>("SpaceInvaders"));
+    registerGame(std::make_shared<SpaceInvadersSelect>("SpaceInvaders"));
 }
 
 void StateGameSelect::onOpen()
@@ -20,6 +16,27 @@ void StateGameSelect::onOpen()
 
 void StateGameSelect::handleEvent(sf::Event e)
 {
+    std::shared_ptr<GameSelect> selectedGame = nullptr;
+    switch (e.type) {
+        case sf::Event::MouseButtonPressed:
+            switch (e.mouseButton.button) {
+                case sf::Mouse::Left: {
+                    for (auto & game : m_gameSelects) {
+                        selectedGame = game;
+                        break;
+                    }
+
+                }
+                default: 
+                    break;
+            }
+        default: 
+            break;
+    }
+
+    if (selectedGame) {
+        m_pGame->pushState(selectedGame->getInitState(*m_pGame));
+    }
 }
 
 void StateGameSelect::render(sf::RenderTarget& target)
@@ -29,11 +46,14 @@ void StateGameSelect::render(sf::RenderTarget& target)
     }
 }
 
-void StateGameSelect::registerGame(std::unique_ptr<GameSelect> gameSelect)
+void StateGameSelect::registerGame(std::shared_ptr<GameSelect> gameSelect)
 {
-    float x = 123.0f + (m_gameSelects.size() % 2 == 0 ? 0 : GameSelect::WIDTH);
+    const float w = GameSelect::WIDTH;
+    const int index = m_gameSelects.size() % 2 != 0;
+
+    float x = ((w / 4) - 5) + (m_gameSelects.size() % 2 == 0 ? 0 : w) + index * 10;
     float y = int(m_gameSelects.size() / 2) * (GameSelect::HEIGHT);
 
     gameSelect->setPosition({ x, y });
-    m_gameSelects.push_back(std::move(gameSelect));
+    m_gameSelects.push_back(gameSelect);
 }

@@ -18,7 +18,7 @@ class GameSelect
         void setPosition(const sf::Vector2f position);
         void draw(sf::RenderTarget& renderer);
 
-        virtual std::unique_ptr<StateBase> getInitState() = 0;
+        virtual std::unique_ptr<StateBase> getInitState(Game& game) = 0;
 
     private:
         sf::RectangleShape m_container;
@@ -28,5 +28,5 @@ class GameSelect
 struct SpaceInvadersSelect : public GameSelect
 {
     SpaceInvadersSelect(const std::string& name);
-    std::unique_ptr<StateBase> getInitState() override;
+    std::unique_ptr<StateBase> getInitState(Game& game) override;
 };

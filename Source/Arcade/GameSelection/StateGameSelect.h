@@ -17,7 +17,7 @@ class StateGameSelect : public StateBase
         void render(sf::RenderTarget& target) override;
 
     private:
-        void registerGame(std::unique_ptr<GameSelect> gameSelect);
+        void registerGame(std::shared_ptr<GameSelect> gameSelect);
 
-        std::vector<std::unique_ptr<GameSelect>> m_gameSelects;
+        std::vector<std::shared_ptr<GameSelect>> m_gameSelects;
 };

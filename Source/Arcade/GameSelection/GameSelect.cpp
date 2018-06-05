@@ -1,11 +1,12 @@
 #include "GameSelect.h"
 
 #include "../../Framework/ResourceManager/ResourceHolder.h"
+#include "../../SpaceInvaders/States/StateMainMenu.h"
 
 GameSelect::GameSelect(const std::string& name)
 {
     m_container.setSize({ WIDTH, HEIGHT });
-    m_thumbnail.setSize({ 256, 256 });
+    m_thumbnail.setSize({ HEIGHT, HEIGHT });
 
     m_container.setOutlineThickness(2);
     m_container.setOutlineColor({ 100, 100, 100 });
@@ -29,7 +30,7 @@ void GameSelect::setPosition(const sf::Vector2f position)
     m_thumbnail.setPosition(position);
 }
 
-void GameSelect::draw(sf::RenderTarget & renderer)
+void GameSelect::draw(sf::RenderTarget& renderer)
 {
     renderer.draw(m_container);
     renderer.draw(m_thumbnail);
@@ -38,7 +39,7 @@ void GameSelect::draw(sf::RenderTarget & renderer)
 SpaceInvadersSelect::SpaceInvadersSelect(const std::string & name)
 :   GameSelect(name) { }
 
-std::unique_ptr<StateBase> SpaceInvadersSelect::getInitState()
+std::unique_ptr<StateBase> SpaceInvadersSelect::getInitState(Game& game)
 {
-    return std::unique_ptr<StateBase>();
+    return std::make_unique<SpaceInvaders::StateMainMenu>(game);
 }

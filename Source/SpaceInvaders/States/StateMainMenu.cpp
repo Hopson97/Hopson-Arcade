@@ -31,7 +31,7 @@ namespace SpaceInvaders
         auto exitBtn = gui::makeButton();
         exitBtn->setText("Exit game");
         exitBtn->setFunction([&]() {
-            m_pGame->exitGame();
+            m_pGame->popState();
         });
 
         m_mainMenu.addWidget(std::move(playBtn));
