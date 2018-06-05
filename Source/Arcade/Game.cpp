@@ -81,6 +81,9 @@ void Game::tryPop()
         }
         
         m_states.pop_back();
+        if (!m_states.empty()) {
+            getCurrentState().onOpen();
+        }
     }
 }
 
@@ -112,6 +115,7 @@ StateBase& Game::getCurrentState()
 void Game::pushState(std::unique_ptr<StateBase> state)
 {
     m_states.push_back(std::move(state));
+    getCurrentState().onOpen();
 }
 
 //Flags a boolean for the game to pop state

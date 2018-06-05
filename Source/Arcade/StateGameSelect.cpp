@@ -7,6 +7,11 @@ StateGameSelect::StateGameSelect(Game& game)
 {
 }
 
+void StateGameSelect::onOpen()
+{
+    m_pGame->resizeWindow(1280, 720);
+}
+
 
 void StateGameSelect::handleEvent(sf::Event e)
 {

@@ -15,6 +15,7 @@ class StateBase : public NonCopyable
 
         virtual ~StateBase() = default;
 
+        virtual void onOpen() {}
         virtual void handleEvent(sf::Event e) {}
         virtual void handleInput() {}
         virtual void update(sf::Time deltaTime) {}

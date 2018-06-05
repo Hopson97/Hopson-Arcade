@@ -16,7 +16,6 @@
 */
 class Game : public NonCopyable, public NonMovable
 {
-    friend class StateBase;
     public:
         Game();
 
@@ -32,10 +31,9 @@ class Game : public NonCopyable, public NonMovable
 
         const sf::RenderWindow& getWindow() const;
 
-        
+        void resizeWindow(unsigned width, unsigned height);
 
     private:
-        void resizeWindow(unsigned width, unsigned height);
         void handleEvent();
         void tryPop();
 
