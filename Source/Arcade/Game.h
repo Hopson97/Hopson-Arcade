@@ -21,11 +21,16 @@ class Game : public NonCopyable, public NonMovable
 
         void run();
 
-        template<typename T, typename... Args>
-        void pushState(Args&&... args);
+        template<typename T>
+        void initGame();
+
         void pushState(std::unique_ptr<StateBase> state);
         void popState();
         void exitGame();
+
+        template<typename T, typename... Args>
+        void pushState(Args&&... args);
+
         template<typename T, typename... Args>
         void changeState(Args&&... args);
 
@@ -50,6 +55,12 @@ class Game : public NonCopyable, public NonMovable
         std::unique_ptr<StateBase> m_change;
 
 };
+
+template<typename T>
+inline void Game::initGame()
+{
+    this->pushState<T>(*this);
+}
 
 template<typename T, typename... Args>
 inline void Game::pushState(Args&&... args)

@@ -140,9 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Arcade\Game.cpp" />
-    <ClCompile Include="Source\Arcade\GameSelection\GameSelect.cpp" />
     <ClCompile Include="Source\Arcade\Main.cpp" />
-    <ClCompile Include="Source\Arcade\GameSelection\StateGameSelect.cpp" />
     <ClCompile Include="Source\Framework\GUI\Button.cpp" />
     <ClCompile Include="Source\Framework\GUI\StackMenu.cpp" />
     <ClCompile Include="Source\Framework\GUI\Textbox.cpp" />
@@ -171,8 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Arcade\Game.h" />
-    <ClInclude Include="Source\Arcade\GameSelection\GameSelect.h" />
-    <ClInclude Include="Source\Arcade\GameSelection\StateGameSelect.h" />
     <ClInclude Include="Source\Framework\GUI\Button.h" />
     <ClInclude Include="Source\Framework\GUI\StackMenu.h" />
     <ClInclude Include="Source\Framework\GUI\Textbox.h" />

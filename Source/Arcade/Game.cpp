@@ -1,6 +1,5 @@
 #include "Game.h"
 
-#include "GameSelection/StateGameSelect.h"
 #include "../SpaceInvaders/DisplayInfo.h"
 
 #include <iostream>
@@ -10,7 +9,6 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StateGameSelect>(*this);
 
     sf::Image icon;
     icon.loadFromFile("res/txrs/icon.png");
