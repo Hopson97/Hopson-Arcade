@@ -95,12 +95,16 @@ namespace gui {
             void updateText();
 
             sf::Vector2f    m_position;
-
             Rectangle   m_button;
             Text        m_text;
             std::function<void(void)> m_function = [](){};
 
     };
 
+    /**
+     * @brief Creates a button object
+     * 
+     * @return std::unique_ptr<Button> A unique pointer to a new button object 
+     */
     inline std::unique_ptr<Button> makeButton() { return std::make_unique<Button>(); }
 }
