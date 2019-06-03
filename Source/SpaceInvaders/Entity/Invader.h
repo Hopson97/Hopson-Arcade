@@ -8,7 +8,7 @@ namespace SpaceInvaders {
     Class to represent a single invader
 */
 class Invader : public Collidable {
-  public:
+public:
     enum class Type {
         Octopus,
         Crab,
@@ -30,13 +30,13 @@ class Invader : public Collidable {
         m_location = m_initialPosition;
     }
 
-  private:
+private:
     const sf::Vector2f m_initialPosition;
     sf::Vector2f m_location;
     bool m_isAlive = false;
     Type m_type;
 
-  public:
+public:
     constexpr static float WIDTH = 48;
     constexpr static float HEIGHT = 32;
 };

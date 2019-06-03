@@ -16,7 +16,7 @@ namespace SpaceInvaders {
    entites
 */
 class World {
-  public:
+public:
     World();
 
     void input();
@@ -29,7 +29,7 @@ class World {
 
     void setGameIsOver() { m_isGameOver = true; }
 
-  private:
+private:
     void playerProjectileInput();
     void enemyProjectileFire();
     CollisionResult getCollisionResult(float dtt);

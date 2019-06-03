@@ -4,7 +4,7 @@
 #include <vector>
 
 class Animation {
-  public:
+public:
     struct Frame {
         Frame(const sf::IntRect &bnds, sf::Time dly)
             : bounds(bnds), delay(dly) {}
@@ -19,7 +19,7 @@ class Animation {
 
     const sf::IntRect &getFrame();
 
-  private:
+private:
     sf::Clock m_timer; // Timer for progressing the animation
 
     std::vector<Frame> m_frames; // List of animation frames

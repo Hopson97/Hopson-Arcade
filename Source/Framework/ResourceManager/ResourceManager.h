@@ -7,7 +7,7 @@
     Holds all the resources of the game
 */
 template <typename Resource> class ResourceManager {
-  public:
+public:
     ResourceManager(const std::string &folder, const std::string &extention)
         : m_folder("res/" + folder + "/"), m_extention("." + extention) {}
 
@@ -36,7 +36,7 @@ template <typename Resource> class ResourceManager {
         }
     }
 
-  private:
+private:
     std::string getFullFilename(const std::string &name) {
         return m_folder + name + m_extention;
     }

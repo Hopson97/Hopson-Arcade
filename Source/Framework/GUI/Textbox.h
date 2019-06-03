@@ -6,7 +6,7 @@
 
 namespace gui {
 class TextBox : public gui::Widget {
-  public:
+public:
     TextBox(std::string &modString);
 
     void setLabel(const std::string &str);
@@ -17,7 +17,7 @@ class TextBox : public gui::Widget {
     void setPosition(const sf::Vector2f &pos) override;
     sf::Vector2f getSize() const override;
 
-  private:
+private:
     void handleClick(sf::Event e, const sf::RenderWindow &window);
     void handleTextInput(sf::Event e);
 

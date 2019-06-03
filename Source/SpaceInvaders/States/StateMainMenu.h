@@ -7,7 +7,7 @@
 
 namespace SpaceInvaders {
 class StateMainMenu : public StateBase {
-  public:
+public:
     StateMainMenu(Game &game);
 
     void handleEvent(sf::Event e) override;
@@ -15,7 +15,7 @@ class StateMainMenu : public StateBase {
     void update(sf::Time deltaTime) override;
     void render(sf::RenderTarget &renderer) override;
 
-  private:
+private:
     gui::StackMenu m_mainMenu;
     sf::RectangleShape m_banner;
 

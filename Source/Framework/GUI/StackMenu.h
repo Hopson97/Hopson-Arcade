@@ -23,7 +23,7 @@ namespace gui {
  * A stack menu is a menu where its widgets appear in a vertical stack
  */
 class StackMenu : public NonCopyable {
-  public:
+public:
     StackMenu(const sf::RenderWindow &window, float baseY);
     StackMenu(const sf::Vector2f &position);
 
@@ -46,7 +46,7 @@ class StackMenu : public NonCopyable {
     void handleEvent(sf::Event e, const sf::RenderWindow &window);
     void render(sf::RenderTarget &renderer);
 
-  private:
+private:
     void initWidget(Widget &w);
 
     std::vector<std::unique_ptr<Widget>> m_widgets;

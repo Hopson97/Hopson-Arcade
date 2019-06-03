@@ -12,7 +12,7 @@ namespace SpaceInvaders {
     Represents the player
 */
 class Player : public Collidable {
-  public:
+public:
     constexpr static int WIDTH = 44;
     constexpr static int HEIGHT = 32;
 
@@ -33,7 +33,7 @@ class Player : public Collidable {
 
     void tryRevive();
 
-  private:
+private:
     void restart();
 
     sf::RectangleShape m_sprite;

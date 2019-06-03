@@ -6,14 +6,14 @@
 namespace SpaceInvaders {
 
 class StarryBackground {
-  public:
+public:
     StarryBackground();
 
     void update(float dt);
 
     void draw(sf::RenderTarget &renderer);
 
-  private:
+private:
     void giveStarRandomStartLocation(sf::Vertex &v);
 
     std::vector<sf::Vertex> m_stars;

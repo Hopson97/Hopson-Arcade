@@ -7,7 +7,7 @@ template <typename Engine = std::mt19937> class Random {
     template <typename T> using UniformDist = std::uniform_real_distribution<T>;
     using UniformIntDist = std::uniform_int_distribution<int>;
 
-  public:
+public:
     static Random gRand;
 
     Random(int seed = std::time(nullptr)) : m_prng(seed) {}
@@ -29,6 +29,6 @@ template <typename Engine = std::mt19937> class Random {
         return dist(m_prng);
     }
 
-  private:
+private:
     Engine m_prng;
 };

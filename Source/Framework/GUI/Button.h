@@ -29,7 +29,7 @@ enum class ButtonSize {
  *
  */
 class Button : public gui::Widget {
-  public:
+public:
     /**
      * @brief Construct a new Button object
      *
@@ -89,7 +89,7 @@ class Button : public gui::Widget {
      */
     sf::Vector2f getSize() const override;
 
-  private:
+private:
     /**
      * @brief Realigns the position of the text to be centered in the window
      *

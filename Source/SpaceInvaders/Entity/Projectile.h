@@ -6,7 +6,7 @@
 
 namespace SpaceInvaders {
 class Projectile : public Collidable {
-  public:
+public:
     constexpr static float HEIGHT = 24;
     constexpr static float WIDTH = 12;
 
@@ -26,7 +26,7 @@ class Projectile : public Collidable {
 
     int getID() const;
 
-  private:
+private:
     sf::Vector2f m_position;
     Type m_type;
     Direction m_direction;

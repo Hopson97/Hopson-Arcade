@@ -9,12 +9,12 @@ class StateHighscores : public StateBase {
     using Entry = std::pair<std::string, int>;
 
     struct EntryBox {
-      public:
+    public:
         EntryBox(int position, const std::string &name, int score);
 
         void draw(sf::RenderTarget &renderer);
 
-      private:
+    private:
         sf::RectangleShape m_background;
         gui::Widget::Text m_nameText;
         gui::Widget::Text m_scoreText;
@@ -22,7 +22,7 @@ class StateHighscores : public StateBase {
 
     enum class State { Submitting, Viewing };
 
-  public:
+public:
     StateHighscores(Game &game, int score);
     StateHighscores(Game &game);
 
@@ -33,7 +33,7 @@ class StateHighscores : public StateBase {
 
     static int getHighestScore();
 
-  private:
+private:
     void initViewMenu();
     void initSubmitMenu();
 

@@ -9,7 +9,7 @@ namespace SpaceInvaders {
     The main state; where all the gameplay happens
 */
 class StatePlaying : public StateBase {
-  public:
+public:
     StatePlaying(Game &game);
 
     void handleEvent(sf::Event e) override;
@@ -17,7 +17,7 @@ class StatePlaying : public StateBase {
     void update(sf::Time deltaTime) override;
     void render(sf::RenderTarget &renderer) override;
 
-  private:
+private:
     World m_world;
 
     int m_score = 0;
@@ -28,19 +28,19 @@ class StatePlaying : public StateBase {
 
     // Displays how many lives the player has left
     class LifeDisplay {
-      public:
+    public:
         LifeDisplay();
 
         void draw(sf::RenderTarget &window, int lives);
 
-      private:
+    private:
         gui::Widget::Text m_label;
         sf::RectangleShape m_lifeStamp;
     } m_lifeDisplay;
 
     // Displays the Player's current score
     class ScoreDisplay {
-      public:
+    public:
         ScoreDisplay(float centreX, const std::string &text);
 
         void update(int newScore);
@@ -49,7 +49,7 @@ class StatePlaying : public StateBase {
 
         int getCurrentScoreDisplayed() const;
 
-      private:
+    private:
         void updateDisplay();
 
         gui::Widget::Text m_label;

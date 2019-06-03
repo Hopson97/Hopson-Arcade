@@ -4,7 +4,7 @@
 
 namespace SpaceInvaders {
 class Collidable {
-  public:
+public:
     Collidable(float width, float height);
 
     bool tryCollideWith(Collidable &other);
@@ -13,7 +13,7 @@ class Collidable {
     virtual const sf::Vector2f &getPosition() const = 0;
     virtual void onCollide(Collidable &other) = 0;
 
-  private:
+private:
     sf::Vector2f m_size;
 };
 } // namespace SpaceInvaders

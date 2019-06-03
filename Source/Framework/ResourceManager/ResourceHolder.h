@@ -8,13 +8,13 @@
 #include "ResourceManager.h"
 
 class ResourceHolder : public NonCopyable, public NonMovable {
-  public:
+public:
     static ResourceHolder &get();
 
     ResourceManager<sf::Font> fonts;
     ResourceManager<sf::Texture> textures;
     ResourceManager<sf::SoundBuffer> soundBuffers;
 
-  private:
+private:
     ResourceHolder();
 };

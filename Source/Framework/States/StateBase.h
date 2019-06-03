@@ -7,7 +7,7 @@
 class Game;
 
 class StateBase : public NonCopyable {
-  public:
+public:
     StateBase(Game &game, const char *name);
 
     StateBase(Game &game, const char *name, unsigned resizeWindowWidth,
@@ -24,7 +24,7 @@ class StateBase : public NonCopyable {
 
     const std::string &getName() { return m_name; }
 
-  protected:
+protected:
     Game *m_pGame;
     std::string m_name;
 };

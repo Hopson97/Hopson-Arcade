@@ -19,7 +19,7 @@ using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
     Class to manage the drawing and updating of invaders
 */
 class InvaderManager {
-  public:
+public:
     InvaderManager(World &world);
 
     // Moves all of the invaders to the left or right, if the clock has reached
@@ -46,7 +46,7 @@ class InvaderManager {
     void initAddInvader();
     bool areInvadersAlive() const;
 
-  private:
+private:
     // Changes time between the alien's steps based on number alive
     void updateStepDelay();
 

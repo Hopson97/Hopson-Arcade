@@ -8,7 +8,7 @@
 
 namespace SpaceInvaders {
 class UFO : public Collidable {
-  public:
+public:
     enum class State { Waiting, Flying, Destroyed };
 
     UFO(Random<> &rand);
@@ -22,7 +22,7 @@ class UFO : public Collidable {
     const sf::Vector2f &getPosition() const;
     void onCollide(Collidable &other);
 
-  private:
+private:
     Random<> &m_rng;
 
     sf::RectangleShape m_sprite;

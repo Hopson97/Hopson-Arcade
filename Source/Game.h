@@ -14,7 +14,7 @@
     as counting the FPS
 */
 class Game : public NonCopyable, public NonMovable {
-  public:
+public:
     Game();
 
     void run();
@@ -33,7 +33,7 @@ class Game : public NonCopyable, public NonMovable {
 
     void resizeWindow(unsigned width, unsigned height);
 
-  private:
+private:
     void handleEvent();
     void tryPop();
 

@@ -8,7 +8,7 @@ namespace SpaceInvaders {
     the same animation
 */
 class AnimationRenderer {
-  public:
+public:
     AnimationRenderer(int frameWidth, int frameHeight, float entityWidth,
                       float entityHeight, const sf::Texture &spriteSheet);
 
@@ -19,7 +19,7 @@ class AnimationRenderer {
     void renderEntity(sf::RenderTarget &renderer, int type,
                       const sf::Vector2f &position);
 
-  private:
+private:
     sf::RectangleShape m_entity;
     int m_currentFrame;
     const int m_frameWidth;

@@ -3,14 +3,14 @@
 #include <SFML/Graphics.hpp>
 
 class FPSCounter {
-  public:
+public:
     FPSCounter();
 
     void update();
 
     void draw(sf::RenderTarget &renderer);
 
-  private:
+private:
     sf::Text m_text;
     sf::Font m_font;
 
