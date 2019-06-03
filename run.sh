@@ -2,7 +2,7 @@
 
 if [ "$1" = "release" ]
 then
-    ./bin/release/astar
+    ./bin/release/hopson-arcade
 else
-    ./bin/debug/astar
+    ./bin/debug/hopson-arcade
 fi
