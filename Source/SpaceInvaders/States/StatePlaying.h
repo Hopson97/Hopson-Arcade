@@ -1,65 +1,61 @@
 #pragma once
 
+#include "../../Framework/GUI/StackMenu.h"
 #include "../../Framework/States/StateBase.h"
 #include "../World.h"
-#include "../../Framework/GUI/StackMenu.h"
 
+namespace SpaceInvaders {
+/*
+    The main state; where all the gameplay happens
+*/
+class StatePlaying : public StateBase {
+  public:
+    StatePlaying(Game &game);
 
-namespace SpaceInvaders
-{
-    /*
-        The main state; where all the gameplay happens
-    */
-    class StatePlaying : public StateBase
-    {
-    public:
-        StatePlaying(Game& game);
+    void handleEvent(sf::Event e) override;
+    void handleInput() override;
+    void update(sf::Time deltaTime) override;
+    void render(sf::RenderTarget &renderer) override;
 
-        void handleEvent(sf::Event e)                   override;
-        void handleInput()                              override;
-        void update(sf::Time deltaTime)            override;
-        void render(sf::RenderTarget& renderer)    override;
+  private:
+    World m_world;
 
-    private:
-        World m_world;
+    int m_score = 0;
+    bool m_isGameover;
+    sf::Clock m_gameOverClock;
 
-        int m_score = 0;
-        bool m_isGameover;
-        sf::Clock m_gameOverClock;
+    gui::StackMenu m_gameOverMenu;
 
-        gui::StackMenu m_gameOverMenu;
+    // Displays how many lives the player has left
+    class LifeDisplay {
+      public:
+        LifeDisplay();
 
-        //Displays how many lives the player has left
-        class LifeDisplay
-        {
-        public:
-            LifeDisplay();
+        void draw(sf::RenderTarget &window, int lives);
 
-            void draw(sf::RenderTarget& window, int lives);
+      private:
+        gui::Widget::Text m_label;
+        sf::RectangleShape m_lifeStamp;
+    } m_lifeDisplay;
 
-        private:
-            gui::Widget::Text m_label;
-            sf::RectangleShape m_lifeStamp;
-        } m_lifeDisplay;
+    // Displays the Player's current score
+    class ScoreDisplay {
+      public:
+        ScoreDisplay(float centreX, const std::string &text);
 
-        //Displays the Player's current score
-        class ScoreDisplay
-        {
-        public:
-            ScoreDisplay(float centreX, const std::string& text);
+        void update(int newScore);
 
-            void update(int newScore);
+        void draw(sf::RenderTarget &target);
 
-            void draw(sf::RenderTarget& target);
+        int getCurrentScoreDisplayed() const;
 
-            int getCurrentScoreDisplayed() const;
-        private:
-            void updateDisplay();
+      private:
+        void updateDisplay();
 
-            gui::Widget::Text m_label;
-            std::string m_text;
-            int m_currentScore;
-            float m_centerPosition;
-        } m_scoreDisplay, m_highestScoreDisplay;
-    };
-}
+        gui::Widget::Text m_label;
+        std::string m_text;
+        int m_currentScore;
+        float m_centerPosition;
+    } m_scoreDisplay, m_highestScoreDisplay;
+};
+} // namespace SpaceInvaders

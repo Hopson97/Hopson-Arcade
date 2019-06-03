@@ -1,42 +1,35 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include "../Collidable.h"
 #include "../../Framework/Util/Animation.h"
 #include "../../Framework/Util/Random.h"
+#include "../Collidable.h"
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 
-namespace SpaceInvaders
-{
-    class UFO : public Collidable
-    {
-    public:
-        enum class State
-        {
-            Waiting,
-            Flying,
-            Destroyed
-        };
+namespace SpaceInvaders {
+class UFO : public Collidable {
+  public:
+    enum class State { Waiting, Flying, Destroyed };
 
-        UFO(Random<>& rand);
+    UFO(Random<> &rand);
 
-        State getState() const;
+    State getState() const;
 
-        void update(float dt);
+    void update(float dt);
 
-        void draw(sf::RenderTarget& window);
+    void draw(sf::RenderTarget &window);
 
-        const sf::Vector2f& getPosition() const;
-        void onCollide(Collidable& other);
+    const sf::Vector2f &getPosition() const;
+    void onCollide(Collidable &other);
 
-    private:
-        Random<>& m_rng;
+  private:
+    Random<> &m_rng;
 
-        sf::RectangleShape m_sprite;
-        float m_vx;
-        State m_state;
-        Animation m_animation;
+    sf::RectangleShape m_sprite;
+    float m_vx;
+    State m_state;
+    Animation m_animation;
 
-        sf::Sound m_flyingSound;
-    };
-}
+    sf::Sound m_flyingSound;
+};
+} // namespace SpaceInvaders
