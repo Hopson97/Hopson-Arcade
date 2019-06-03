@@ -2,11 +2,38 @@
 
 This is a collection of small aracde-y games, created using C++17 and SFML
 
-# Dependancies
+## Dependancies
 
 SFML 2.4.2 and C++17 supporting compiler
 
-# Games
+### Installing dependancies
+
+#### Ubuntu
+
+`sudo apt install libsfml-dev`
+
+#### Windows
+
+Download SFML from the website. https://www.sfml-dev.org/download/sfml/2.5.1/
+
+## Building
+
+### Build for Linux
+
+Run the build and the run script
+
+```sh
+sh build.sh release
+sh run.sh release
+```
+
+Ommiting the "release" will instead run the code using debug mode.
+
+### Build for Windows
+
+Highly dependant on your set up. If SFML is in your path, then using CMake you will be able to create the correct project files to build your code.
+
+## Games
 
 List of all the games in the "arcade".
 
