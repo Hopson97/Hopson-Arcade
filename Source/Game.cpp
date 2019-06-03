@@ -1,7 +1,5 @@
 #include "Game.h"
 
-#include "SpaceInvaders/DisplayInfo.h"
-
 #include <iostream>
 
 Game::Game()
