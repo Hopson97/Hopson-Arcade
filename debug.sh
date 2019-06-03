@@ -1,2 +1,2 @@
 sh build.sh
-gdb ./bin/debug/astar
+gdb ./bin/debug/hopson-arcade
