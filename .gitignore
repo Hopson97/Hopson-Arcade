@@ -1,13 +1,13 @@
-Debug/
-Release/
 *.dll
 
-*.filters
-*.user
-*.aps
-
-HopsonArcade/
+#CMake
+CMakeCache.txt
+*.cmake
 CMakeFiles/
 
+#Other
 *.zip
 *.vs
+*.vscode
+
+bin/
