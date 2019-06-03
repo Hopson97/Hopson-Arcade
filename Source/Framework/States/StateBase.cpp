@@ -1,6 +1,6 @@
 #include "StateBase.h"
 
-#include "../../Arcade/Game.h"
+#include "../../Game.h"
 
 StateBase::StateBase(Game & game, const char * name)
     : m_pGame(&game)

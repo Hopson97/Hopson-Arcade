@@ -2,7 +2,7 @@
 
 
 #include <iostream>
-#include "../../Arcade/Game.h"
+#include "../../Game.h"
 #include "../../Framework/ResourceManager/ResourceHolder.h"
 
 #include "../../Framework/GUI/Button.h"

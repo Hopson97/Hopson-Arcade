@@ -1,6 +1,6 @@
 #include "StateMainMenu.h"
 
-#include "../../Arcade/Game.h"
+#include "../../Game.h"
 
 #include "../../Framework/GUI/Button.h"
 #include "StatePlaying.h"

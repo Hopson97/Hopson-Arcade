@@ -1,6 +1,6 @@
 #include "StateHighscores.h"
 
-#include "../../Arcade/Game.h"
+#include "../../Game.h"
 #include "../../Framework/GUI/Button.h"
 #include "../../Framework/GUI/Textbox.h"
 #include "../DisplayInfo.h"
