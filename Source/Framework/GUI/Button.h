@@ -49,6 +49,7 @@ namespace gui {
              * 
              * @param text The text on the button
              */
+
             void setText (const std::string& text);
 
             /**
