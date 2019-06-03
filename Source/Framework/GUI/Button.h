@@ -49,7 +49,8 @@ namespace gui {
              * 
              * @param text The text on the button
              */
-            void setText (std::string text);
+
+            void setText (const std::string& text);
 
             /**
              * @brief Set the texture to appear on the background of the button
