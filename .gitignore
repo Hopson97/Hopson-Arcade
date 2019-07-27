@@ -5,9 +5,19 @@ CMakeCache.txt
 *.cmake
 CMakeFiles/
 
+#Visaul Studio
+Debug/
+Release/
+*.sln
+*.vcxproj
+*.filters
+*.users
+*.user
+
 #Other
 *.zip
 *.vs
 *.vscode
 
 bin/
+
