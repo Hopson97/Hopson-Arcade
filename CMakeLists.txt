@@ -3,9 +3,6 @@ cmake_minimum_required(VERSION 3.1)
 project(hopson-arcade VERSION 1.0 LANGUAGES CXX)
 set (CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-find_package(SFML REQUIRED graphics window system)
-
 #Add files
 set(SOURCES 
     Source/Main.cpp
@@ -42,7 +39,6 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 #Find the SFML package
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 find_package(SFML REQUIRED audio network graphics window system)
-find_package(Threads)
-target_link_libraries(${PROJECT_NAME} Threads::Threads ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${ADDITIONAL_LINK_FLAGS})
+
 find_package(Threads)
 target_link_libraries(${PROJECT_NAME} Threads::Threads ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${ADDITIONAL_LINK_FLAGS})
