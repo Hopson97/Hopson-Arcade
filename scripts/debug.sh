@@ -1,2 +1,2 @@
-sh build.sh
-gdb ./bin/debug/hopson-arcade
+sh build
+gdb ./bin/debug/<PNAME> 
