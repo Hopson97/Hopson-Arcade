@@ -3,9 +3,11 @@
 
 namespace SpaceInvaders {
 World::World()
-    : m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
-                           ResourceHolder::get().textures.get("si/projectile")),
-      m_ufo(m_rng), m_invaders(*this) {
+    :   m_projectileRenderer(4, 8, Projectile::WIDTH, Projectile::HEIGHT,
+                           ResourceHolder::get().textures.get("si/projectile"))
+    , m_invaders(*this) 
+    ,   m_ufo(m_rng)
+    {
     m_explodeShape.setSize({52, 28});
     m_explodeShape.setTexture(
         &ResourceHolder::get().textures.get("si/explosion"));

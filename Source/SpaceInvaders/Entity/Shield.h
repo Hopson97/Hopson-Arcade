@@ -25,7 +25,7 @@ class Shield : private Collidable {
         void draw(sf::RenderTarget &target);
 
         const sf::Vector2f &getPosition() const;
-        void onCollide(Collidable &other) {}
+        void onCollide([[maybe_unused]]Collidable &other) {}
 
         sf::Vector2f isTouching(const Projectile &other);
 
@@ -47,7 +47,7 @@ public:
     bool isTouching(const Projectile &projectile);
 
     const sf::Vector2f &getPosition() const;
-    void onCollide(Collidable &other) {}
+    void onCollide([[maybe_unused]] Collidable &other) {}
 
 private:
     ShieldSection &getSection(int x, int y);

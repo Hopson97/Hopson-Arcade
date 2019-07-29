@@ -76,7 +76,7 @@ const sf::Vector2f &Player::getPosition() const {
     return m_sprite.getPosition();
 }
 
-void Player::onCollide(Collidable &other) {
+void Player::onCollide([[maybe_unused]] Collidable &other) {
     m_isAlive = false;
     m_deathTimer.restart();
     m_deathSound.play();

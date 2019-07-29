@@ -19,7 +19,7 @@ void Projectile::update(float dt) {
     }
 }
 
-void Projectile::onCollide(Collidable &other) { destroy(); }
+void Projectile::onCollide([[maybe_unused]] Collidable &other) { destroy(); }
 
 void Projectile::destroy() { m_isActive = false; }
 

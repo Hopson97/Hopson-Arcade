@@ -16,10 +16,10 @@ public:
     virtual ~StateBase() = default;
 
     virtual void onOpen() {}
-    virtual void handleEvent(sf::Event e) {}
+    virtual void handleEvent([[maybe_unused]] sf::Event e) {}
     virtual void handleInput() {}
-    virtual void update(sf::Time deltaTime) {}
-    virtual void fixedUpdate(sf::Time deltaTime) {}
+    virtual void update([[maybe_unused]] sf::Time deltaTime) {}
+    virtual void fixedUpdate([[maybe_unused]] sf::Time deltaTime) {}
     virtual void render(sf::RenderTarget &renderer) = 0;
 
     const std::string &getName() { return m_name; }
