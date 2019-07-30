@@ -1,43 +1,12 @@
-# Hopson Aracde
+# hopson-arcade
 
 This is a collection of small aracde-y games, created using C++17 and SFML
-
-## Dependancies
-
-SFML 2.4.2 and C++17 supporting compiler
-
-### Installing dependancies
-
-#### Ubuntu
-
-`sudo apt install libsfml-dev`
-
-#### Windows
-
-Download SFML from the website. https://www.sfml-dev.org/download/sfml/2.5.1/
-
-## Building
-
-### Build for Linux
-
-Run the build and the run script
-
-```sh
-sh build.sh release
-sh run.sh release
-```
-
-Ommiting the "release" will instead run the code using debug mode.
-
-### Build for Windows
-
-Highly dependant on your set up. If SFML is in your path, then using CMake you will be able to create the correct project files to build your code.
 
 ## Games
 
 List of all the games in the "arcade".
 
-## Space Invaders
+### Space Invaders
 
 [Source](https://github.com/Hopson97/Hopson-Arcade/tree/master/Source/SpaceInvaders)
 
@@ -48,3 +17,47 @@ This is based on the 1978 arcade game created by Tomohiro Nishikad.
 This was the first game added to this project.
 
 ![Space Invaders](https://i.imgur.com/b7KAzXo.png)
+
+
+## Building and Running
+
+### Libraries
+
+SFML is required.
+
+These can be installed from your project manager. For example, on Debian/ Ubuntu:
+
+```sh
+sudo apt install libsfml-dev
+```
+
+If this is not possible (eg windows), you can install these manually from their respective websites:
+
+https://www.sfml-dev.org/download.php
+
+### Linux
+
+To build, at the root of the project:
+
+```sh
+sh scripts/build.sh
+```
+
+To run, at the root of the project:
+
+```sh
+sh scripts/run.sh
+```
+
+To build and run in release mode, simply add the `release` suffix:
+
+```sh
+sh scripts/build.sh release
+sh scripts/run.sh release
+```
+
+You can also create a deployable build (that can be sent) by doing:
+
+```sh
+sh scripts/deploy.sh
+```

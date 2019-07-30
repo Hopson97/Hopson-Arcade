@@ -2,7 +2,7 @@
 
 if [ "$1" = "release" ]
 then
-    ./bin/release/<PNAME> 
+    ./bin/release/hopson-arcade 
 else
-    ./bin/debug/<PNAME> 
+    ./bin/debug/hopson-arcade 
 fi
