@@ -8,28 +8,32 @@
 #endif
 
 namespace {
-void setConsolePosition() {
+    void setConsolePosition()
+    {
 #ifdef _WIN32
-    HWND consoleWindow = GetConsoleWindow();
-    SetWindowPos(consoleWindow, 0, 0, 0, 500, 500, SWP_NOSIZE | SWP_NOZORDER);
+        HWND consoleWindow = GetConsoleWindow();
+        SetWindowPos(consoleWindow, 0, 0, 0, 500, 500,
+                     SWP_NOSIZE | SWP_NOZORDER);
 #endif
-}
+    }
 
-constexpr int GAMES = 1;
+    constexpr int GAMES = 1;
 
-template <typename T> void run() {
-    std::cout << "\nTo choose another Game, simply close the window\n";
-    std::cin.ignore();
-    Game app{};
-    app.initGame<T>();
-    app.run();
-    std::cout << '\n';
-}
+    template <typename T> void run()
+    {
+        std::cout << "\nTo choose another Game, simply close the window\n";
+        std::cin.ignore();
+        Game app{};
+        app.initGame<T>();
+        app.run();
+        std::cout << '\n';
+    }
 
-bool isValidChoice(int option) { return option > 0 && option <= GAMES + 1; }
+    bool isValidChoice(int option) { return option > 0 && option <= GAMES + 1; }
 } // namespace
 
-int main() {
+int main()
+{
     setConsolePosition();
     bool exit = false;
     while (!exit) {
@@ -50,16 +54,16 @@ int main() {
         }
 
         switch (option) {
-        case 1:
-            run<SpaceInvaders::StateMainMenu>();
-            break;
+            case 1:
+                run<SpaceInvaders::StateMainMenu>();
+                break;
 
-        case GAMES + 1:
-            exit = true;
-            break;
+            case GAMES + 1:
+                exit = true;
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     }
 }

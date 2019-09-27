@@ -3,12 +3,12 @@
 #include <SFML/Graphics.hpp>
 
 class ToggleKey {
-public:
+  public:
     ToggleKey(sf::Keyboard::Key);
 
     bool isKeyPressed();
 
-private:
+  private:
     sf::Keyboard::Key m_key;
     sf::Clock m_delayTimer;
 };

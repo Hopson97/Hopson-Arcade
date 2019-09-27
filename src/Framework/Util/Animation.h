@@ -4,10 +4,13 @@
 #include <vector>
 
 class Animation {
-public:
+  public:
     struct Frame {
         Frame(const sf::IntRect &bnds, sf::Time dly)
-            : bounds(bnds), delay(dly) {}
+            : bounds(bnds)
+            , delay(dly)
+        {
+        }
 
         sf::IntRect bounds; // The area in a texture of the frame
         sf::Time delay;     // Time delay to next frame
@@ -19,7 +22,7 @@ public:
 
     const sf::IntRect &getFrame();
 
-private:
+  private:
     sf::Clock m_timer; // Timer for progressing the animation
 
     std::vector<Frame> m_frames; // List of animation frames

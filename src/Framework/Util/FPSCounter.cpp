@@ -4,7 +4,8 @@
 
 #include <iostream>
 
-FPSCounter::FPSCounter() {
+FPSCounter::FPSCounter()
+{
     m_text.move(0, 0);
     m_text.setOutlineColor(sf::Color::Black);
     m_text.setFillColor({255, 255, 255});
@@ -14,7 +15,8 @@ FPSCounter::FPSCounter() {
 }
 
 // updates the FPS variable
-void FPSCounter::update() {
+void FPSCounter::update()
+{
     m_frameCount++;
 
     if (m_delayTimer.getElapsedTime().asSeconds() > 0.2) {
@@ -25,7 +27,8 @@ void FPSCounter::update() {
 }
 
 // Draws the FPS display to the window
-void FPSCounter::draw(sf::RenderTarget &renderer) {
+void FPSCounter::draw(sf::RenderTarget &renderer)
+{
     m_text.setString("FPS " + std::to_string((int)m_fps));
     renderer.draw(m_text);
 }

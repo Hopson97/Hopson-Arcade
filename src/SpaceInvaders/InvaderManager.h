@@ -11,68 +11,68 @@
 #include "../Framework/Util/Random.h"
 
 namespace SpaceInvaders {
-class World;
+    class World;
 
-using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
+    using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
 
-/**
-    Class to manage the drawing and updating of invaders
-*/
-class InvaderManager {
-public:
-    InvaderManager(World &world);
-
-    // Moves all of the invaders to the left or right, if the clock has reached
-    // a certain time
-    void tryStepInvaders();
-
-    // Draws all of the alive invaders
-    void drawInvaders(sf::RenderTarget &target);
-
-    // Tries to collide the invaders with the projectiles
-    // Returns the points of collision
-    CollisionResult
-    tryCollideWithProjectiles(std::vector<Projectile> &projectiles);
-
-    // This is for firing projectiles from the enemy
-    sf::Vector2f getRandomLowestInvaderPoint(Random<> &random);
-
-    int getAliveInvadersCount() const;
-
-    /*
-        These two functions are for the initilization of the invaders.
-        It will add one invader at a time unil all have been added.
+    /**
+        Class to manage the drawing and updating of invaders
     */
-    void initAddInvader();
-    bool areInvadersAlive() const;
+    class InvaderManager {
+      public:
+        InvaderManager(World &world);
 
-private:
-    // Changes time between the alien's steps based on number alive
-    void updateStepDelay();
+        // Moves all of the invaders to the left or right, if the clock has
+        // reached a certain time
+        void tryStepInvaders();
 
-    // Checks the invaders position to see if all the aliens should move down
-    // Or if the game is over
-    bool testInvaderPosition(const Invader &invader) const;
+        // Draws all of the alive invaders
+        void drawInvaders(sf::RenderTarget &target);
 
-    std::vector<Invader> m_invaders;
-    sf::Clock m_stepTimer;
-    sf::Time m_stepGap;
+        // Tries to collide the invaders with the projectiles
+        // Returns the points of collision
+        CollisionResult
+        tryCollideWithProjectiles(std::vector<Projectile> &projectiles);
 
-    World &m_world;
+        // This is for firing projectiles from the enemy
+        sf::Vector2f getRandomLowestInvaderPoint(Random<> &random);
 
-    AnimationRenderer m_invaderRenderer;
-    unsigned m_aliveInvaders;
+        int getAliveInvadersCount() const;
 
-    bool m_hasAllInvadersBeenAdded = false;
+        /*
+            These two functions are for the initilization of the invaders.
+            It will add one invader at a time unil all have been added.
+        */
+        void initAddInvader();
+        bool areInvadersAlive() const;
 
-    bool m_isMovingLeft = false;
-    bool m_moveDown = false;
+      private:
+        // Changes time between the alien's steps based on number alive
+        void updateStepDelay();
 
-    int m_initX = 0;
-    int m_initY = 4;
-    int m_ticks = 0;
+        // Checks the invaders position to see if all the aliens should move
+        // down Or if the game is over
+        bool testInvaderPosition(const Invader &invader) const;
 
-    sf::Sound m_stepSounds[4];
-    sf::Sound m_invaderKilledSound;
-};
+        std::vector<Invader> m_invaders;
+        sf::Clock m_stepTimer;
+        sf::Time m_stepGap;
+
+        World &m_world;
+
+        AnimationRenderer m_invaderRenderer;
+        unsigned m_aliveInvaders;
+
+        bool m_hasAllInvadersBeenAdded = false;
+
+        bool m_isMovingLeft = false;
+        bool m_moveDown = false;
+
+        int m_initX = 0;
+        int m_initY = 4;
+        int m_ticks = 0;
+
+        sf::Sound m_stepSounds[4];
+        sf::Sound m_invaderKilledSound;
+    };
 } // namespace SpaceInvaders
