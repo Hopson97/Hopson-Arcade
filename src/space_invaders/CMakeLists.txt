@@ -15,3 +15,5 @@ add_library(space_invaders
     states/state_main_menu.cpp
     states/state_playing.cpp
 )
+
+target_include_directories(space_invaders PRIVATE ../arcade)
