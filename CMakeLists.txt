@@ -1,53 +1,42 @@
 cmake_minimum_required(VERSION 3.10)
 
+include(cmake/CompileFeatures.cmake)
+
 #Set up project
 project(hopson-arcade VERSION 1.0)
 
 #Set executable
-set(SOURCES
-    Source/Main.cpp
-    Source/Game.cpp
-    Source/SpaceInvaders/AnimationRenderer.cpp
-    Source/SpaceInvaders/StarryBackground.cpp
-    Source/SpaceInvaders/InvaderManager.cpp
-    Source/SpaceInvaders/World.cpp
-    Source/SpaceInvaders/Collidable.cpp
-    Source/SpaceInvaders/States/StateMainMenu.cpp
-    Source/SpaceInvaders/States/StateHighscores.cpp
-    Source/SpaceInvaders/States/StatePlaying.cpp
-    Source/SpaceInvaders/Entity/Shield.cpp
-    Source/SpaceInvaders/Entity/Invader.cpp
-    Source/SpaceInvaders/Entity/Player.cpp
-    Source/SpaceInvaders/Entity/Explosion.cpp
-    Source/SpaceInvaders/Entity/Projectile.cpp
-    Source/SpaceInvaders/Entity/UFO.cpp
-    Source/Framework/Util/FileUtil.cpp
-    Source/Framework/Util/FPSCounter.cpp
-    Source/Framework/Util/Maths.cpp
-    Source/Framework/Util/ToggleKey.cpp
-    Source/Framework/Util/Animation.cpp
-    Source/Framework/GUI/StackMenu.cpp
-    Source/Framework/GUI/Button.cpp
-    Source/Framework/GUI/Textbox.cpp
-    Source/Framework/GUI/Widget.cpp
-    Source/Framework/ResourceManager/ResourceHolder.cpp
-    Source/Framework/States/StateBase.cpp
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+    src/arcade/util/animation.cpp
+    src/arcade/util/file_util.cpp
+    src/arcade/util/toggle_key.cpp
+    src/arcade/util/fps_counter.cpp
+    src/arcade/input/keyboard.cpp
+    src/arcade/game.cpp
+    src/arcade/resources/resource_holder.cpp
+    src/arcade/state/state_base.cpp
+    src/arcade/gui/button.cpp
+    src/arcade/gui/textbox.cpp
+    src/arcade/gui/widget.cpp
+    src/arcade/gui/stack_menu.cpp
+    src/space_invaders/world.cpp
+    src/space_invaders/collidable.cpp
+    src/space_invaders/entity/projectile.cpp
+    src/space_invaders/entity/shield.cpp
+    src/space_invaders/entity/invader.cpp
+    src/space_invaders/entity/player.cpp
+    src/space_invaders/entity/explosion.cpp
+    src/space_invaders/entity/ufo.cpp
+    src/space_invaders/invader_manager.cpp
+    src/space_invaders/states/state_main_menu.cpp
+    src/space_invaders/states/state_highscores.cpp
+    src/space_invaders/states/state_playing.cpp
+    src/space_invaders/animation_renderer.cpp
+    src/space_invaders/starry_background.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-
-#Set C++17
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
-
-#Set flags
-if(MSVC)
-  	target_compile_options(${PROJECT_NAME} PRIVATE 
-    	/W4 /WX)
-else()
-  	target_compile_options(${PROJECT_NAME} PRIVATE 
-		-Wall -Wextra -pedantic -Werror)		#Warning flags
-endif()
+setup_target_compile(${PROJECT_NAME})
 
 #Set module path
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
