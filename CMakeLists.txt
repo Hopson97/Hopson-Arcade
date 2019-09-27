@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(hopson-arcade VERSION 1.0)
 
 #Set executable
-set(SOURCES
+add_executable(${PROJECT_NAME}
     src/main.cpp
     # Source/Game.cpp
     # Source/SpaceInvaders/AnimationRenderer.cpp
@@ -34,7 +34,7 @@ set(SOURCES
     # Source/Framework/States/StateBase.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_subdirectory(src)
 
 #Set C++17
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
