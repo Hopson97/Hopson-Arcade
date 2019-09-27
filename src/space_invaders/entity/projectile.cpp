@@ -2,7 +2,7 @@
 
 #include "../DisplayInfo.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     Projectile::Projectile(const sf::Vector2f &position, Type type,
                            Direction direction)
         : Collidable(WIDTH / 1.5, HEIGHT)
@@ -42,4 +42,4 @@ namespace SpaceInvaders {
     }
 
     int Projectile::getID() const { return m_id; }
-} // namespace SpaceInvaders
+} // namespace space_invaders

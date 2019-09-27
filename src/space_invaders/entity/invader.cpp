@@ -1,6 +1,6 @@
 #include "Invader.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     Invader::Invader(const sf::Vector2f &initialLocation, Type type)
         : Collidable(WIDTH, HEIGHT)
         , m_initialPosition(initialLocation)
@@ -21,4 +21,4 @@ namespace SpaceInvaders {
     {
         m_isAlive = false;
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

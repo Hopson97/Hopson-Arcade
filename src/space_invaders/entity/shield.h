@@ -5,7 +5,7 @@
 
 #include "../Collidable.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     class Projectile;
 
     class Shield : private Collidable {
@@ -57,4 +57,4 @@ namespace SpaceInvaders {
         std::vector<ShieldSection> m_sections;
         sf::Vector2f m_position;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

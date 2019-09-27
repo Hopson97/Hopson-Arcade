@@ -1,6 +1,6 @@
 #include "AnimationRenderer.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     AnimationRenderer::AnimationRenderer(int frameWidth, int frameHeight,
                                          float entityWidth, float entityHeight,
                                          const sf::Texture &spriteSheet)
@@ -25,4 +25,4 @@ namespace SpaceInvaders {
         m_entity.setTextureRect({texLeft, texTop, m_frameWidth, m_frameHeight});
         renderer.draw(m_entity);
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

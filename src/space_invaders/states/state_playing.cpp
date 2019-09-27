@@ -8,7 +8,7 @@
 
 #include "StateHighscores.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     StatePlaying::StatePlaying(Game &game)
         : StateBase(game, "Playing the game")
         , m_gameOverMenu(game.getWindow(), Display::HEIGHT / 3)
@@ -132,4 +132,4 @@ namespace SpaceInvaders {
         m_label.setPosition(
             m_centerPosition - m_label.getGlobalBounds().width / 2, 15);
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

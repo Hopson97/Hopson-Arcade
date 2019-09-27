@@ -3,7 +3,7 @@
 #include "../../Framework/ResourceManager/ResourceHolder.h"
 #include "../DisplayInfo.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     namespace {
         constexpr float WIDTH = 72;
         constexpr float HEIGHT = 36;
@@ -87,4 +87,4 @@ namespace SpaceInvaders {
             -1000,
             0); // Move offscreen so it cannot be collided with projectiles
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

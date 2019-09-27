@@ -5,7 +5,7 @@
 #include "../Framework/ResourceManager/ResourceHolder.h"
 #include "World.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     namespace {
         const int MAX_INVADERS = 55;
     }
@@ -179,4 +179,4 @@ namespace SpaceInvaders {
                     Display::WIDTH - 15 &&
                 !m_isMovingLeft); // Check invader right
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

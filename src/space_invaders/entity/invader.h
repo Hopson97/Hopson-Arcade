@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../Collidable.h"
-namespace SpaceInvaders {
+namespace space_invaders {
     /*
         Class to represent a single invader
     */
@@ -41,4 +41,4 @@ namespace SpaceInvaders {
         constexpr static float WIDTH = 48;
         constexpr static float HEIGHT = 32;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

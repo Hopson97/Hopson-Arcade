@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace SpaceInvaders {
+namespace space_invaders {
     /*
         Represents a single explosion entity
     */
@@ -18,4 +18,4 @@ namespace SpaceInvaders {
         sf::Clock m_lifetimeCounter; // Clock for checking if the explosion is
                                      // outlived
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

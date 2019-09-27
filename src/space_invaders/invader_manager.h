@@ -10,7 +10,7 @@
 
 #include "../Framework/Util/Random.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     class World;
 
     using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
@@ -75,4 +75,4 @@ namespace SpaceInvaders {
         sf::Sound m_stepSounds[4];
         sf::Sound m_invaderKilledSound;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

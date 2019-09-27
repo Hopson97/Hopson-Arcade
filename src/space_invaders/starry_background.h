@@ -3,7 +3,7 @@
 #include "../Framework/Util/Random.h"
 #include <SFML/Graphics.hpp>
 
-namespace SpaceInvaders {
+namespace space_invaders {
 
     class StarryBackground {
       public:
@@ -20,4 +20,4 @@ namespace SpaceInvaders {
 
         Random<> m_rng;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

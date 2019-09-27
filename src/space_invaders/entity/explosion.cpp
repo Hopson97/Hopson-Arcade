@@ -1,6 +1,6 @@
 #include "Explosion.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     Explosion::Explosion(const sf::Vector2f &position)
         : m_position(position)
     {
@@ -12,4 +12,4 @@ namespace SpaceInvaders {
     }
 
     const sf::Vector2f &Explosion::getPosition() const { return m_position; }
-} // namespace SpaceInvaders
+} // namespace space_invaders

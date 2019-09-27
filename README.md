@@ -8,7 +8,7 @@ List of all the games in the "arcade".
 
 ### Space Invaders
 
-[Source](https://github.com/Hopson97/Hopson-Arcade/tree/master/Source/SpaceInvaders)
+[Source](https://github.com/Hopson97/Hopson-Arcade/tree/master/Source/space_invaders)
 
 [Video](https://www.youtube.com/watch?v=MkpxwsybNPo)
 

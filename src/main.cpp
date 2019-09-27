@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "SpaceInvaders/States/StateMainMenu.h"
+#include "space_invaders/States/StateMainMenu.h"
 
 #include <iostream>
 
@@ -55,7 +55,7 @@ int main()
 
         switch (option) {
             case 1:
-                run<SpaceInvaders::StateMainMenu>();
+                run<space_invaders::StateMainMenu>();
                 break;
 
             case GAMES + 1:

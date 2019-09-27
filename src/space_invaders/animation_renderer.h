@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace SpaceInvaders {
+namespace space_invaders {
     /*
         Utility class for rendering a large number of entites which share
         the same animation
@@ -25,4 +25,4 @@ namespace SpaceInvaders {
         const int m_frameWidth;
         const int m_frameHeight;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

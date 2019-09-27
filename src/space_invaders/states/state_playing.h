@@ -4,7 +4,7 @@
 #include "../../Framework/States/StateBase.h"
 #include "../World.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     /*
         The main state; where all the gameplay happens
     */
@@ -58,4 +58,4 @@ namespace SpaceInvaders {
             float m_centerPosition;
         } m_scoreDisplay, m_highestScoreDisplay;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

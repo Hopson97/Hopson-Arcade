@@ -2,7 +2,7 @@
 #include "../../Framework/ResourceManager/ResourceHolder.h"
 #include "../DisplayInfo.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     namespace {
         constexpr float BASE_Y = (float)Display::HEIGHT - 40.0f;
     }
@@ -105,4 +105,4 @@ namespace SpaceInvaders {
         }
     }
 
-} // namespace SpaceInvaders
+} // namespace space_invaders

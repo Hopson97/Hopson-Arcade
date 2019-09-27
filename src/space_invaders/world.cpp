@@ -1,7 +1,7 @@
 #include "World.h"
 #include "../Framework/ResourceManager/ResourceHolder.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     World::World()
         : m_projectileRenderer(
               4, 8, Projectile::WIDTH, Projectile::HEIGHT,
@@ -193,4 +193,4 @@ namespace SpaceInvaders {
         m_player.draw(target);
         m_ufo.draw(target);
     }
-} // Namespace SpaceInvaders
+} // Namespace space_invaders

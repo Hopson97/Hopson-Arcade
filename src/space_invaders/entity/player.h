@@ -7,7 +7,7 @@
 #include "../../Framework/Util/Animation.h"
 #include "../Collidable.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     /**
         Represents the player
     */
@@ -46,4 +46,4 @@ namespace SpaceInvaders {
 
         sf::Sound m_deathSound;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

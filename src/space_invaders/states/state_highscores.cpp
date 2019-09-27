@@ -9,9 +9,9 @@
 #include <iostream>
 #include <sstream>
 
-namespace SpaceInvaders {
+namespace space_invaders {
     namespace {
-        const auto scoresPath = "res/SpaceInvaders/scores.txt";
+        const auto scoresPath = "res/space_invaders/scores.txt";
     }
 
     StateHighscores::StateHighscores(Game &game, int score)
@@ -205,4 +205,4 @@ namespace SpaceInvaders {
         renderer.draw(m_nameText);
         renderer.draw(m_scoreText);
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

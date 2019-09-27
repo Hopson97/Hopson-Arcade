@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace SpaceInvaders {
+namespace space_invaders {
     Shield::Shield(float x)
         : Collidable((float)SIZE, (float)SIZE)
         , m_position(x, Display::HEIGHT - 200)
@@ -193,4 +193,4 @@ namespace SpaceInvaders {
                 break;
         }
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

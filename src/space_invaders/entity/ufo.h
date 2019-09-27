@@ -6,7 +6,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-namespace SpaceInvaders {
+namespace space_invaders {
     class UFO : public Collidable {
       public:
         enum class State { Waiting, Flying, Destroyed };
@@ -32,4 +32,4 @@ namespace SpaceInvaders {
 
         sf::Sound m_flyingSound;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

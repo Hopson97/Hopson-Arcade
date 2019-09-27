@@ -10,7 +10,7 @@
 #include "Entity/UFO.h"
 #include "InvaderManager.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     /**
         The class which manages the world and th interactions between different
        entites
@@ -56,4 +56,4 @@ namespace SpaceInvaders {
 
         bool m_isGameOver = false;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

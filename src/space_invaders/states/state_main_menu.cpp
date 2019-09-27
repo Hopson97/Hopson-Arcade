@@ -6,7 +6,7 @@
 #include "StateHighscores.h"
 #include "StatePlaying.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     StateMainMenu::StateMainMenu(Game &game)
         : StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
@@ -50,4 +50,4 @@ namespace SpaceInvaders {
         m_mainMenu.render(renderer);
         renderer.draw(m_banner);
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

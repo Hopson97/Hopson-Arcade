@@ -4,7 +4,7 @@
 #include "../../Framework/GUI/Widget.h"
 #include "../../Framework/States/StateBase.h"
 #include "../StarryBackground.h"
-namespace SpaceInvaders {
+namespace space_invaders {
     class StateHighscores : public StateBase {
         using Entry = std::pair<std::string, int>;
 
@@ -60,4 +60,4 @@ namespace SpaceInvaders {
 
         sf::RectangleShape m_banner;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

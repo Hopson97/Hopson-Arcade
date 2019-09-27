@@ -2,7 +2,7 @@
 
 #include "DisplayInfo.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     StarryBackground::StarryBackground()
     {
         for (int i = 0; i < 500; i++) {
@@ -34,4 +34,4 @@ namespace SpaceInvaders {
                          m_rng.getFloatInRange((float)Display::HEIGHT,
                                                (float)Display::HEIGHT * 2.0f)};
     }
-} // namespace SpaceInvaders
+} // namespace space_invaders

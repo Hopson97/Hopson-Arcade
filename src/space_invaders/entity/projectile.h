@@ -4,7 +4,7 @@
 
 #include "../Collidable.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     class Projectile : public Collidable {
       public:
         constexpr static float HEIGHT = 24;
@@ -34,4 +34,4 @@ namespace SpaceInvaders {
         bool m_isActive = true;
         int m_id;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders

@@ -5,7 +5,7 @@
 #include "../../Framework/Util/Random.h"
 #include "../StarryBackground.h"
 
-namespace SpaceInvaders {
+namespace space_invaders {
     class StateMainMenu : public StateBase {
       public:
         StateMainMenu(Game &game);
@@ -21,4 +21,4 @@ namespace SpaceInvaders {
 
         StarryBackground m_background;
     };
-} // namespace SpaceInvaders
+} // namespace space_invaders
