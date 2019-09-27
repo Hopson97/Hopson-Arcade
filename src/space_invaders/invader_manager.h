@@ -1,14 +1,14 @@
 #pragma once
 
-#include "AnimationRenderer.h"
-#include "DisplayInfo.h"
-#include "Entity/Invader.h"
-#include "Entity/Projectile.h"
+#include "animation_renderer.h"
+#include "display_info.h"
+#include "entity/invader.h"
+#include "entity/projectile.h"
 
 #include <SFML/Audio.hpp>
 #include <vector>
 
-#include "../Framework/Util/Random.h"
+#include "../arcade/util/random.h"
 
 namespace space_invaders {
     class World;

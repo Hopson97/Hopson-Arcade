@@ -1,5 +1,5 @@
 /**
- * @file Button.h
+ * @file button.h
  * @author Matthew Hopson
  * @brief Class for a button
  * @version 0.1
@@ -12,7 +12,7 @@
 
 #include <functional>
 
-#include "Widget.h"
+#include "widget.h"
 
 namespace gui {
 

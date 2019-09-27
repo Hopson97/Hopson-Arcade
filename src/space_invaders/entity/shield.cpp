@@ -1,8 +1,8 @@
-#include "Shield.h"
+#include "shield.h"
 
-#include "../../Framework/Util/Random.h"
-#include "../DisplayInfo.h"
-#include "Projectile.h"
+#include "../../arcade/util/random.h"
+#include "../display_info.h"
+#include "projectile.h"
 
 #include <iostream>
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../Framework/GUI/StackMenu.h"
-#include "../../Framework/GUI/Widget.h"
-#include "../../Framework/States/StateBase.h"
-#include "../StarryBackground.h"
+#include "../../arcade/gui/stack_menu.h"
+#include "../../arcade/gui/widget.h"
+#include "../../arcade/state/state_base.h"
+#include "../starry_background.h"
 namespace space_invaders {
     class StateHighscores : public StateBase {
         using Entry = std::pair<std::string, int>;

@@ -16,4 +16,4 @@ add_library(space_invaders
     states/state_playing.cpp
 )
 
-target_include_directories(space_invaders PRIVATE ../arcade)
+target_include_directories(space_invaders PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../arcade)

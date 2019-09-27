@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Framework/Util/Random.h"
+#include "../arcade/util/random.h"
 #include <SFML/Graphics.hpp>
 
 namespace space_invaders {

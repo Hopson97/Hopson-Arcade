@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019
  *
  */
-#include "Button.h"
+#include "button.h"
 
 #include <iostream>
 

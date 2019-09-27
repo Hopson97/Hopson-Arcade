@@ -1,5 +1,5 @@
 /**
- * @file StackMenu.h
+ * @file stack_menu.h
  * @author Matthew Hopson
  * @brief Class definition for a stack menu
  * @version 0.1
@@ -14,8 +14,8 @@
 #include <memory>
 #include <vector>
 
-#include "../Util/NonCopyable.h"
-#include "Widget.h"
+#include "../util/non_copyable.h"
+#include "widget.h"
 
 namespace gui {
     /**

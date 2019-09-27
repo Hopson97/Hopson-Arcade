@@ -1,7 +1,6 @@
-#include "StackMenu.h"
+#include "stack_menu.h"
 
-#include "../../space_invaders/DisplayInfo.h"
-#include "../ResourceManager/ResourceHolder.h"
+#include "../resources/resource_holder.h"
 
 constexpr float BASE_Y = 95.0f;
 

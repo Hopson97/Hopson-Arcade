@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Collidable.h"
+#include "../collidable.h"
 namespace space_invaders {
     /*
         Class to represent a single invader

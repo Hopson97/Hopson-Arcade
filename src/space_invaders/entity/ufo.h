@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../Framework/Util/Animation.h"
-#include "../../Framework/Util/Random.h"
-#include "../Collidable.h"
+#include "../../arcade/util/animation.h"
+#include "../../arcade/util/random.h"
+#include "../collidable.h"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 

@@ -1,9 +1,9 @@
-#include "StateHighscores.h"
+#include "state_highscores.h"
 
-#include "../../Framework/GUI/Button.h"
-#include "../../Framework/GUI/Textbox.h"
-#include "../../Game.h"
-#include "../DisplayInfo.h"
+#include "../../arcade/gui/button.h"
+#include "../../arcade/gui/textbox.h"
+#include "../../arcade/game.h"
+#include "../display_info.h"
 
 #include <fstream>
 #include <iostream>

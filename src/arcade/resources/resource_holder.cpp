@@ -1,4 +1,4 @@
-#include "ResourceHolder.h"
+#include "resource_holder.h"
 
 ResourceHolder &ResourceHolder::get()
 {

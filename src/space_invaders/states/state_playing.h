@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../Framework/GUI/StackMenu.h"
-#include "../../Framework/States/StateBase.h"
-#include "../World.h"
+#include "../../arcade/gui/stack_menu.h"
+#include "../../arcade/state/state_base.h"
+#include "../world.h"
 
 namespace space_invaders {
     /*

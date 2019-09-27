@@ -1,6 +1,6 @@
-#include "FPSCounter.h"
+#include "fps_counter.h"
 
-#include "../ResourceManager/ResourceHolder.h"
+#include "../resources/resource_holder.h"
 
 #include <iostream>
 

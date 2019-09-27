@@ -1,9 +1,9 @@
-#include "InvaderManager.h"
+#include "invader_manager.h"
 
 #include <iostream>
 
-#include "../Framework/ResourceManager/ResourceHolder.h"
-#include "World.h"
+#include "../arcade/resources/resource_holder.h"
+#include "world.h"
 
 namespace space_invaders {
     namespace {

@@ -4,9 +4,9 @@
 #include <memory>
 #include <vector>
 
-#include "Framework/States/StateBase.h"
-#include "Framework/Util/FPSCounter.h"
-#include "Framework/Util/NonMoveable.h"
+#include "util/fps_counter.h"
+#include "util/non_moveable.h"
+#include "state/state_base.h"
 
 /**
     Main controlling class of the game.

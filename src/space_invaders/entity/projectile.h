@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Collidable.h"
+#include "../collidable.h"
 
 namespace space_invaders {
     class Projectile : public Collidable {

@@ -1,5 +1,6 @@
-#include "Game.h"
-#include "space_invaders/States/StateMainMenu.h"
+
+#include "space_invaders/states/state_main_menu.h"
+#include "arcade/game.h"
 
 #include <iostream>
 

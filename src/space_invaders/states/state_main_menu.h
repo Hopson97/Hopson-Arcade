@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../Framework/GUI/StackMenu.h"
-#include "../../Framework/States/StateBase.h"
-#include "../../Framework/Util/Random.h"
-#include "../StarryBackground.h"
+#include "../../arcade/gui/stack_menu.h"
+#include "../../arcade/state/state_base.h"
+#include "../../arcade/util/random.h"
+#include "../starry_background.h"
 
 namespace space_invaders {
     class StateMainMenu : public StateBase {

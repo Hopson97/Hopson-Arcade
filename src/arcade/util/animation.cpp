@@ -1,4 +1,4 @@
-#include "Animation.h"
+#include "animation.h"
 
 Animation::Animation(unsigned frameWidth, unsigned frameHeight)
     : FRAME_WIDTH(frameWidth)

@@ -2,13 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "AnimationRenderer.h"
-#include "Entity/Explosion.h"
-#include "Entity/Player.h"
-#include "Entity/Projectile.h"
-#include "Entity/Shield.h"
-#include "Entity/UFO.h"
-#include "InvaderManager.h"
+#include "animation_renderer.h"
+#include "entity/explosion.h"
+#include "entity/player.h"
+#include "entity/projectile.h"
+#include "entity/shield.h"
+#include "entity/ufo.h"
+#include "invader_manager.h"
 
 namespace space_invaders {
     /**

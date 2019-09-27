@@ -2,7 +2,7 @@
 
 #include <functional>
 
-#include "Widget.h"
+#include "widget.h"
 
 namespace gui {
     class TextBox : public gui::Widget {

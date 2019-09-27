@@ -1,6 +1,6 @@
-#include "StarryBackground.h"
+#include "starry_background.h"
 
-#include "DisplayInfo.h"
+#include "display_info.h"
 
 namespace space_invaders {
     StarryBackground::StarryBackground()

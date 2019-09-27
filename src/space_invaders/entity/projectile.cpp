@@ -1,6 +1,6 @@
-#include "Projectile.h"
+#include "projectile.h"
 
-#include "../DisplayInfo.h"
+#include "../display_info.h"
 
 namespace space_invaders {
     Projectile::Projectile(const sf::Vector2f &position, Type type,

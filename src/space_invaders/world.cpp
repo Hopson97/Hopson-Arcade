@@ -1,5 +1,5 @@
-#include "World.h"
-#include "../Framework/ResourceManager/ResourceHolder.h"
+#include "world.h"
+#include "../arcade/resources/resource_holder.h"
 
 namespace space_invaders {
     World::World()

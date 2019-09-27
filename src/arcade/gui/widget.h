@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../ResourceManager/ResourceHolder.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
+
+#include "../resources/resource_holder.h"
 
 namespace gui {
     class Widget {

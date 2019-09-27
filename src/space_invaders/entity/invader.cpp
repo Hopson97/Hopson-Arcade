@@ -1,4 +1,4 @@
-#include "Invader.h"
+#include "invader.h"
 
 namespace space_invaders {
     Invader::Invader(const sf::Vector2f &initialLocation, Type type)

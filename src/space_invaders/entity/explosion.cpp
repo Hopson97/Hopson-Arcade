@@ -1,4 +1,4 @@
-#include "Explosion.h"
+#include "explosion.h"
 
 namespace space_invaders {
     Explosion::Explosion(const sf::Vector2f &position)

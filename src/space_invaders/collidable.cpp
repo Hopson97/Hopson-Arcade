@@ -1,4 +1,4 @@
-#include "Collidable.h"
+#include "collidable.h"
 
 namespace space_invaders {
     Collidable::Collidable(float width, float height)

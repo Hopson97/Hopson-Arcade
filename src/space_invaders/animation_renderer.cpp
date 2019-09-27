@@ -1,4 +1,4 @@
-#include "AnimationRenderer.h"
+#include "animation_renderer.h"
 
 namespace space_invaders {
     AnimationRenderer::AnimationRenderer(int frameWidth, int frameHeight,

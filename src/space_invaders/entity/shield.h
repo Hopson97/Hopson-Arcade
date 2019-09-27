@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <array>
 
-#include "../Collidable.h"
+#include "../collidable.h"
 
 namespace space_invaders {
     class Projectile;

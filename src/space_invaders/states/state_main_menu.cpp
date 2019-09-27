@@ -1,10 +1,10 @@
-#include "StateMainMenu.h"
+#include "state_main_menu.h"
 
-#include "../../Game.h"
+#include "../../arcade/game.h"
 
-#include "../../Framework/GUI/Button.h"
-#include "StateHighscores.h"
-#include "StatePlaying.h"
+#include "../../arcade/gui/button.h"
+#include "state_highscores.h"
+#include "state_playing.h"
 
 namespace space_invaders {
     StateMainMenu::StateMainMenu(Game &game)
