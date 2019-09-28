@@ -4,7 +4,7 @@
 
 namespace arcade {
     Game::Game()
-        : m_window({1280, 720}, "Hopson Arcade")
+        : m_window({1, 1}, "Hopson Arcade")
     {
         m_window.setPosition({m_window.getPosition().x, 0});
         m_window.setFramerateLimit(60);
