@@ -10,7 +10,7 @@ namespace space_invaders {
     */
     class StatePlaying : public arcade::StateBase {
       public:
-        StatePlaying(arcade::Game  &game);
+        StatePlaying(arcade::Game &game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override;

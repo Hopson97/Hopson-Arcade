@@ -7,7 +7,7 @@
 #include "state_highscores.h"
 
 namespace space_invaders {
-    StatePlaying::StatePlaying(arcade::Game  &game)
+    StatePlaying::StatePlaying(arcade::Game &game)
         : arcade::StateBase(game, "Playing the game")
         , m_gameOverMenu(game.getWindow(), Display::HEIGHT / 3)
         , m_scoreDisplay(Display::WIDTH / 8, "Score")

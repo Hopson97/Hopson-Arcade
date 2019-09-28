@@ -14,7 +14,7 @@ namespace space_invaders {
         const auto scoresPath = "res/space_invaders/scores.txt";
     }
 
-    StateHighscores::StateHighscores(arcade::Game  &game, int score)
+    StateHighscores::StateHighscores(arcade::Game &game, int score)
         : StateHighscores(game)
     {
         initSubmitMenu();
@@ -23,7 +23,7 @@ namespace space_invaders {
         m_state = State::Submitting;
     }
 
-    StateHighscores::StateHighscores(arcade::Game  &game)
+    StateHighscores::StateHighscores(arcade::Game &game)
         : arcade::StateBase(game, "Highscores")
         , m_submitScoreMenu(game.getWindow(), 100.0f)
         , m_highscoreMenu(game.getWindow(), Display::HEIGHT - 100.0f)

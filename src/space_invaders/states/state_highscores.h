@@ -25,8 +25,8 @@ namespace space_invaders {
         enum class State { Submitting, Viewing };
 
       public:
-        StateHighscores(arcade::Game  &game, int score);
-        StateHighscores(arcade::Game  &game);
+        StateHighscores(arcade::Game &game, int score);
+        StateHighscores(arcade::Game &game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};

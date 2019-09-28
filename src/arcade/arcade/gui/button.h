@@ -116,4 +116,4 @@ namespace arcade {
             return std::make_unique<Button>();
         }
     } // namespace gui
-}
+} // namespace arcade

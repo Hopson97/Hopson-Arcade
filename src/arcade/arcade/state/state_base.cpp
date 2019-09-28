@@ -5,8 +5,8 @@
 namespace arcade {
 
     StateBase::StateBase(Game &game, const char *name)
-        : m_pGame(&game),
-          m_name(name)
+        : m_pGame(&game)
+        , m_name(name)
     {
     }
 

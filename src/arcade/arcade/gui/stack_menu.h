@@ -61,4 +61,4 @@ namespace arcade {
         };
 
     } // namespace gui
-}
+} // namespace arcade

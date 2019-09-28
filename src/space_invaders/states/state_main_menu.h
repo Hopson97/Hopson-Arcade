@@ -8,7 +8,7 @@
 namespace space_invaders {
     class StateMainMenu : public arcade::StateBase {
       public:
-        StateMainMenu(arcade::Game  &game);
+        StateMainMenu(arcade::Game &game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
