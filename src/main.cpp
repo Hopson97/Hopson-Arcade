@@ -24,7 +24,7 @@ namespace {
     {
         std::cout << "\nTo choose another Game, simply close the window\n";
         std::cin.ignore();
-        Game app{};
+        arcade::Game app{};
         app.initGame<T>();
         app.run();
         std::cout << '\n';

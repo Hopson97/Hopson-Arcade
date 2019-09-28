@@ -15,7 +15,7 @@ namespace space_invaders {
         // Changes to the next frame
         void nextFrame();
 
-        // Renders a single entity, using the current animation frame
+        // Renders a single entity, using the current arcade::Animation frame
         void renderEntity(sf::RenderTarget &renderer, int type,
                           const sf::Vector2f &position);
 

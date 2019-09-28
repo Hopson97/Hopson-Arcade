@@ -18,6 +18,6 @@ namespace space_invaders {
 
         std::vector<sf::Vertex> m_stars;
 
-        Random<> m_rng;
+        arcade::Random<> m_rng;
     };
 } // namespace space_invaders

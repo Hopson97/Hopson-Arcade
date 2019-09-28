@@ -14,7 +14,7 @@ namespace space_invaders {
         const auto scoresPath = "res/space_invaders/scores.txt";
     }
 
-    StateHighscores::StateHighscores(Game &game, int score)
+    StateHighscores::StateHighscores(arcade::Game  &game, int score)
         : StateHighscores(game)
     {
         initSubmitMenu();
@@ -23,8 +23,8 @@ namespace space_invaders {
         m_state = State::Submitting;
     }
 
-    StateHighscores::StateHighscores(Game &game)
-        : StateBase(game, "Highscores")
+    StateHighscores::StateHighscores(arcade::Game  &game)
+        : arcade::StateBase(game, "Highscores")
         , m_submitScoreMenu(game.getWindow(), 100.0f)
         , m_highscoreMenu(game.getWindow(), Display::HEIGHT - 100.0f)
         , m_state(State::Viewing)
@@ -33,7 +33,7 @@ namespace space_invaders {
         m_pActiveMenu = &m_highscoreMenu;
         m_banner.setSize({(float)Display::WIDTH, 200});
         m_banner.setTexture(
-            &ResourceHolder::get().textures.get("si/highscores"));
+            &arcade::ResourceHolder::get().textures.get("si/highscores"));
         createHighscoreView();
     }
 
@@ -76,7 +76,7 @@ namespace space_invaders {
     {
         loadScores();
 
-        auto backBtn = gui::makeButton();
+        auto backBtn = arcade::gui::makeButton();
         backBtn->setText("Main Menu");
         backBtn->setFunction([&]() { m_pGame->popState(); });
         m_highscoreMenu.addWidget(std::move(backBtn));
@@ -84,10 +84,10 @@ namespace space_invaders {
 
     void StateHighscores::initSubmitMenu()
     {
-        auto nameTextBox = gui::makeTextBox(m_submitString);
+        auto nameTextBox = arcade::gui::makeTextBox(m_submitString);
         nameTextBox->setLabel("Click text box to enter name");
 
-        auto submitBtn = gui::makeButton();
+        auto submitBtn = arcade::gui::makeButton();
         submitBtn->setText("Submit Score");
         submitBtn->setFunction([&]() {
             if (!m_submitString.empty()) {
@@ -96,7 +96,7 @@ namespace space_invaders {
             }
         });
 
-        auto backBtn = gui::makeButton();
+        auto backBtn = arcade::gui::makeButton();
         backBtn->setText("View HighScores");
         backBtn->setFunction([&]() {
             loadScores();

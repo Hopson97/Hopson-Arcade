@@ -35,7 +35,7 @@ namespace space_invaders {
         tryCollideWithProjectiles(std::vector<Projectile> &projectiles);
 
         // This is for firing projectiles from the enemy
-        sf::Vector2f getRandomLowestInvaderPoint(Random<> &random);
+        sf::Vector2f getRandomLowestInvaderPoint(arcade::Random<> &random);
 
         int getAliveInvadersCount() const;
 

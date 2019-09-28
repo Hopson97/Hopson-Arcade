@@ -2,22 +2,24 @@
 
 #include <SFML/Graphics.hpp>
 
-class FPSCounter {
-  public:
-    FPSCounter();
+namespace arcade {
+    class FPSCounter {
+      public:
+        FPSCounter();
 
-    void update();
+        void update();
 
-    void draw(sf::RenderTarget &renderer);
+        void draw(sf::RenderTarget &renderer);
 
-  private:
-    sf::Text m_text;
-    sf::Font m_font;
+      private:
+        sf::Text m_text;
+        sf::Font m_font;
 
-    sf::Clock m_delayTimer;
-    sf::Clock m_fpsTimer;
+        sf::Clock m_delayTimer;
+        sf::Clock m_fpsTimer;
 
-    float m_fps = 0;
+        float m_fps = 0;
 
-    int m_frameCount = 0;
-};
+        int m_frameCount = 0;
+    };
+} // namespace arcade

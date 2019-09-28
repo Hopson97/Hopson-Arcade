@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME}
     src/arcade/arcade/gui/textbox.cpp
     src/arcade/arcade/gui/widget.cpp
     src/arcade/arcade/gui/stack_menu.cpp
+
     src/space_invaders/world.cpp
     src/space_invaders/collidable.cpp
     src/space_invaders/entity/projectile.cpp

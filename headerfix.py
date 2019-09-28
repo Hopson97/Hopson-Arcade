@@ -2,7 +2,7 @@ from pathlib import Path
 import re
 import os
 
-pathlist = Path('src/arcade').glob('**/*.h')
+pathlist = Path('src/arcade').glob('**/*.cpp')
 for path in pathlist:
     with open(path) as file:
         print ("__--------------------------________")

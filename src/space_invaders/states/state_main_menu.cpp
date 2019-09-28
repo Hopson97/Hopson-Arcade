@@ -7,24 +7,24 @@
 #include "state_playing.h"
 
 namespace space_invaders {
-    StateMainMenu::StateMainMenu(Game &game)
-        : StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
+    StateMainMenu::StateMainMenu(arcade::Game  &game)
+        : arcade::StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
     {
         m_banner.setSize({(float)Display::WIDTH, 200});
-        m_banner.setTexture(&ResourceHolder::get().textures.get("si/logo"));
+        m_banner.setTexture(&arcade::ResourceHolder::get().textures.get("si/logo"));
 
-        auto playBtn = gui::makeButton();
+        auto playBtn = arcade::gui::makeButton();
         playBtn->setText("Play game");
         playBtn->setFunction(
             [&]() { m_pGame->pushState<StatePlaying>(*m_pGame); });
 
-        auto highscoresBtn = gui::makeButton();
+        auto highscoresBtn = arcade::gui::makeButton();
         highscoresBtn->setText("Highscores");
         highscoresBtn->setFunction(
             [&]() { m_pGame->pushState<StateHighscores>(*m_pGame); });
 
-        auto exitBtn = gui::makeButton();
+        auto exitBtn = arcade::gui::makeButton();
         exitBtn->setText("Exit game");
         exitBtn->setFunction([&]() { m_pGame->popState(); });
 

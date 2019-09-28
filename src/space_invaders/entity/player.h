@@ -5,6 +5,7 @@
 #include <SFML/Audio.hpp>
 
 #include "../collidable.h"
+
 #include <arcade/util/animation.h>
 
 namespace space_invaders {
@@ -37,7 +38,7 @@ namespace space_invaders {
         void restart();
 
         sf::RectangleShape m_sprite;
-        Animation m_deathAnimation;
+        arcade::Animation m_deathAnimation;
         sf::Vector2f m_velocity;
         sf::Clock m_deathTimer;
 

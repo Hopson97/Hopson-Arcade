@@ -8,9 +8,9 @@ namespace space_invaders {
     /*
         The main state; where all the gameplay happens
     */
-    class StatePlaying : public StateBase {
+    class StatePlaying : public arcade::StateBase {
       public:
-        StatePlaying(Game &game);
+        StatePlaying(arcade::Game  &game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override;
@@ -24,7 +24,7 @@ namespace space_invaders {
         bool m_isGameover;
         sf::Clock m_gameOverClock;
 
-        gui::StackMenu m_gameOverMenu;
+        arcade::gui::StackMenu m_gameOverMenu;
 
         // Displays how many lives the player has left
         class LifeDisplay {
@@ -34,7 +34,7 @@ namespace space_invaders {
             void draw(sf::RenderTarget &window, int lives);
 
           private:
-            gui::Widget::Text m_label;
+            arcade::gui::Widget::Text m_label;
             sf::RectangleShape m_lifeStamp;
         } m_lifeDisplay;
 
@@ -52,7 +52,7 @@ namespace space_invaders {
           private:
             void updateDisplay();
 
-            gui::Widget::Text m_label;
+            arcade::gui::Widget::Text m_label;
             std::string m_text;
             int m_currentScore;
             float m_centerPosition;

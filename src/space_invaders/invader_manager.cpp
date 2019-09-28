@@ -14,7 +14,7 @@ namespace space_invaders {
         : m_stepGap(sf::seconds(0.5f))
         , m_world(world)
         , m_invaderRenderer(12, 8, Invader::WIDTH, Invader::HEIGHT,
-                            ResourceHolder::get().textures.get("si/invaders"))
+                            arcade::ResourceHolder::get().textures.get("si/invaders"))
     {
         // Layout of the invaders
         Invader::Type types[] = {Invader::Type::Squid, Invader::Type::Crab,
@@ -36,11 +36,11 @@ namespace space_invaders {
 
         // load sounds
         for (int i = 0; i < 4; i++) {
-            m_stepSounds[i].setBuffer(ResourceHolder::get().soundBuffers.get(
+            m_stepSounds[i].setBuffer(arcade::ResourceHolder::get().soundBuffers.get(
                 "si/fastinvader" + std::to_string(i + 1)));
         }
         m_invaderKilledSound.setBuffer(
-            ResourceHolder::get().soundBuffers.get("si/invaderkilled"));
+            arcade::ResourceHolder::get().soundBuffers.get("si/invaderkilled"));
     }
 
     void InvaderManager::tryStepInvaders()
@@ -111,7 +111,7 @@ namespace space_invaders {
         return result;
     }
 
-    sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(Random<> &random)
+    sf::Vector2f InvaderManager::getRandomLowestInvaderPoint(arcade::Random<> &random)
     {
         if (m_aliveInvaders == 0)
             return {-1, -1};

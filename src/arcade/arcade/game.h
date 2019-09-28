@@ -8,63 +8,68 @@
 #include "util/fps_counter.h"
 #include "util/non_moveable.h"
 
-/**
-    Main controlling class of the game.
-    Handles state switches and the main loop, as well
-    as counting the FPS
-*/
-class Game : public NonCopyable, public NonMovable {
-  public:
-    Game();
+namespace arcade {
 
-    void run();
+    /**
 
-    template <typename T> void initGame();
+        Main controlling class of the game.
+        Handles state switches and the main loop, as well
+        as counting the FPS
+    */
+    class Game : public NonCopyable, public NonMovable {
+      public:
+        Game();
 
-    void pushState(std::unique_ptr<StateBase> state);
-    void popState();
-    void exitGame();
+        void run();
 
-    template <typename T, typename... Args> void pushState(Args &&... args);
+        template <typename T> void initGame();
 
-    template <typename T, typename... Args> void changeState(Args &&... args);
+        void pushState(std::unique_ptr<StateBase> state);
+        void popState();
+        void exitGame();
 
-    const sf::RenderWindow &getWindow() const;
+        template <typename T, typename... Args> void pushState(Args &&... args);
 
-    void resizeWindow(unsigned width, unsigned height);
+        template <typename T, typename... Args>
+        void changeState(Args &&... args);
 
-  private:
-    void handleEvent();
-    void tryPop();
+        const sf::RenderWindow &getWindow() const;
 
-    StateBase &getCurrentState();
+        void resizeWindow(unsigned width, unsigned height);
 
-    sf::RenderWindow m_window;
-    std::vector<std::unique_ptr<StateBase>> m_states;
+      private:
+        void handleEvent();
+        void tryPop();
 
-    FPSCounter counter;
+        StateBase &getCurrentState();
 
-    bool m_shouldPop = false;
-    bool m_shouldExit = false;
-    bool m_shouldChageState = false;
-    std::unique_ptr<StateBase> m_change;
-};
+        sf::RenderWindow m_window;
+        std::vector<std::unique_ptr<StateBase>> m_states;
 
-template <typename T> inline void Game::initGame()
-{
-    this->pushState<T>(*this);
-}
+        FPSCounter counter;
 
-template <typename T, typename... Args>
-inline void Game::pushState(Args &&... args)
-{
-    pushState(std::make_unique<T>(std::forward<Args>(args)...));
-}
+        bool m_shouldPop = false;
+        bool m_shouldExit = false;
+        bool m_shouldChageState = false;
+        std::unique_ptr<StateBase> m_change;
+    };
 
-template <typename T, typename... Args>
-inline void Game::changeState(Args &&... args)
-{
-    m_change = std::make_unique<T>(std::forward<Args>(args)...);
-    m_shouldPop = true;
-    m_shouldChageState = true;
-}
+    template <typename T> inline void Game::initGame()
+    {
+        this->pushState<T>(*this);
+    }
+
+    template <typename T, typename... Args>
+    inline void Game::pushState(Args &&... args)
+    {
+        pushState(std::make_unique<T>(std::forward<Args>(args)...));
+    }
+
+    template <typename T, typename... Args>
+    inline void Game::changeState(Args &&... args)
+    {
+        m_change = std::make_unique<T>(std::forward<Args>(args)...);
+        m_shouldPop = true;
+        m_shouldChageState = true;
+    }
+} // namespace arcade
