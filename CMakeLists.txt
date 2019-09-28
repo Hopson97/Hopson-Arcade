@@ -9,19 +9,6 @@ project(hopson-arcade VERSION 2.0
 #Set executable
 add_executable(${PROJECT_NAME}
     src/main.cpp
-    src/arcade/arcade/util/animation.cpp
-    src/arcade/arcade/util/file_util.cpp
-    src/arcade/arcade/util/toggle_key.cpp
-    src/arcade/arcade/util/fps_counter.cpp
-    src/arcade/arcade/input/keyboard.cpp
-    src/arcade/arcade/game.cpp
-    src/arcade/arcade/resources/resource_holder.cpp
-    src/arcade/arcade/state/state_base.cpp
-    src/arcade/arcade/gui/button.cpp
-    src/arcade/arcade/gui/textbox.cpp
-    src/arcade/arcade/gui/widget.cpp
-    src/arcade/arcade/gui/stack_menu.cpp
-
     src/space_invaders/world.cpp
     src/space_invaders/collidable.cpp
     src/space_invaders/entity/projectile.cpp
@@ -42,6 +29,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE src/arcade)
 
 setup_target_compile(${PROJECT_NAME})
 
+
+#Subdirs
+add_subdirectory(src/arcade/arcade/)
+
 #Set module path
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
@@ -51,6 +42,7 @@ find_package(SFML REQUIRED audio network graphics window system)
 
 #Finally
 target_link_libraries(${PROJECT_NAME} 
+    arcade
     Threads::Threads 
     ${SFML_LIBRARIES} 
     ${SFML_DEPENDENCIES}
