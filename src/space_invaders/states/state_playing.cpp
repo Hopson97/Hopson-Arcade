@@ -1,31 +1,30 @@
 #include "state_playing.h"
 
-#include "../../arcade/resources/resource_holder.h"
-#include "../../arcade/game.h"
-
-#include "../../arcade/gui/button.h"
+#include <arcade/game.h>
+#include <arcade/gui/button.h>
+#include <arcade/resources/resource_holder.h>
 
 #include "state_highscores.h"
 
 namespace space_invaders {
-    StatePlaying::StatePlaying(Game &game)
-        : StateBase(game, "Playing the game")
+    StatePlaying::StatePlaying(arcade::Game &game)
+        : arcade::StateBase(game, "Playing the game")
         , m_gameOverMenu(game.getWindow(), Display::HEIGHT / 3)
         , m_scoreDisplay(Display::WIDTH / 8, "Score")
         , m_highestScoreDisplay(Display::WIDTH / 2, "HighScore")
     {
 
-        auto mmButton = std::make_unique<gui::Button>();
+        auto mmButton = std::make_unique<arcade::gui::Button>();
         mmButton->setText("Main Menu\n");
         mmButton->setFunction([&]() { m_pGame->popState(); });
 
-        auto submitBtn = std::make_unique<gui::Button>();
+        auto submitBtn = std::make_unique<arcade::gui::Button>();
         submitBtn->setText("Submit Score");
         submitBtn->setFunction([&]() {
             m_pGame->changeState<StateHighscores>(*m_pGame, m_score);
         });
 
-        auto exitButton = std::make_unique<gui::Button>();
+        auto exitButton = std::make_unique<arcade::gui::Button>();
         exitButton->setText("Exit game\n");
         exitButton->setFunction([&]() { m_pGame->exitGame(); });
 
@@ -79,7 +78,7 @@ namespace space_invaders {
     {
         m_lifeStamp.setSize({Player::WIDTH / 2, Player::WIDTH / 2});
         m_lifeStamp.setTexture(
-            &ResourceHolder::get().textures.get("si/player"));
+            &arcade::ResourceHolder::get().textures.get("si/player"));
         m_lifeStamp.setTextureRect({0, 0, 11, 8});
         m_label.setPosition(Display::WIDTH - (Player::WIDTH * 5), 10);
         m_label.setString("LIVES");

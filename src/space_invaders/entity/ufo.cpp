@@ -1,7 +1,7 @@
 #include "ufo.h"
 
-#include "../../arcade/resources/resource_holder.h"
 #include "../display_info.h"
+#include <arcade/resources/resource_holder.h>
 
 namespace space_invaders {
     namespace {
@@ -10,20 +10,21 @@ namespace space_invaders {
         constexpr float Y_POS = 45;
     } // namespace
 
-    UFO::UFO(Random<> &rand)
+    UFO::UFO(arcade::Random<> &rand)
         : Collidable(WIDTH, HEIGHT)
         , m_rng(rand)
         , m_animation(16, 8)
     {
         m_sprite.setSize({WIDTH, HEIGHT});
         m_sprite.setPosition((float)Display::WIDTH, Y_POS);
-        m_sprite.setTexture(&ResourceHolder::get().textures.get("si/ufo"));
+        m_sprite.setTexture(
+            &arcade::ResourceHolder::get().textures.get("si/ufo"));
 
         for (int i = 0; i < 3; i++) {
             m_animation.addFrame(i, sf::seconds(0.2f));
         }
         m_flyingSound.setBuffer(
-            ResourceHolder::get().soundBuffers.get("si/ufo_lowpitch"));
+            arcade::ResourceHolder::get().soundBuffers.get("si/ufo_lowpitch"));
         m_flyingSound.setVolume(10);
     }
 

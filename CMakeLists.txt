@@ -2,24 +2,13 @@ cmake_minimum_required(VERSION 3.10)
 
 include(cmake/CompileFeatures.cmake)
 
-#Set up project
-project(hopson-arcade VERSION 1.0)
+project(hopson-arcade VERSION 2.0
+                  DESCRIPTION "Hopson Arcade: Selection of simple arcade-y games"
+                  LANGUAGES CXX)
 
 #Set executable
 add_executable(${PROJECT_NAME}
     src/main.cpp
-    src/arcade/util/animation.cpp
-    src/arcade/util/file_util.cpp
-    src/arcade/util/toggle_key.cpp
-    src/arcade/util/fps_counter.cpp
-    src/arcade/input/keyboard.cpp
-    src/arcade/game.cpp
-    src/arcade/resources/resource_holder.cpp
-    src/arcade/state/state_base.cpp
-    src/arcade/gui/button.cpp
-    src/arcade/gui/textbox.cpp
-    src/arcade/gui/widget.cpp
-    src/arcade/gui/stack_menu.cpp
     src/space_invaders/world.cpp
     src/space_invaders/collidable.cpp
     src/space_invaders/entity/projectile.cpp
@@ -36,7 +25,13 @@ add_executable(${PROJECT_NAME}
     src/space_invaders/starry_background.cpp
 )
 
+target_include_directories(${PROJECT_NAME} PRIVATE src/arcade)
+
 setup_target_compile(${PROJECT_NAME})
+
+
+#Subdirs
+add_subdirectory(src/arcade/arcade/)
 
 #Set module path
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
@@ -47,6 +42,7 @@ find_package(SFML REQUIRED audio network graphics window system)
 
 #Finally
 target_link_libraries(${PROJECT_NAME} 
+    arcade
     Threads::Threads 
     ${SFML_LIBRARIES} 
     ${SFML_DEPENDENCIES}

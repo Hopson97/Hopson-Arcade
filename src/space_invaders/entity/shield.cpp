@@ -1,8 +1,8 @@
 #include "shield.h"
 
-#include "../../arcade/util/random.h"
 #include "../display_info.h"
 #include "projectile.h"
+#include <arcade/util/random.h>
 
 #include <iostream>
 
@@ -70,7 +70,7 @@ namespace space_invaders {
 
     bool Shield::isTouching(const Projectile &projectile)
     {
-        static Random<> rand;
+        static arcade::Random<> rand;
         if (projectile.getBox().intersects(getBox())) {
             for (auto &sector : m_sections) {
                 auto result = sector.isTouching(projectile);

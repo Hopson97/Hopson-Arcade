@@ -1,17 +1,17 @@
 #include "world.h"
-#include "../arcade/resources/resource_holder.h"
+#include <arcade/resources/resource_holder.h>
 
 namespace space_invaders {
     World::World()
         : m_projectileRenderer(
               4, 8, Projectile::WIDTH, Projectile::HEIGHT,
-              ResourceHolder::get().textures.get("si/projectile"))
+              arcade::ResourceHolder::get().textures.get("si/projectile"))
         , m_invaders(*this)
         , m_ufo(m_rng)
     {
         m_explodeShape.setSize({52, 28});
         m_explodeShape.setTexture(
-            &ResourceHolder::get().textures.get("si/explosion"));
+            &arcade::ResourceHolder::get().textures.get("si/explosion"));
 
         const int SECT_SIZE = (Display::WIDTH / 4);
         for (int i = 0; i < 4; i++) {
@@ -21,7 +21,7 @@ namespace space_invaders {
         }
 
         m_playerShoot.setBuffer(
-            ResourceHolder::get().soundBuffers.get("si/shoot"));
+            arcade::ResourceHolder::get().soundBuffers.get("si/shoot"));
         m_playerShoot.setVolume(25);
     }
 

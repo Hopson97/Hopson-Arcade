@@ -52,7 +52,7 @@ namespace space_invaders {
 
         sf::Sound m_playerShoot;
 
-        Random<> m_rng;
+        arcade::Random<> m_rng;
 
         bool m_isGameOver = false;
     };

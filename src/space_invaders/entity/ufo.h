@@ -1,17 +1,19 @@
 #pragma once
 
-#include "../../arcade/util/animation.h"
-#include "../../arcade/util/random.h"
-#include "../collidable.h"
+#include <arcade/util/animation.h>
+#include <arcade/util/random.h>
+
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+#include "../collidable.h"
 
 namespace space_invaders {
     class UFO : public Collidable {
       public:
         enum class State { Waiting, Flying, Destroyed };
 
-        UFO(Random<> &rand);
+        UFO(arcade::Random<> &rand);
 
         State getState() const;
 
@@ -23,12 +25,12 @@ namespace space_invaders {
         void onCollide(Collidable &other);
 
       private:
-        Random<> &m_rng;
+        arcade::Random<> &m_rng;
 
         sf::RectangleShape m_sprite;
         float m_vx;
         State m_state;
-        Animation m_animation;
+        arcade::Animation m_animation;
 
         sf::Sound m_flyingSound;
     };

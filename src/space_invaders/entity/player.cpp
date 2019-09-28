@@ -1,6 +1,6 @@
 #include "player.h"
-#include "../../arcade/resources/resource_holder.h"
 #include "../display_info.h"
+#include <arcade/resources/resource_holder.h>
 
 namespace space_invaders {
     namespace {
@@ -13,7 +13,8 @@ namespace space_invaders {
     {
         m_sprite.setSize({44, 32});
         m_sprite.setPosition({Display::WIDTH / 2, BASE_Y});
-        m_sprite.setTexture(&ResourceHolder::get().textures.get("si/player"));
+        m_sprite.setTexture(
+            &arcade::ResourceHolder::get().textures.get("si/player"));
         m_sprite.setTextureRect({0, 0, 11, 8});
 
         for (int i = 0; i < 20; i++) {
@@ -21,7 +22,7 @@ namespace space_invaders {
         }
 
         m_deathSound.setBuffer(
-            ResourceHolder::get().soundBuffers.get("si/explosion"));
+            arcade::ResourceHolder::get().soundBuffers.get("si/explosion"));
     }
 
     void Player::restart()

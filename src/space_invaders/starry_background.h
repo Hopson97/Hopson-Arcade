@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../arcade/util/random.h"
 #include <SFML/Graphics.hpp>
+#include <arcade/util/random.h>
 
 namespace space_invaders {
 
@@ -18,6 +18,6 @@ namespace space_invaders {
 
         std::vector<sf::Vertex> m_stars;
 
-        Random<> m_rng;
+        arcade::Random<> m_rng;
     };
 } // namespace space_invaders

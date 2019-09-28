@@ -1,11 +1,13 @@
 #pragma once
 
-#include "../../arcade/gui/stack_menu.h"
-#include "../../arcade/gui/widget.h"
-#include "../../arcade/state/state_base.h"
+#include <arcade/gui/stack_menu.h>
+#include <arcade/gui/widget.h>
+#include <arcade/state/state_base.h>
+
 #include "../starry_background.h"
+
 namespace space_invaders {
-    class StateHighscores : public StateBase {
+    class StateHighscores : public arcade::StateBase {
         using Entry = std::pair<std::string, int>;
 
         struct EntryBox {
@@ -16,15 +18,15 @@ namespace space_invaders {
 
           private:
             sf::RectangleShape m_background;
-            gui::Widget::Text m_nameText;
-            gui::Widget::Text m_scoreText;
+            arcade::gui::Widget::Text m_nameText;
+            arcade::gui::Widget::Text m_scoreText;
         };
 
         enum class State { Submitting, Viewing };
 
       public:
-        StateHighscores(Game &game, int score);
-        StateHighscores(Game &game);
+        StateHighscores(arcade::Game &game, int score);
+        StateHighscores(arcade::Game &game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
@@ -44,9 +46,9 @@ namespace space_invaders {
         void sortScores();
         void submitScore();
 
-        gui::StackMenu m_submitScoreMenu;
-        gui::StackMenu m_highscoreMenu;
-        gui::StackMenu *m_pActiveMenu;
+        arcade::gui::StackMenu m_submitScoreMenu;
+        arcade::gui::StackMenu m_highscoreMenu;
+        arcade::gui::StackMenu *m_pActiveMenu;
 
         std::vector<Entry> m_scores;
         std::vector<EntryBox> m_entryBoxes;
