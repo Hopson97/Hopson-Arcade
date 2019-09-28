@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../arcade/util/random.h"
 #include <SFML/Graphics.hpp>
+#include <arcade/util/random.h>
 
 namespace space_invaders {
 

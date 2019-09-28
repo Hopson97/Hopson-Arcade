@@ -1,10 +1,12 @@
 #pragma once
 
-#include "../../arcade/util/animation.h"
-#include "../../arcade/util/random.h"
-#include "../collidable.h"
+#include <arcade/util/animation.h>
+#include <arcade/util/random.h>
+
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+#include "../collidable.h"
 
 namespace space_invaders {
     class UFO : public Collidable {

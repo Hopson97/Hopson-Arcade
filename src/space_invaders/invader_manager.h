@@ -8,7 +8,7 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 
-#include "../arcade/util/random.h"
+#include <arcade/util/random.h>
 
 namespace space_invaders {
     class World;

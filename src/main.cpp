@@ -1,6 +1,6 @@
 
 #include "space_invaders/states/state_main_menu.h"
-#include "arcade/game.h"
+#include <arcade/game.h>
 
 #include <iostream>
 

@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "../arcade/resources/resource_holder.h"
 #include "world.h"
+#include <arcade/resources/resource_holder.h>
 
 namespace space_invaders {
     namespace {

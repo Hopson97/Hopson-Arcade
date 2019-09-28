@@ -4,8 +4,8 @@
 
 #include <SFML/Audio.hpp>
 
-#include "../../arcade/util/animation.h"
 #include "../collidable.h"
+#include <arcade/util/animation.h>
 
 namespace space_invaders {
     /**

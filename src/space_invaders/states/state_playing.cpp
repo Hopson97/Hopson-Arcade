@@ -1,9 +1,8 @@
 #include "state_playing.h"
 
-#include "../../arcade/resources/resource_holder.h"
-#include "../../arcade/game.h"
-
-#include "../../arcade/gui/button.h"
+#include <arcade/game.h>
+#include <arcade/gui/button.h>
+#include <arcade/resources/resource_holder.h>
 
 #include "state_highscores.h"
 

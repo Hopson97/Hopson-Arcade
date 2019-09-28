@@ -1,6 +1,6 @@
 #include "player.h"
-#include "../../arcade/resources/resource_holder.h"
 #include "../display_info.h"
+#include <arcade/resources/resource_holder.h>
 
 namespace space_invaders {
     namespace {

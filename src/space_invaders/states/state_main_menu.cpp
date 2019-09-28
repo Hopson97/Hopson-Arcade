@@ -1,8 +1,8 @@
 #include "state_main_menu.h"
 
-#include "../../arcade/game.h"
+#include <arcade/game.h>
+#include <arcade/gui/button.h>
 
-#include "../../arcade/gui/button.h"
 #include "state_highscores.h"
 #include "state_playing.h"
 

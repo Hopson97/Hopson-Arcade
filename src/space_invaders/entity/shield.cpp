@@ -1,8 +1,8 @@
 #include "shield.h"
 
-#include "../../arcade/util/random.h"
 #include "../display_info.h"
 #include "projectile.h"
+#include <arcade/util/random.h>
 
 #include <iostream>
 
