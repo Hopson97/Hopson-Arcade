@@ -12,7 +12,7 @@ List of all the games in the "arcade".
 
 [Video](https://www.youtube.com/watch?v=MkpxwsybNPo)
 
-This is based on the 1978 arcade game created by Tomohiro Nishikad.
+This is based on the 1978 arcade game created by Tomohiro Nishikado.
 
 This was the first game added to this project.
 
