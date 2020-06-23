@@ -7,7 +7,7 @@ namespace pong {
 
     class StateLobby : public arcade::StateBase {
       public:
-        StateLobby(arcade::Game &game);
+        StateLobby(arcade::Game &game, bool isHost);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
@@ -17,5 +17,6 @@ namespace pong {
       private:
         arcade::gui::StackMenu m_mainMenu;
         sf::RectangleShape m_banner;
+        bool m_isHost;
     };
 } // namespace pong

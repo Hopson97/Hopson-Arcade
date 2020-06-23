@@ -108,7 +108,8 @@ namespace arcade {
             return ((keyCode >= 48) && (keyCode <= 57)) ||  // Numbers
                    ((keyCode >= 65) && (keyCode <= 90)) ||  // Uppercase
                    ((keyCode >= 97) && (keyCode <= 122)) || // Lowercase
-                   keyCode == 32;                           // Space
+                   keyCode == 32 ||                         // Space
+                   keyCode == 46;                           // dot
         }
 
         bool TextBox::isBackspace(unsigned char keycode)

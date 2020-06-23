@@ -91,6 +91,9 @@ namespace arcade {
              */
             sf::Vector2f getSize() const override;
 
+            void disable();
+            void enable();
+
           private:
             /**
              * @brief Realigns the position of the text to be centered in the
@@ -103,6 +106,7 @@ namespace arcade {
             Rectangle m_button;
             Text m_text;
             std::function<void(void)> m_function = []() {};
+            bool m_isDisabled = false;
         };
 
         /**

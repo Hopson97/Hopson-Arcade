@@ -9,6 +9,7 @@ project(hopson-arcade VERSION 2.0
 #Set executable
 add_executable(${PROJECT_NAME}
     src/main.cpp
+
     src/space_invaders/world.cpp
     src/space_invaders/collidable.cpp
     src/space_invaders/entity/projectile.cpp
@@ -23,6 +24,9 @@ add_executable(${PROJECT_NAME}
     src/space_invaders/states/state_playing.cpp
     src/space_invaders/animation_renderer.cpp
     src/space_invaders/starry_background.cpp
+
+    src/pong/states/state_main_menu.cpp
+    src/pong/states/state_lobby.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/arcade)

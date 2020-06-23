@@ -16,6 +16,10 @@ namespace pong {
 
       private:
         arcade::gui::StackMenu m_mainMenu;
+        arcade::gui::StackMenu m_joinMenu;
+        arcade::gui::StackMenu *mp_activeMenu = nullptr;
         sf::RectangleShape m_banner;
+
+        std::string m_joinIp;
     };
 } // namespace pong

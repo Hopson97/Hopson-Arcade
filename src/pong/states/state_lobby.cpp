@@ -6,16 +6,21 @@
 #include <arcade/gui/button.h>
 
 namespace pong {
-    StateLobby::StateLobby(arcade::Game &game)
-        : arcade::StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
+    StateLobby::StateLobby(arcade::Game &game, bool isHost)
+        : arcade::StateBase(game, "State Lobby")
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
+        , m_isHost(isHost)
     {
-        m_banner.setSize({(float)Display::WIDTH, 200});
-        m_banner.setTexture(
-            &arcade::ResourceHolder::get().textures.get("pg/logo"));
+        if (isHost) {
+            auto startButton = arcade::gui::makeButton();
+            startButton->disable();
+            startButton->setText("Start");
+            startButton->setFunction([&]() {  });
+            m_mainMenu.addWidget(std::move(startButton));
+        }
 
         auto exitBtn = arcade::gui::makeButton();
-        exitBtn->setText("Exit game");
+        exitBtn->setText("Back");
         exitBtn->setFunction([&]() { m_pGame->popState(); });
 
         m_mainMenu.addWidget(std::move(exitBtn));
@@ -27,7 +32,7 @@ namespace pong {
         m_mainMenu.handleEvent(e, m_pGame->getWindow());
     }
 
-    void StateLobby::update(sf::Time deltaTime) {}
+    void StateLobby::update(sf::Time deltaTime) { (void)deltaTime; }
 
     void StateLobby::render(sf::RenderTarget &renderer)
     {

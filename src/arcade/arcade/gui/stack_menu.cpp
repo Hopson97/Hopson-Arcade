@@ -30,6 +30,11 @@ namespace arcade {
             m_background.setFillColor({100, 100, 100, 128});
             m_background.setSize(m_baseSize);
             m_background.setPosition(position);
+
+            m_titleText.setPosition(position.x, position.y - 35);
+            m_titleText.setOutlineColor(sf::Color::Black);
+            m_titleText.setOutlineThickness(1);
+            m_titleText.setCharacterSize(30);
         }
 
         StackMenu::StackMenu(StackMenu &&other)

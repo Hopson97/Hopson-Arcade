@@ -91,6 +91,20 @@ namespace arcade {
                         m_button.getGlobalBounds().height / 2.5f);
         }
 
+        void Button::disable()
+        {
+            m_text.setFillColor({100, 100, 100});
+            m_button.setFillColor({50, 50, 50});
+            m_isDisabled = true;
+        }
+
+        void Button::enable()
+        {
+            m_text.setFillColor(sf::Color::White);
+            m_button.setFillColor(sf::Color::Black);
+            m_isDisabled = false;
+        }
+
         sf::Vector2f Button::getSize() const { return m_button.getSize(); }
 
     } // namespace gui

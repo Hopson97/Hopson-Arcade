@@ -1,4 +1,5 @@
 
+#include "pong/states/state_main_menu.h"
 #include "space_invaders/states/state_main_menu.h"
 #include <arcade/game.h>
 
@@ -18,7 +19,7 @@ namespace {
 #endif
     }
 
-    constexpr int GAMES = 1;
+    constexpr int GAMES = 2;
 
     template <typename T> void run()
     {
@@ -41,6 +42,7 @@ int main()
         int option = 0;
         std::cout << "Which Game would you like to play?\n"
                   << "1. Space Invaders\n"
+                  << "2. Pong\n"
                   << GAMES + 1 << ". Exit\n";
 
         while (!isValidChoice(option)) {
@@ -57,6 +59,10 @@ int main()
         switch (option) {
             case 1:
                 run<space_invaders::StateMainMenu>();
+                break;
+
+            case 2:
+                run<pong::StateMainMenu>();
                 break;
 
             case GAMES + 1:
