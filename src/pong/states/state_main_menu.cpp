@@ -25,8 +25,7 @@ namespace pong {
 
             auto playBtn = arcade::gui::makeButton();
             playBtn->setText("Create Lobby");
-            playBtn->setFunction(
-                [&]() { m_pGame->pushState<StateLobby>(*m_pGame, true); });
+            playBtn->setFunction([&]() { m_pGame->pushState<StateLobby>(*m_pGame); });
 
             auto joinBtn = arcade::gui::makeButton();
             joinBtn->setText("Join Lobby");
@@ -49,7 +48,7 @@ namespace pong {
             auto joinBtn = arcade::gui::makeButton();
             joinBtn->setText("Join Lobby");
             joinBtn->setFunction(
-                [&]() { m_pGame->pushState<StateLobby>(*m_pGame, false); });
+                [&]() { m_pGame->pushState<StateLobby>(*m_pGame, m_joinIp); });
 
             auto backBtn = arcade::gui::makeButton();
             backBtn->setText("Back");

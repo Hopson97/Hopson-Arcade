@@ -17,8 +17,8 @@ namespace arcade {
 
             virtual sf::Vector2f getSize() const = 0;
 
-            virtual void disable();
-            virtual void enable();
+            virtual void disable() = 0;
+            virtual void enable() = 0;
 
             class Text : public sf::Text {
               public:

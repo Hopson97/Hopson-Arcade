@@ -6,11 +6,19 @@
 #include <SFML/Network/TcpListener.hpp>
 #include <SFML/Network/TcpSocket.hpp>
 
+namespace arcade {
+    namespace gui {
+        class Widget;
+    } // namespace gui
+
+} // namespace arcade
+
 namespace pong {
 
     class StateLobby : public arcade::StateBase {
       public:
-        StateLobby(arcade::Game& game, bool isHost);
+        StateLobby(arcade::Game& game);
+        StateLobby(arcade::Game& game, const std::string& ip);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
@@ -23,6 +31,8 @@ namespace pong {
         bool m_isHost;
 
         sf::TcpListener m_tcpListener;
-        sf::TcpSocket m_otherPlayer;
+        sf::TcpSocket m_socket;
+
+        arcade::gui::Widget* m_startGameButton = nullptr;
     };
 } // namespace pong
