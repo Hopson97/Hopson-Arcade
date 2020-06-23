@@ -126,5 +126,6 @@ namespace arcade {
     {
         m_window.close();
         m_window.create({width, height}, "Hopson Arcade");
+        m_window.setFramerateLimit(60);
     }
 } // namespace arcade

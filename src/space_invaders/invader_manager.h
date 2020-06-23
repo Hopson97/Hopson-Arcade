@@ -61,7 +61,7 @@ namespace space_invaders {
         World &m_world;
 
         AnimationRenderer m_invaderRenderer;
-        unsigned m_aliveInvaders;
+        unsigned m_aliveInvaders = 0;
 
         bool m_hasAllInvadersBeenAdded = false;
 
