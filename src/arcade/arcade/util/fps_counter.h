@@ -9,7 +9,7 @@ namespace arcade {
 
         void update();
 
-        void draw(sf::RenderTarget &renderer);
+        void draw(sf::RenderTarget& renderer);
 
       private:
         sf::Text m_text;

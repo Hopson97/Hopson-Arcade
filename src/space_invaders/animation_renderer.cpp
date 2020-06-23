@@ -3,7 +3,7 @@
 namespace space_invaders {
     AnimationRenderer::AnimationRenderer(int frameWidth, int frameHeight,
                                          float entityWidth, float entityHeight,
-                                         const sf::Texture &spriteSheet)
+                                         const sf::Texture& spriteSheet)
         : m_frameWidth(frameWidth)
         , m_frameHeight(frameHeight)
     {
@@ -11,10 +11,13 @@ namespace space_invaders {
         m_entity.setTexture(&spriteSheet);
     }
 
-    void AnimationRenderer::nextFrame() { m_currentFrame++; }
+    void AnimationRenderer::nextFrame()
+    {
+        m_currentFrame++;
+    }
 
-    void AnimationRenderer::renderEntity(sf::RenderTarget &renderer, int type,
-                                         const sf::Vector2f &position)
+    void AnimationRenderer::renderEntity(sf::RenderTarget& renderer, int type,
+                                         const sf::Vector2f& position)
     {
         // Calculate texture coords
         int texLeft = (m_currentFrame % 2) * m_frameWidth;

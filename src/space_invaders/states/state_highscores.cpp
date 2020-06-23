@@ -14,7 +14,7 @@ namespace space_invaders {
         const auto scoresPath = "res/space_invaders/scores.txt";
     }
 
-    StateHighscores::StateHighscores(arcade::Game &game, int score)
+    StateHighscores::StateHighscores(arcade::Game& game, int score)
         : StateHighscores(game)
     {
         initSubmitMenu();
@@ -23,7 +23,7 @@ namespace space_invaders {
         m_state = State::Submitting;
     }
 
-    StateHighscores::StateHighscores(arcade::Game &game)
+    StateHighscores::StateHighscores(arcade::Game& game)
         : arcade::StateBase(game, "Highscores")
         , m_submitScoreMenu(game.getWindow(), 100.0f)
         , m_highscoreMenu(game.getWindow(), Display::HEIGHT - 100.0f)
@@ -32,8 +32,7 @@ namespace space_invaders {
         initViewMenu();
         m_pActiveMenu = &m_highscoreMenu;
         m_banner.setSize({(float)Display::WIDTH, 200});
-        m_banner.setTexture(
-            &arcade::ResourceHolder::get().textures.get("si/highscores"));
+        m_banner.setTexture(&arcade::ResourceHolder::get().textures.get("si/highscores"));
         createHighscoreView();
     }
 
@@ -47,12 +46,12 @@ namespace space_invaders {
         m_background.update(deltaTime.asSeconds());
     }
 
-    void StateHighscores::render(sf::RenderTarget &renderer)
+    void StateHighscores::render(sf::RenderTarget& renderer)
     {
         m_background.draw(renderer);
         m_pActiveMenu->render(renderer);
         if (m_state == State::Viewing) {
-            for (auto &entry : m_entryBoxes) {
+            for (auto& entry : m_entryBoxes) {
                 entry.draw(renderer);
             }
             renderer.draw(m_banner);
@@ -121,7 +120,7 @@ namespace space_invaders {
         sortScores();
         m_entryBoxes.clear();
         for (unsigned i = 0; i < m_scores.size(); i++) {
-            auto &name = m_scores[i].first;
+            auto& name = m_scores[i].first;
             auto score = m_scores[i].second;
 
             m_entryBoxes.emplace_back(i + 1, name, score);
@@ -154,7 +153,7 @@ namespace space_invaders {
     {
         sortScores();
         std::ofstream outFile(scoresPath);
-        for (auto &entry : m_scores) {
+        for (auto& entry : m_scores) {
             outFile << entry.first << "," << entry.second << ",";
         }
     }
@@ -162,7 +161,7 @@ namespace space_invaders {
     void StateHighscores::sortScores()
     {
         std::sort(m_scores.begin(), m_scores.end(),
-                  [](Entry &a, Entry &b) { return a.second > b.second; });
+                  [](Entry& a, Entry& b) { return a.second > b.second; });
     }
 
     void StateHighscores::submitScore()
@@ -172,8 +171,7 @@ namespace space_invaders {
         writeScores();
     }
 
-    StateHighscores::EntryBox::EntryBox(int position, const std::string &name,
-                                        int score)
+    StateHighscores::EntryBox::EntryBox(int position, const std::string& name, int score)
     {
         float size = 35;
         float y = 200 + position * (size - 2);
@@ -199,7 +197,7 @@ namespace space_invaders {
                                                     : sf::Color{50, 40, 50});
     }
 
-    void StateHighscores::EntryBox::draw(sf::RenderTarget &renderer)
+    void StateHighscores::EntryBox::draw(sf::RenderTarget& renderer)
     {
         renderer.draw(m_background);
         renderer.draw(m_nameText);

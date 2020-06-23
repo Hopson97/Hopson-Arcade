@@ -15,15 +15,15 @@ namespace space_invaders {
             Squid,
         };
 
-        Invader(const sf::Vector2f &initialLocation, Type type);
+        Invader(const sf::Vector2f& initialLocation, Type type);
 
         void move(float x, float y);
 
-        const sf::Vector2f &getPosition() const;
+        const sf::Vector2f& getPosition() const;
         bool isAlive() const;
         Type getType() const;
 
-        void onCollide(Collidable &other) override;
+        void onCollide(Collidable& other) override;
 
         void makeAlive()
         {

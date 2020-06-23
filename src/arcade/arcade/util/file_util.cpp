@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 namespace arcade {
-    std::string getFileContent(const std::string &filePath, bool throws)
+    std::string getFileContent(const std::string& filePath, bool throws)
     {
         std::ifstream inFile(filePath);
         if (!inFile.is_open()) {

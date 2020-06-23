@@ -51,14 +51,14 @@ namespace arcade {
              * @param text The text on the button
              */
 
-            void setText(const std::string &text);
+            void setText(const std::string& text);
 
             /**
              * @brief Set the texture to appear on the background of the button
              *
              * @param texture
              */
-            void setTexture(const sf::Texture &texture);
+            void setTexture(const sf::Texture& texture);
 
             /**
              * @brief Handles window events
@@ -67,22 +67,21 @@ namespace arcade {
              * @param e The SFML event that contains event information
              * @param window The window that game is being played on
              */
-            void handleEvent(sf::Event e,
-                             const sf::RenderWindow &window) override;
+            void handleEvent(sf::Event e, const sf::RenderWindow& window) override;
 
             /**
              * @brief Render the button
              * Renders the button to a render target
              * @param renderer The target to render the button to
              */
-            void render(sf::RenderTarget &renderer) override;
+            void render(sf::RenderTarget& renderer) override;
 
             /**
              * @brief Set the position of the button
              *
              * @param pos The position to set the button to
              */
-            void setPosition(const sf::Vector2f &pos) override;
+            void setPosition(const sf::Vector2f& pos) override;
 
             /**
              * @brief Get the buttons size
@@ -91,8 +90,8 @@ namespace arcade {
              */
             sf::Vector2f getSize() const override;
 
-            void disable();
-            void enable();
+            void disable() override;
+            void enable() override;
 
           private:
             /**

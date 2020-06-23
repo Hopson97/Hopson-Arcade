@@ -12,14 +12,13 @@ namespace arcade {
             setFont(ResourceHolder::get().fonts.get("arcade"));
         }
 
-        bool Widget::Rectangle::isRolledOn(const sf::RenderWindow &window) const
+        bool Widget::Rectangle::isRolledOn(const sf::RenderWindow& window) const
         {
             auto pos = sf::Mouse::getPosition(window);
             return getGlobalBounds().contains((float)pos.x, (float)pos.y);
         }
 
-        bool Widget::Rectangle::isClicked(sf::Event e,
-                                          const sf::RenderWindow &window)
+        bool Widget::Rectangle::isClicked(sf::Event e, const sf::RenderWindow& window)
         {
             if (isRolledOn(window)) {
                 if (e.type == sf::Event::MouseButtonPressed) {

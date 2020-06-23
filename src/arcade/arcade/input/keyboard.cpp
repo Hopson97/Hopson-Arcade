@@ -1,7 +1,10 @@
 #include "keyboard.h"
 
 namespace arcade {
-    Keyboard::Keyboard() { std::fill(m_keys.begin(), m_keys.end(), false); }
+    Keyboard::Keyboard()
+    {
+        std::fill(m_keys.begin(), m_keys.end(), false);
+    }
 
     void Keyboard::update(sf::Event e)
     {

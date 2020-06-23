@@ -14,14 +14,14 @@ namespace {
     {
 #ifdef _WIN32
         HWND consoleWindow = GetConsoleWindow();
-        SetWindowPos(consoleWindow, 0, 0, 0, 500, 500,
-                     SWP_NOSIZE | SWP_NOZORDER);
+        SetWindowPos(consoleWindow, 0, 0, 0, 500, 500, SWP_NOSIZE | SWP_NOZORDER);
 #endif
     }
 
     constexpr int GAMES = 2;
 
-    template <typename T> void run()
+    template <typename T>
+    void run()
     {
         std::cout << "\nTo choose another Game, simply close the window\n";
         std::cin.ignore();
@@ -31,7 +31,10 @@ namespace {
         std::cout << '\n';
     }
 
-    bool isValidChoice(int option) { return option > 0 && option <= GAMES + 1; }
+    bool isValidChoice(int option)
+    {
+        return option > 0 && option <= GAMES + 1;
+    }
 } // namespace
 
 int main()
@@ -49,9 +52,8 @@ int main()
             std::cin >> option;
 
             if (!isValidChoice(option)) {
-                std::cout
-                    << "Invalid option, please pick a number between 1 and "
-                    << GAMES + 1 << "\n";
+                std::cout << "Invalid option, please pick a number between 1 and "
+                          << GAMES + 1 << "\n";
                 std::cin.ignore();
             }
         }

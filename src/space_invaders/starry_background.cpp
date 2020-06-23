@@ -15,7 +15,7 @@ namespace space_invaders {
 
     void StarryBackground::update(float dt)
     {
-        for (auto &star : m_stars) {
+        for (auto& star : m_stars) {
             star.position.y -= 250 * dt;
             if (star.position.y <= 0) {
                 giveStarRandomStartLocation(star);
@@ -23,15 +23,15 @@ namespace space_invaders {
         }
     }
 
-    void StarryBackground::draw(sf::RenderTarget &renderer)
+    void StarryBackground::draw(sf::RenderTarget& renderer)
     {
         renderer.draw(m_stars.data(), m_stars.size(), sf::Points);
     }
 
-    void StarryBackground::giveStarRandomStartLocation(sf::Vertex &star)
+    void StarryBackground::giveStarRandomStartLocation(sf::Vertex& star)
     {
-        star.position = {m_rng.getFloatInRange(0, (float)Display::WIDTH),
-                         m_rng.getFloatInRange((float)Display::HEIGHT,
-                                               (float)Display::HEIGHT * 2.0f)};
+        star.position = {
+            m_rng.getFloatInRange(0, (float)Display::WIDTH),
+            m_rng.getFloatInRange((float)Display::HEIGHT, (float)Display::HEIGHT * 2.0f)};
     }
 } // namespace space_invaders

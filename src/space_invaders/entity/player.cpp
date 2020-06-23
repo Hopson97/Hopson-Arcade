@@ -13,8 +13,7 @@ namespace space_invaders {
     {
         m_sprite.setSize({44, 32});
         m_sprite.setPosition({Display::WIDTH / 2, BASE_Y});
-        m_sprite.setTexture(
-            &arcade::ResourceHolder::get().textures.get("si/player"));
+        m_sprite.setTexture(&arcade::ResourceHolder::get().textures.get("si/player"));
         m_sprite.setTextureRect({0, 0, 11, 8});
 
         for (int i = 0; i < 20; i++) {
@@ -37,9 +36,7 @@ namespace space_invaders {
     void Player::input()
     {
         using Key = sf::Keyboard::Key;
-        auto keyDown = [](sf::Keyboard::Key k) {
-            return sf::Keyboard::isKeyPressed(k);
-        };
+        auto keyDown = [](sf::Keyboard::Key k) { return sf::Keyboard::isKeyPressed(k); };
 
         float speed = 20;
         if (keyDown(Key::A)) {
@@ -67,7 +64,7 @@ namespace space_invaders {
         }
     }
 
-    void Player::draw(sf::RenderTarget &target)
+    void Player::draw(sf::RenderTarget& target)
     {
         if (!m_isAlive) {
             m_sprite.setTextureRect(m_deathAnimation.getFrame());
@@ -83,21 +80,27 @@ namespace space_invaders {
                 m_sprite.getPosition().y};
     }
 
-    const sf::Vector2f &Player::getPosition() const
+    const sf::Vector2f& Player::getPosition() const
     {
         return m_sprite.getPosition();
     }
 
-    void Player::onCollide([[maybe_unused]] Collidable &other)
+    void Player::onCollide([[maybe_unused]] Collidable& other)
     {
         m_isAlive = false;
         m_deathTimer.restart();
         m_deathSound.play();
     }
 
-    int Player::getLives() const { return m_livesLeft; }
+    int Player::getLives() const
+    {
+        return m_livesLeft;
+    }
 
-    bool Player::isAlive() const { return m_isAlive; }
+    bool Player::isAlive() const
+    {
+        return m_isAlive;
+    }
 
     void Player::tryRevive()
     {

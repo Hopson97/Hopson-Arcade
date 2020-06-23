@@ -12,9 +12,9 @@ namespace space_invaders {
 
         struct EntryBox {
           public:
-            EntryBox(int position, const std::string &name, int score);
+            EntryBox(int position, const std::string& name, int score);
 
-            void draw(sf::RenderTarget &renderer);
+            void draw(sf::RenderTarget& renderer);
 
           private:
             sf::RectangleShape m_background;
@@ -25,13 +25,13 @@ namespace space_invaders {
         enum class State { Submitting, Viewing };
 
       public:
-        StateHighscores(arcade::Game &game, int score);
-        StateHighscores(arcade::Game &game);
+        StateHighscores(arcade::Game& game, int score);
+        StateHighscores(arcade::Game& game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
         void update(sf::Time deltaTime) override;
-        void render(sf::RenderTarget &renderer) override;
+        void render(sf::RenderTarget& renderer) override;
 
         static int getHighestScore();
 
@@ -48,7 +48,7 @@ namespace space_invaders {
 
         arcade::gui::StackMenu m_submitScoreMenu;
         arcade::gui::StackMenu m_highscoreMenu;
-        arcade::gui::StackMenu *m_pActiveMenu;
+        arcade::gui::StackMenu* m_pActiveMenu;
 
         std::vector<Entry> m_scores;
         std::vector<EntryBox> m_entryBoxes;

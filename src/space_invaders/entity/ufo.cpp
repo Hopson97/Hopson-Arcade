@@ -10,15 +10,14 @@ namespace space_invaders {
         constexpr float Y_POS = 45;
     } // namespace
 
-    UFO::UFO(arcade::Random<> &rand)
+    UFO::UFO(arcade::Random<>& rand)
         : Collidable(WIDTH, HEIGHT)
         , m_rng(rand)
         , m_animation(16, 8)
     {
         m_sprite.setSize({WIDTH, HEIGHT});
         m_sprite.setPosition((float)Display::WIDTH, Y_POS);
-        m_sprite.setTexture(
-            &arcade::ResourceHolder::get().textures.get("si/ufo"));
+        m_sprite.setTexture(&arcade::ResourceHolder::get().textures.get("si/ufo"));
 
         for (int i = 0; i < 3; i++) {
             m_animation.addFrame(i, sf::seconds(0.2f));
@@ -28,7 +27,10 @@ namespace space_invaders {
         m_flyingSound.setVolume(10);
     }
 
-    UFO::State UFO::getState() const { return m_state; }
+    UFO::State UFO::getState() const
+    {
+        return m_state;
+    }
 
     void UFO::update(float dt)
     {
@@ -43,8 +45,7 @@ namespace space_invaders {
                     getPosition().x >= Display::WIDTH + WIDTH) {
                     m_state = State::Waiting;
                 }
-                if ((int)m_flyingSound.getStatus() !=
-                        (int)sf::Sound::Status::Playing ||
+                if ((int)m_flyingSound.getStatus() != (int)sf::Sound::Status::Playing ||
                     m_flyingSound.getPlayingOffset() >= sf::seconds(1.5)) {
                     m_flyingSound.setPlayingOffset(sf::seconds(0.2f));
                     m_flyingSound.play();
@@ -68,7 +69,7 @@ namespace space_invaders {
         }
     }
 
-    void UFO::draw(sf::RenderTarget &window)
+    void UFO::draw(sf::RenderTarget& window)
     {
         if (m_state == State::Flying) {
             m_sprite.setTextureRect(m_animation.getFrame());
@@ -76,12 +77,12 @@ namespace space_invaders {
         }
     }
 
-    const sf::Vector2f &UFO::getPosition() const
+    const sf::Vector2f& UFO::getPosition() const
     {
         return m_sprite.getPosition();
     }
 
-    void UFO::onCollide([[maybe_unused]] Collidable &other)
+    void UFO::onCollide([[maybe_unused]] Collidable& other)
     {
         m_state = State::Destroyed;
         m_sprite.setPosition(

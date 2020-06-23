@@ -6,7 +6,7 @@ namespace space_invaders {
     {
     }
 
-    bool Collidable::tryCollideWith(Collidable &other)
+    bool Collidable::tryCollideWith(Collidable& other)
     {
         if (getBox().intersects(other.getBox())) {
             onCollide(other);

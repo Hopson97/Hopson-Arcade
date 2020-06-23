@@ -33,18 +33,18 @@ namespace arcade {
             m_function = function;
         }
 
-        void Button::setText(const std::string &str)
+        void Button::setText(const std::string& str)
         {
             m_text.setString(str);
             updateText();
         }
 
-        void Button::setTexture(const sf::Texture &tex)
+        void Button::setTexture(const sf::Texture& tex)
         {
             m_button.setTexture(&tex);
         }
 
-        void Button::handleEvent(sf::Event e, const sf::RenderWindow &window)
+        void Button::handleEvent(sf::Event e, const sf::RenderWindow& window)
         {
             auto pos = sf::Mouse::getPosition(window);
 
@@ -52,8 +52,8 @@ namespace arcade {
                 case sf::Event::MouseButtonPressed:
                     switch (e.mouseButton.button) {
                         case sf::Mouse::Left:
-                            if (m_button.getGlobalBounds().contains(
-                                    (float)pos.x, (float)pos.y)) {
+                            if (m_button.getGlobalBounds().contains((float)pos.x,
+                                                                    (float)pos.y)) {
                                 m_function();
                             }
 
@@ -66,13 +66,13 @@ namespace arcade {
             }
         }
 
-        void Button::render(sf::RenderTarget &renderer)
+        void Button::render(sf::RenderTarget& renderer)
         {
             renderer.draw(m_button);
             renderer.draw(m_text);
         }
 
-        void Button::setPosition(const sf::Vector2f &pos)
+        void Button::setPosition(const sf::Vector2f& pos)
         {
             m_position = pos;
 
@@ -105,7 +105,10 @@ namespace arcade {
             m_isDisabled = false;
         }
 
-        sf::Vector2f Button::getSize() const { return m_button.getSize(); }
+        sf::Vector2f Button::getSize() const
+        {
+            return m_button.getSize();
+        }
 
     } // namespace gui
 } // namespace arcade

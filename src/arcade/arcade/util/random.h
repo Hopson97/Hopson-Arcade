@@ -4,7 +4,8 @@
 #include <random>
 
 namespace arcade {
-    template <typename Engine = std::mt19937> class Random {
+    template <typename Engine = std::mt19937>
+    class Random {
         template <typename T>
         using UniformDist = std::uniform_real_distribution<T>;
         using UniformIntDist = std::uniform_int_distribution<int>;
@@ -27,12 +28,14 @@ namespace arcade {
             return getNumberInRange<UniformDist<float>>(low, high);
         }
 
-        template <typename T> T getNumberInRange(T low, T high)
+        template <typename T>
+        T getNumberInRange(T low, T high)
         {
             return getNumberInRange<UniformDist<T>>(low, high);
         }
 
-        template <typename Dist, typename T> T getNumberInRange(T low, T high)
+        template <typename Dist, typename T>
+        T getNumberInRange(T low, T high)
         {
             Dist dist(low, high);
             return dist(m_prng);

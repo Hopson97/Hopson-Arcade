@@ -8,15 +8,14 @@
 #include <arcade/gui/textbox.h>
 
 namespace pong {
-    StateMainMenu::StateMainMenu(arcade::Game &game)
+    StateMainMenu::StateMainMenu(arcade::Game& game)
         : arcade::StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
         , m_joinMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
         , mp_activeMenu(&m_mainMenu)
     {
         m_banner.setSize({(float)Display::WIDTH, 200});
-        m_banner.setTexture(
-            &arcade::ResourceHolder::get().textures.get("pong/logo"));
+        m_banner.setTexture(&arcade::ResourceHolder::get().textures.get("pong/logo"));
 
         {
             auto vsComputer = arcade::gui::makeButton();
@@ -68,9 +67,12 @@ namespace pong {
         mp_activeMenu->handleEvent(e, m_pGame->getWindow());
     }
 
-    void StateMainMenu::update(sf::Time deltaTime) { (void)deltaTime; }
+    void StateMainMenu::update(sf::Time deltaTime)
+    {
+        (void)deltaTime;
+    }
 
-    void StateMainMenu::render(sf::RenderTarget &renderer)
+    void StateMainMenu::render(sf::RenderTarget& renderer)
     {
 
         mp_activeMenu->render(renderer);

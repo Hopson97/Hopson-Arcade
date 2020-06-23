@@ -10,7 +10,7 @@
 namespace arcade {
     class ResourceHolder : public NonCopyable, public NonMovable {
       public:
-        static ResourceHolder &get();
+        static ResourceHolder& get();
 
         ResourceManager<sf::Font> fonts;
         ResourceManager<sf::Texture> textures;

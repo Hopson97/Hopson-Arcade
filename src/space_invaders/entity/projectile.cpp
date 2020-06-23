@@ -3,8 +3,7 @@
 #include "../display_info.h"
 
 namespace space_invaders {
-    Projectile::Projectile(const sf::Vector2f &position, Type type,
-                           Direction direction)
+    Projectile::Projectile(const sf::Vector2f& position, Type type, Direction direction)
         : Collidable(WIDTH / 1.5, HEIGHT)
         , m_position(position)
         , m_type(type)
@@ -23,23 +22,38 @@ namespace space_invaders {
         }
     }
 
-    void Projectile::onCollide([[maybe_unused]] Collidable &other)
+    void Projectile::onCollide([[maybe_unused]] Collidable& other)
     {
         destroy();
     }
 
-    void Projectile::destroy() { m_isActive = false; }
+    void Projectile::destroy()
+    {
+        m_isActive = false;
+    }
 
-    const sf::Vector2f &Projectile::getPosition() const { return m_position; }
+    const sf::Vector2f& Projectile::getPosition() const
+    {
+        return m_position;
+    }
 
-    Projectile::Type Projectile::getType() const { return m_type; }
+    Projectile::Type Projectile::getType() const
+    {
+        return m_type;
+    }
 
-    bool Projectile::isActive() const { return m_isActive; }
+    bool Projectile::isActive() const
+    {
+        return m_isActive;
+    }
 
     Projectile::Direction Projectile::getDirection() const
     {
         return m_direction;
     }
 
-    int Projectile::getID() const { return m_id; }
+    int Projectile::getID() const
+    {
+        return m_id;
+    }
 } // namespace space_invaders

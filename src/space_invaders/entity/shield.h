@@ -22,18 +22,19 @@ namespace space_invaders {
           public:
             ShieldSection(float tlX, float tlY, SectorStyle style);
 
-            void draw(sf::RenderTarget &target);
+            void draw(sf::RenderTarget& target);
 
-            const sf::Vector2f &getPosition() const;
-            void onCollide([[maybe_unused]] Collidable &other) {}
+            const sf::Vector2f& getPosition() const;
+            void onCollide([[maybe_unused]] Collidable& other)
+            {
+            }
 
-            sf::Vector2f isTouching(const Projectile &other);
+            sf::Vector2f isTouching(const Projectile& other);
 
             void destroyArea(int x, int y);
 
           private:
-            void calculatePixelCoord(int x, int y, sf::Vertex &v,
-                                     SectorStyle style);
+            void calculatePixelCoord(int x, int y, sf::Vertex& v, SectorStyle style);
             std::array<sf::Vertex, SECT_SIZE * SECT_SIZE> m_pixels;
             sf::Vector2f m_position;
         };
@@ -43,14 +44,16 @@ namespace space_invaders {
 
         Shield(float x);
 
-        void draw(sf::RenderTarget &target);
-        bool isTouching(const Projectile &projectile);
+        void draw(sf::RenderTarget& target);
+        bool isTouching(const Projectile& projectile);
 
-        const sf::Vector2f &getPosition() const;
-        void onCollide([[maybe_unused]] Collidable &other) {}
+        const sf::Vector2f& getPosition() const;
+        void onCollide([[maybe_unused]] Collidable& other)
+        {
+        }
 
       private:
-        ShieldSection &getSection(int x, int y);
+        ShieldSection& getSection(int x, int y);
 
         void destroyPoint(float relX, float relY);
 

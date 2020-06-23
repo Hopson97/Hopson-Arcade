@@ -25,15 +25,15 @@ namespace arcade {
          */
         class StackMenu : public NonCopyable {
           public:
-            StackMenu(const sf::RenderWindow &window, float baseY);
-            StackMenu(const sf::Vector2f &position);
+            StackMenu(const sf::RenderWindow& window, float baseY);
+            StackMenu(const sf::Vector2f& position);
 
-            StackMenu(StackMenu &&other);
-            StackMenu &operator=(StackMenu &&other);
+            StackMenu(StackMenu&& other);
+            StackMenu& operator=(StackMenu&& other);
 
             ~StackMenu() = default;
 
-            void addWidget(std::unique_ptr<Widget> w);
+            Widget* addWidget(std::unique_ptr<Widget> w);
             /*
             template<typename T, typename... Args>
             void addWidget(Args&&... args) {
@@ -42,14 +42,13 @@ namespace arcade {
                 m_widgets.push_back(std::move(w));
             }*/
 
-            void setTitle(const std::string &title,
-                          const sf::RenderTarget &target);
+            void setTitle(const std::string& title, const sf::RenderTarget& target);
 
-            void handleEvent(sf::Event e, const sf::RenderWindow &window);
-            void render(sf::RenderTarget &renderer);
+            void handleEvent(sf::Event e, const sf::RenderWindow& window);
+            void render(sf::RenderTarget& renderer);
 
           private:
-            void initWidget(Widget &w);
+            void initWidget(Widget& w);
 
             std::vector<std::unique_ptr<Widget>> m_widgets;
             sf::RectangleShape m_background;

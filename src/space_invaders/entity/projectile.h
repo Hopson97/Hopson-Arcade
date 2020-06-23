@@ -14,13 +14,12 @@ namespace space_invaders {
 
         enum class Direction { Up = -1, Down = 1 };
 
-        Projectile(const sf::Vector2f &position, Type type,
-                   Direction direction);
+        Projectile(const sf::Vector2f& position, Type type, Direction direction);
         void update(float dt);
-        void onCollide(Collidable &other) override;
+        void onCollide(Collidable& other) override;
         void destroy();
 
-        const sf::Vector2f &getPosition() const;
+        const sf::Vector2f& getPosition() const;
         Type getType() const;
         bool isActive() const;
         Direction getDirection() const;

@@ -20,7 +20,7 @@ namespace arcade {
     }
 
     // Returns the current/active frame of the animation
-    const sf::IntRect &Animation::getFrame()
+    const sf::IntRect& Animation::getFrame()
     {
         if (m_timer.getElapsedTime() >= m_frames[m_framePointer].delay) {
             m_timer.restart();

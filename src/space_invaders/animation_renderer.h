@@ -10,14 +10,14 @@ namespace space_invaders {
     class AnimationRenderer {
       public:
         AnimationRenderer(int frameWidth, int frameHeight, float entityWidth,
-                          float entityHeight, const sf::Texture &spriteSheet);
+                          float entityHeight, const sf::Texture& spriteSheet);
 
         // Changes to the next frame
         void nextFrame();
 
         // Renders a single entity, using the current arcade::Animation frame
-        void renderEntity(sf::RenderTarget &renderer, int type,
-                          const sf::Vector2f &position);
+        void renderEntity(sf::RenderTarget& renderer, int type,
+                          const sf::Vector2f& position);
 
       private:
         sf::RectangleShape m_entity;

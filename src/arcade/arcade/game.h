@@ -22,18 +22,20 @@ namespace arcade {
 
         void run();
 
-        template <typename T> void initGame();
+        template <typename T>
+        void initGame();
 
         void pushState(std::unique_ptr<StateBase> state);
         void popState();
         void exitGame();
 
-        template <typename T, typename... Args> void pushState(Args &&... args);
+        template <typename T, typename... Args>
+        void pushState(Args&&... args);
 
         template <typename T, typename... Args>
-        void changeState(Args &&... args);
+        void changeState(Args&&... args);
 
-        const sf::RenderWindow &getWindow() const;
+        const sf::RenderWindow& getWindow() const;
 
         void resizeWindow(unsigned width, unsigned height);
 
@@ -41,7 +43,7 @@ namespace arcade {
         void handleEvent();
         void tryPop();
 
-        StateBase &getCurrentState();
+        StateBase& getCurrentState();
 
         sf::RenderWindow m_window;
         std::vector<std::unique_ptr<StateBase>> m_states;
@@ -54,19 +56,20 @@ namespace arcade {
         std::unique_ptr<StateBase> m_change;
     };
 
-    template <typename T> inline void Game::initGame()
+    template <typename T>
+    inline void Game::initGame()
     {
         this->pushState<T>(*this);
     }
 
     template <typename T, typename... Args>
-    inline void Game::pushState(Args &&... args)
+    inline void Game::pushState(Args&&... args)
     {
         pushState(std::make_unique<T>(std::forward<Args>(args)...));
     }
 
     template <typename T, typename... Args>
-    inline void Game::changeState(Args &&... args)
+    inline void Game::changeState(Args&&... args)
     {
         m_change = std::make_unique<T>(std::forward<Args>(args)...);
         m_shouldPop = true;

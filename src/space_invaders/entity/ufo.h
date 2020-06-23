@@ -13,19 +13,19 @@ namespace space_invaders {
       public:
         enum class State { Waiting, Flying, Destroyed };
 
-        UFO(arcade::Random<> &rand);
+        UFO(arcade::Random<>& rand);
 
         State getState() const;
 
         void update(float dt);
 
-        void draw(sf::RenderTarget &window);
+        void draw(sf::RenderTarget& window);
 
-        const sf::Vector2f &getPosition() const;
-        void onCollide(Collidable &other);
+        const sf::Vector2f& getPosition() const;
+        void onCollide(Collidable& other);
 
       private:
-        arcade::Random<> &m_rng;
+        arcade::Random<>& m_rng;
 
         sf::RectangleShape m_sprite;
         float m_vx;

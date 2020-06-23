@@ -21,20 +21,22 @@ namespace space_invaders {
 
         void input();
         int update(float dt);
-        void draw(sf::RenderTarget &target);
+        void draw(sf::RenderTarget& target);
 
-        const Player &getPlayer() const;
+        const Player& getPlayer() const;
 
         bool isGameOver() const;
 
-        void setGameIsOver() { m_isGameOver = true; }
+        void setGameIsOver()
+        {
+            m_isGameOver = true;
+        }
 
       private:
         void playerProjectileInput();
         void enemyProjectileFire();
         CollisionResult getCollisionResult(float dtt);
-        void updateProjectiles(float dt,
-                               std::vector<sf::Vector2f> &collisionPoints);
+        void updateProjectiles(float dt, std::vector<sf::Vector2f>& collisionPoints);
 
         AnimationRenderer m_projectileRenderer;
         InvaderManager m_invaders;

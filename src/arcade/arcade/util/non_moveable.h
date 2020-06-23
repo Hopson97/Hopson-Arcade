@@ -3,7 +3,7 @@
 namespace arcade {
     struct NonMovable {
         NonMovable() = default;
-        NonMovable &operator=(NonMovable &&) = delete;
-        NonMovable(NonMovable &&) = delete;
+        NonMovable& operator=(NonMovable&&) = delete;
+        NonMovable(NonMovable&&) = delete;
     };
 } // namespace arcade

@@ -26,22 +26,25 @@ namespace space_invaders {
                 if (xP == 2 && yP == 3)
                     style = Sty::SlopeUnderDown;
 
-                m_sections.emplace_back(x + sx * SECT_SIZE,
-                                        m_position.y + sy * SECT_SIZE, style);
+                m_sections.emplace_back(x + sx * SECT_SIZE, m_position.y + sy * SECT_SIZE,
+                                        style);
             }
         }
     }
 
-    void Shield::draw(sf::RenderTarget &target)
+    void Shield::draw(sf::RenderTarget& target)
     {
-        for (auto &sect : m_sections) {
+        for (auto& sect : m_sections) {
             sect.draw(target);
         }
     }
 
-    const sf::Vector2f &Shield::getPosition() const { return m_position; }
+    const sf::Vector2f& Shield::getPosition() const
+    {
+        return m_position;
+    }
 
-    Shield::ShieldSection &Shield::getSection(int x, int y)
+    Shield::ShieldSection& Shield::getSection(int x, int y)
     {
         return m_sections[y * 4 + x];
     }
@@ -55,8 +58,8 @@ namespace space_invaders {
         // Get section this is inside of
         int xIndex = (int)relX / SECT_SIZE;
         int yIndex = (int)relY / SECT_SIZE;
-        auto &section = getSection(xIndex, yIndex);
-        auto &sectionPos = section.getPosition();
+        auto& section = getSection(xIndex, yIndex);
+        auto& sectionPos = section.getPosition();
 
         // Transform to find the pixel coordinate
         float sectionTopLeftX = sectionPos.x - m_position.x;
@@ -68,11 +71,11 @@ namespace space_invaders {
         section.destroyArea((int)pixelX, (int)pixelY);
     }
 
-    bool Shield::isTouching(const Projectile &projectile)
+    bool Shield::isTouching(const Projectile& projectile)
     {
         static arcade::Random<> rand;
         if (projectile.getBox().intersects(getBox())) {
-            for (auto &sector : m_sections) {
+            for (auto& sector : m_sections) {
                 auto result = sector.isTouching(projectile);
                 if ((int)result.x == -1)
                     continue;
@@ -108,8 +111,7 @@ namespace space_invaders {
         return false;
     }
 
-    Shield::ShieldSection::ShieldSection(float tlX, float tlY,
-                                         SectorStyle style)
+    Shield::ShieldSection::ShieldSection(float tlX, float tlY, SectorStyle style)
         : Collidable((float)SECT_SIZE, (float)SECT_SIZE)
         , m_position({tlX, tlY})
     {
@@ -123,21 +125,20 @@ namespace space_invaders {
         }
     }
 
-    void Shield::ShieldSection::draw(sf::RenderTarget &target)
+    void Shield::ShieldSection::draw(sf::RenderTarget& target)
     {
         target.draw(m_pixels.data(), m_pixels.size(), sf::Points);
     }
 
-    const sf::Vector2f &Shield::ShieldSection::getPosition() const
+    const sf::Vector2f& Shield::ShieldSection::getPosition() const
     {
         return m_position;
     }
 
-    sf::Vector2f Shield::ShieldSection::isTouching(const Projectile &other)
+    sf::Vector2f Shield::ShieldSection::isTouching(const Projectile& other)
     {
-        for (auto &px : m_pixels) {
-            if (other.getBox().contains(px.position) &&
-                px.color == sf::Color::Green) {
+        for (auto& px : m_pixels) {
+            if (other.getBox().contains(px.position) && px.color == sf::Color::Green) {
                 return px.position;
             }
         }
@@ -151,16 +152,14 @@ namespace space_invaders {
             for (int oX = -2; oX <= 2; oX++) {
                 int newX = x + oX;
                 int newY = y + oY;
-                if (newX < 0 || newX >= SECT_SIZE || newY < 0 ||
-                    newY >= SECT_SIZE)
+                if (newX < 0 || newX >= SECT_SIZE || newY < 0 || newY >= SECT_SIZE)
                     continue;
                 m_pixels[newY * SECT_SIZE + newX].color = sf::Color::Black;
             }
         }
     }
 
-    void Shield::ShieldSection::calculatePixelCoord(int x, int y,
-                                                    sf::Vertex &pixel,
+    void Shield::ShieldSection::calculatePixelCoord(int x, int y, sf::Vertex& pixel,
                                                     SectorStyle style)
     {
         switch (style) {

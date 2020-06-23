@@ -8,10 +8,10 @@ namespace space_invaders {
     */
     class Explosion {
       public:
-        Explosion(const sf::Vector2f &position);
+        Explosion(const sf::Vector2f& position);
 
         bool isLifeOver() const;
-        const sf::Vector2f &getPosition() const;
+        const sf::Vector2f& getPosition() const;
 
       private:
         sf::Vector2f m_position;     // The position of the explosion

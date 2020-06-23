@@ -52,7 +52,7 @@ namespace space_invaders {
                 auto collisionResult = getCollisionResult(dt);
                 if (collisionResult.second.size() > 0) {
                     score += collisionResult.first;
-                    for (auto &point : collisionResult.second) {
+                    for (auto& point : collisionResult.second) {
                         m_explosions.emplace_back(point);
                     }
                 }
@@ -75,7 +75,10 @@ namespace space_invaders {
         return score;
     }
 
-    const Player &World::getPlayer() const { return m_player; }
+    const Player& World::getPlayer() const
+    {
+        return m_player;
+    }
 
     bool World::isGameOver() const
     {
@@ -104,10 +107,8 @@ namespace space_invaders {
             auto point = m_invaders.getRandomLowestInvaderPoint(m_rng);
             if ((int)point.x == -1)
                 return;
-            auto type =
-                static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));
-            m_projectiles.emplace_back(point, type,
-                                       Projectile::Direction::Down);
+            auto type = static_cast<Projectile::Type>(m_rng.getIntInRange(1, 2));
+            m_projectiles.emplace_back(point, type, Projectile::Direction::Down);
             m_invaderShotClock.restart();
         }
     }
@@ -118,10 +119,10 @@ namespace space_invaders {
         auto result = m_invaders.tryCollideWithProjectiles(m_projectiles);
         updateProjectiles(dt, result.second);
 
-        for (auto &projectile : m_projectiles) {
+        for (auto& projectile : m_projectiles) {
 
             // Projectile verses sheild collisons
-            for (auto &sheild : m_shields) {
+            for (auto& sheild : m_shields) {
                 if (sheild.isTouching(projectile)) {
                     projectile.destroy();
                     result.second.emplace_back(projectile.getPosition());
@@ -135,7 +136,7 @@ namespace space_invaders {
             }
 
             // Projectile verses projectile collisions
-            for (auto &otherProjectile : m_projectiles) {
+            for (auto& otherProjectile : m_projectiles) {
                 if (otherProjectile.getID() != projectile.getID()) {
                     if (otherProjectile.tryCollideWith(projectile)) {
                         result.second.emplace_back(projectile.getPosition());
@@ -147,11 +148,10 @@ namespace space_invaders {
         return result;
     }
 
-    void World::updateProjectiles(float dt,
-                                  std::vector<sf::Vector2f> &collisionPoints)
+    void World::updateProjectiles(float dt, std::vector<sf::Vector2f>& collisionPoints)
     {
         for (auto itr = m_projectiles.begin(); itr != m_projectiles.end();) {
-            auto &projectile = *itr;
+            auto& projectile = *itr;
             if (!projectile.isActive()) {
                 itr = m_projectiles.erase(itr);
             }
@@ -168,23 +168,23 @@ namespace space_invaders {
         }
     }
 
-    void World::draw(sf::RenderTarget &target)
+    void World::draw(sf::RenderTarget& target)
     {
         if (m_animTimer.getElapsedTime().asSeconds() > 0.2) {
             m_projectileRenderer.nextFrame();
             m_animTimer.restart();
         }
 
-        for (auto &shield : m_shields) {
+        for (auto& shield : m_shields) {
             shield.draw(target);
         }
 
-        for (auto &proj : m_projectiles) {
+        for (auto& proj : m_projectiles) {
             m_projectileRenderer.renderEntity(target, (int)proj.getType(),
                                               proj.getPosition());
         }
 
-        for (auto &exp : m_explosions) {
+        for (auto& exp : m_explosions) {
             m_explodeShape.setPosition(exp.getPosition());
             target.draw(m_explodeShape);
         }

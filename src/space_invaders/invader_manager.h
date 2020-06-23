@@ -20,22 +20,21 @@ namespace space_invaders {
     */
     class InvaderManager {
       public:
-        InvaderManager(World &world);
+        InvaderManager(World& world);
 
         // Moves all of the invaders to the left or right, if the clock has
         // reached a certain time
         void tryStepInvaders();
 
         // Draws all of the alive invaders
-        void drawInvaders(sf::RenderTarget &target);
+        void drawInvaders(sf::RenderTarget& target);
 
         // Tries to collide the invaders with the projectiles
         // Returns the points of collision
-        CollisionResult
-        tryCollideWithProjectiles(std::vector<Projectile> &projectiles);
+        CollisionResult tryCollideWithProjectiles(std::vector<Projectile>& projectiles);
 
         // This is for firing projectiles from the enemy
-        sf::Vector2f getRandomLowestInvaderPoint(arcade::Random<> &random);
+        sf::Vector2f getRandomLowestInvaderPoint(arcade::Random<>& random);
 
         int getAliveInvadersCount() const;
 
@@ -52,13 +51,13 @@ namespace space_invaders {
 
         // Checks the invaders position to see if all the aliens should move
         // down Or if the game is over
-        bool testInvaderPosition(const Invader &invader) const;
+        bool testInvaderPosition(const Invader& invader) const;
 
         std::vector<Invader> m_invaders;
         sf::Clock m_stepTimer;
         sf::Time m_stepGap;
 
-        World &m_world;
+        World& m_world;
 
         AnimationRenderer m_invaderRenderer;
         unsigned m_aliveInvaders = 0;

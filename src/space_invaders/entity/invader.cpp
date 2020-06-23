@@ -1,7 +1,7 @@
 #include "invader.h"
 
 namespace space_invaders {
-    Invader::Invader(const sf::Vector2f &initialLocation, Type type)
+    Invader::Invader(const sf::Vector2f& initialLocation, Type type)
         : Collidable(WIDTH, HEIGHT)
         , m_initialPosition(initialLocation)
         , m_location(initialLocation)
@@ -9,15 +9,27 @@ namespace space_invaders {
     {
     }
 
-    void Invader::move(float x, float y) { m_location += {x, y}; }
+    void Invader::move(float x, float y)
+    {
+        m_location += {x, y};
+    }
 
-    const sf::Vector2f &Invader::getPosition() const { return m_location; }
+    const sf::Vector2f& Invader::getPosition() const
+    {
+        return m_location;
+    }
 
-    bool Invader::isAlive() const { return m_isAlive; }
+    bool Invader::isAlive() const
+    {
+        return m_isAlive;
+    }
 
-    Invader::Type Invader::getType() const { return m_type; }
+    Invader::Type Invader::getType() const
+    {
+        return m_type;
+    }
 
-    void Invader::onCollide([[maybe_unused]] Collidable &other)
+    void Invader::onCollide([[maybe_unused]] Collidable& other)
     {
         m_isAlive = false;
     }

@@ -1,7 +1,7 @@
 #include "resource_holder.h"
 
 namespace arcade {
-    ResourceHolder &ResourceHolder::get()
+    ResourceHolder& ResourceHolder::get()
     {
         static ResourceHolder holder;
         return holder;

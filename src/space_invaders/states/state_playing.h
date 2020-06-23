@@ -10,12 +10,12 @@ namespace space_invaders {
     */
     class StatePlaying : public arcade::StateBase {
       public:
-        StatePlaying(arcade::Game &game);
+        StatePlaying(arcade::Game& game);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override;
         void update(sf::Time deltaTime) override;
-        void render(sf::RenderTarget &renderer) override;
+        void render(sf::RenderTarget& renderer) override;
 
       private:
         World m_world;
@@ -31,7 +31,7 @@ namespace space_invaders {
           public:
             LifeDisplay();
 
-            void draw(sf::RenderTarget &window, int lives);
+            void draw(sf::RenderTarget& window, int lives);
 
           private:
             arcade::gui::Widget::Text m_label;
@@ -41,11 +41,11 @@ namespace space_invaders {
         // Displays the Player's current score
         class ScoreDisplay {
           public:
-            ScoreDisplay(float centreX, const std::string &text);
+            ScoreDisplay(float centreX, const std::string& text);
 
             void update(int newScore);
 
-            void draw(sf::RenderTarget &target);
+            void draw(sf::RenderTarget& target);
 
             int getCurrentScoreDisplayed() const;
 

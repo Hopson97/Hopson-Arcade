@@ -6,7 +6,7 @@
 #include <arcade/gui/button.h>
 
 namespace pong {
-    StateLobby::StateLobby(arcade::Game &game, bool isHost)
+    StateLobby::StateLobby(arcade::Game& game, bool isHost)
         : arcade::StateBase(game, "State Lobby")
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
         , m_isHost(isHost)
@@ -15,8 +15,13 @@ namespace pong {
             auto startButton = arcade::gui::makeButton();
             startButton->disable();
             startButton->setText("Start");
-            startButton->setFunction([&]() {  });
+            startButton->setFunction([&]() {});
             m_mainMenu.addWidget(std::move(startButton));
+
+            if (m_tcpListener.listen(52345) != sf::Socket::Done) {
+                m_pGame->popState();
+            }
+            m_tcpListener.setBlocking(false);
         }
 
         auto exitBtn = arcade::gui::makeButton();
@@ -32,9 +37,16 @@ namespace pong {
         m_mainMenu.handleEvent(e, m_pGame->getWindow());
     }
 
-    void StateLobby::update(sf::Time deltaTime) { (void)deltaTime; }
-
-    void StateLobby::render(sf::RenderTarget &renderer)
+    void StateLobby::update(sf::Time deltaTime)
+    {
+        if (m_isHost) {
+            if (m_tcpListener.accept(m_otherPlayer) == sf::Socket::Done) {
+            }
+        }
+        else {
+        }
+    }
+    void StateLobby::render(sf::RenderTarget& renderer)
     {
         m_mainMenu.render(renderer);
         renderer.draw(m_banner);

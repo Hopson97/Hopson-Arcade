@@ -7,7 +7,7 @@ namespace arcade {
     class Animation {
       public:
         struct Frame {
-            Frame(const sf::IntRect &bnds, sf::Time dly)
+            Frame(const sf::IntRect& bnds, sf::Time dly)
                 : bounds(bnds)
                 , delay(dly)
             {
@@ -21,7 +21,7 @@ namespace arcade {
 
         void addFrame(unsigned index, sf::Time delay);
 
-        const sf::IntRect &getFrame();
+        const sf::IntRect& getFrame();
 
       private:
         sf::Clock m_timer; // Timer for progressing the animation

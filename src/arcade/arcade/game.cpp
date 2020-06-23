@@ -11,8 +11,7 @@ namespace arcade {
 
         sf::Image icon;
         icon.loadFromFile("res/txrs/icon.png");
-        m_window.setIcon(icon.getSize().x, icon.getSize().y,
-                         icon.getPixelsPtr());
+        m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     }
 
     // Runs the main loop
@@ -28,7 +27,7 @@ namespace arcade {
 
         // Main loop of the game
         while (m_window.isOpen() && !m_states.empty()) {
-            auto &state = getCurrentState();
+            auto& state = getCurrentState();
 
             // Get times
             auto time = timer.getElapsedTime();
@@ -102,7 +101,10 @@ namespace arcade {
     }
 
     // Returns a reference to the current game state
-    StateBase &Game::getCurrentState() { return *m_states.back(); }
+    StateBase& Game::getCurrentState()
+    {
+        return *m_states.back();
+    }
 
     void Game::pushState(std::unique_ptr<StateBase> state)
     {
@@ -111,7 +113,10 @@ namespace arcade {
     }
 
     // Flags a boolean for the game to pop state
-    void Game::popState() { m_shouldPop = true; }
+    void Game::popState()
+    {
+        m_shouldPop = true;
+    }
 
     void Game::exitGame()
     {
@@ -120,7 +125,10 @@ namespace arcade {
     }
 
     // on tin
-    const sf::RenderWindow &Game::getWindow() const { return m_window; }
+    const sf::RenderWindow& Game::getWindow() const
+    {
+        return m_window;
+    }
 
     void Game::resizeWindow(unsigned width, unsigned height)
     {

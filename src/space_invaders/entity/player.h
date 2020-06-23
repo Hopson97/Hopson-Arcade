@@ -21,13 +21,13 @@ namespace space_invaders {
 
         void input();
         void update(float dt);
-        void draw(sf::RenderTarget &target);
+        void draw(sf::RenderTarget& target);
 
         // Gets the coordinates of the gun
         sf::Vector2f getGunPosition() const;
 
-        const sf::Vector2f &getPosition() const;
-        void onCollide(Collidable &other) override;
+        const sf::Vector2f& getPosition() const;
+        void onCollide(Collidable& other) override;
 
         int getLives() const;
         bool isAlive() const;

@@ -11,10 +11,10 @@ namespace space_invaders {
 
         void update(float dt);
 
-        void draw(sf::RenderTarget &renderer);
+        void draw(sf::RenderTarget& renderer);
 
       private:
-        void giveStarRandomStartLocation(sf::Vertex &v);
+        void giveStarRandomStartLocation(sf::Vertex& v);
 
         std::vector<sf::Vertex> m_stars;
 
