@@ -25,7 +25,7 @@ namespace arcade {
             Text m_label;
         };
 
-        inline std::unique_ptr<Label> makeTextBox()
+        inline std::unique_ptr<Label> makeLabel()
         {
             return std::make_unique<Label>();
         }

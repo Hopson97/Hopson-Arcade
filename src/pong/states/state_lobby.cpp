@@ -1,13 +1,13 @@
 #include "state_lobby.h"
 
 #include "../display_info.h"
-
-#include <SFML/Network/Packet.hpp>
-
 #include "../net.h"
 #include "state_error.h"
+#include <SFML/Network/Packet.hpp>
 #include <arcade/game.h>
 #include <arcade/gui/button.h>
+#include <arcade/gui/label.h>
+#include <iostream>
 
 namespace pong {
     StateLobby::StateLobby(arcade::Game& game, const std::string& name)
@@ -43,7 +43,7 @@ namespace pong {
         m_startGameButton = m_mainMenu.addWidget(std::move(startButton));
         m_mainMenu.setTitle("Choose Action");
 
-        m_playerList.setTitle("Player List");
+        initPlayerList();
     }
 
     StateLobby::StateLobby(arcade::Game& game, const std::string& ip,
@@ -67,7 +67,19 @@ namespace pong {
         m_mainMenu.addWidget(std::move(exitBtn));
         m_mainMenu.setTitle("Waiting for host to start game...");
 
+        initPlayerList();
+    }
+
+    void StateLobby::initPlayerList()
+    {
         m_playerList.setTitle("Player List");
+        auto myNameLabel = arcade::gui::makeLabel();
+        myNameLabel->setLabel(m_name);
+
+        auto otherPlayerLabel = arcade::gui::makeLabel();
+        m_playerList.addWidget(std::move(myNameLabel));
+        m_otherPlayerLabel =
+            (arcade::gui::Label*)m_playerList.addWidget(std::move(otherPlayerLabel));
     }
 
     void StateLobby::handleEvent(sf::Event e)
@@ -80,7 +92,6 @@ namespace pong {
         if (m_isHost) {
             if (m_tcpListener.accept(m_socket) == sf::Socket::Done) {
                 m_hasConnection = true;
-                m_startGameButton->enable();
                 auto packet = makePacket(ToClientCommand::Name);
                 packet << m_name;
                 m_socket.send(packet);
@@ -119,7 +130,10 @@ namespace pong {
         auto command = static_cast<ToClientCommand>(cmd);
         switch (command) {
             case ToClientCommand::Name:
-                packet << m_opponentName;
+                packet >> m_opponentName;
+                m_otherPlayerLabel->setLabel(m_opponentName);
+                std::cout << "client got name " << m_opponentName << "\n";
+
                 break;
 
             case ToClientCommand::Disconnect:
@@ -139,13 +153,17 @@ namespace pong {
         auto command = static_cast<ToServerCommand>(cmd);
         switch (command) {
             case ToServerCommand::Name:
-                packet << m_opponentName;
+                packet >> m_opponentName;
+                m_startGameButton->enable();
+                m_otherPlayerLabel->setLabel(m_opponentName);
+                std::cout << "host got name " << m_opponentName << "\n";
                 break;
 
             case ToServerCommand::Disconnect:
                 m_hasConnection = false;
                 m_socket.disconnect();
                 m_startGameButton->disable();
+                m_otherPlayerLabel->setLabel("");
                 break;
 
             default:

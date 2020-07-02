@@ -9,6 +9,7 @@
 namespace arcade {
     namespace gui {
         class Widget;
+        class Label;
     } // namespace gui
 
 } // namespace arcade
@@ -26,6 +27,7 @@ namespace pong {
         void render(sf::RenderTarget& renderer) override;
 
       private:
+        void initPlayerList();
         void clientHandlePacket(sf::Packet& packet);
         void hostHandlePacket(sf::Packet& packet);
 
@@ -38,6 +40,8 @@ namespace pong {
         sf::TcpSocket m_socket;
 
         arcade::gui::Widget* m_startGameButton = nullptr;
+
+        arcade::gui::Label* m_otherPlayerLabel = nullptr;
 
         const std::string m_name;
         std::string m_hostIp;
