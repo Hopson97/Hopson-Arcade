@@ -55,30 +55,39 @@ namespace arcade {
 
             // Handle window events
             handleEvent();
-            tryPop();
+            updateStates();
         }
     }
 
     // Tries to pop the current game state
-    void Game::tryPop()
+    void Game::updateStates()
     {
-        if (m_shouldPop) {
-            m_shouldPop = false;
-            if (m_shouldExit) {
-                m_states.clear();
-                return;
-            }
-            else if (m_shouldChageState) {
-                m_shouldChageState = false;
-                m_states.pop_back();
-                pushState(std::move(m_change));
-                return;
-            }
+        switch (m_action.type) {
+            case Action::Type::Push:
+                m_states.push_back(std::move(m_action.state));
+                m_action.type = Action::Type::None;
+                break;
 
-            m_states.pop_back();
-            if (!m_states.empty()) {
-                getCurrentState().onOpen();
-            }
+            case Action::Type::Pop:
+                m_states.pop_back();
+                if (!m_states.empty()) {
+                    getCurrentState().onOpen();
+                }
+                m_action.type = Action::Type::None;
+                break;
+
+            case Action::Type::Change:
+                m_states.pop_back();
+                m_states.push_back(std::move(m_action.state));
+                m_action.type = Action::Type::None;
+                break;
+
+            case Action::Type::Quit:
+                m_states.clear();
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -115,13 +124,12 @@ namespace arcade {
     // Flags a boolean for the game to pop state
     void Game::popState()
     {
-        m_shouldPop = true;
+        m_action.type = Action::Type::Pop;
     }
 
     void Game::exitGame()
     {
-        m_shouldPop = true;
-        m_shouldExit = true;
+        m_action.type = Action::Type::Quit;
     }
 
     // on tin

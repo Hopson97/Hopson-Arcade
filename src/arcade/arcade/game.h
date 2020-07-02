@@ -9,7 +9,6 @@
 #include "util/non_moveable.h"
 
 namespace arcade {
-
     /**
 
         Main controlling class of the game.
@@ -17,6 +16,18 @@ namespace arcade {
         as counting the FPS
     */
     class Game : public NonCopyable, public NonMovable {
+        struct Action {
+            enum class Type {
+                None,
+                Push,
+                Change,
+                Pop,
+                Quit,
+            };
+            Type type = Type::None;
+            std::unique_ptr<StateBase> state;
+        };
+
       public:
         Game();
 
@@ -41,7 +52,7 @@ namespace arcade {
 
       private:
         void handleEvent();
-        void tryPop();
+        void updateStates();
 
         StateBase& getCurrentState();
 
@@ -50,29 +61,26 @@ namespace arcade {
 
         FPSCounter counter;
 
-        bool m_shouldPop = false;
-        bool m_shouldExit = false;
-        bool m_shouldChageState = false;
-        std::unique_ptr<StateBase> m_change;
+        Action m_action;
     };
 
     template <typename T>
     inline void Game::initGame()
     {
-        this->pushState<T>(*this);
+        m_states.push_back(std::make_unique<T>(*this));
     }
 
     template <typename T, typename... Args>
     inline void Game::pushState(Args&&... args)
     {
-        pushState(std::make_unique<T>(std::forward<Args>(args)...));
+        m_action.type = Action::Type::Push;
+        m_action.state = std::make_unique<T>(std::forward<Args>(args)...);
     }
 
     template <typename T, typename... Args>
     inline void Game::changeState(Args&&... args)
     {
-        m_change = std::make_unique<T>(std::forward<Args>(args)...);
-        m_shouldPop = true;
-        m_shouldChageState = true;
+        m_action.type = Action::Type::Change;
+        m_action.state = std::make_unique<T>(std::forward<Args>(args)...);
     }
 } // namespace arcade
