@@ -12,6 +12,7 @@ add_library(arcade
     gui/textbox.cpp
     gui/widget.cpp
     gui/stack_menu.cpp
+    gui/label.cpp
 )
 
 setup_target_compile(arcade)

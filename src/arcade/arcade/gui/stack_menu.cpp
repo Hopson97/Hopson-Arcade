@@ -6,9 +6,9 @@ namespace arcade {
     constexpr float BASE_Y = 95.0f;
 
     namespace gui {
-        StackMenu::StackMenu(const sf::RenderWindow& window, float baseY)
+        StackMenu::StackMenu(const sf::RenderWindow& window, float baseY, int width)
             : m_basePosition((float)window.getSize().x / 2.0f, baseY)
-            , m_baseSize(300, 20)
+            , m_baseSize(width, 20)
         {
             m_background.setOutlineThickness(2);
             m_background.setOutlineColor(sf::Color::Green);
@@ -22,9 +22,9 @@ namespace arcade {
             m_titleText.setCharacterSize(30);
         }
 
-        StackMenu::StackMenu(const sf::Vector2f& position)
+        StackMenu::StackMenu(const sf::Vector2f& position, int width)
             : m_basePosition(position)
-            , m_baseSize(300, 20)
+            , m_baseSize(width, 20)
         {
             m_background.setFillColor({100, 100, 100, 128});
             m_background.setSize(m_baseSize);

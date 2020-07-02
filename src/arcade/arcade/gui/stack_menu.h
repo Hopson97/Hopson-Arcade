@@ -25,8 +25,8 @@ namespace arcade {
          */
         class StackMenu : public NonCopyable {
           public:
-            StackMenu(const sf::RenderWindow& window, float baseY);
-            StackMenu(const sf::Vector2f& position);
+            StackMenu(const sf::RenderWindow& window, float baseY, int width = 300);
+            StackMenu(const sf::Vector2f& position, int width);
 
             StackMenu(StackMenu&& other);
             StackMenu& operator=(StackMenu&& other);
