@@ -12,6 +12,7 @@ namespace pong {
         : arcade::StateBase(game, "Main Menu", Display::WIDTH, Display::HEIGHT)
         , m_mainMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
         , m_joinMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
+        , m_createLobbyMenu(game.getWindow(), Display::HEIGHT / 2 - 100)
         , mp_activeMenu(&m_mainMenu)
     {
         m_banner.setSize({(float)Display::WIDTH, 200});
@@ -25,7 +26,7 @@ namespace pong {
 
             auto playBtn = arcade::gui::makeButton();
             playBtn->setText("Create Lobby");
-            playBtn->setFunction([&]() { m_pGame->pushState<StateLobby>(*m_pGame); });
+            playBtn->setFunction([&]() { mp_activeMenu = &m_createLobbyMenu; });
 
             auto joinBtn = arcade::gui::makeButton();
             joinBtn->setText("Join Lobby");
@@ -39,22 +40,52 @@ namespace pong {
             m_mainMenu.addWidget(std::move(playBtn));
             m_mainMenu.addWidget(std::move(joinBtn));
             m_mainMenu.addWidget(std::move(exitBtn));
-            m_mainMenu.setTitle("Choose Action", game.getWindow());
+            m_mainMenu.setTitle("Choose Action");
         }
         {
-            auto ipBox = arcade::gui::makeTextBox(m_joinIp);
-            ipBox->setLabel("Enter host IP Address");
+            auto nameBox = arcade::gui::makeTextBox(m_name);
+            nameBox->setLabel("Enter your name");
 
             auto joinBtn = arcade::gui::makeButton();
-            joinBtn->setText("Join Lobby");
-            joinBtn->setFunction(
-                [&]() { m_pGame->pushState<StateLobby>(*m_pGame, m_joinIp); });
+            joinBtn->setText("Start Lobby");
+            joinBtn->setFunction([&]() {
+                if (m_name.empty()) {
+                    m_name = "Host";
+                }
+                m_pGame->pushState<StateLobby>(*m_pGame, m_name);
+            });
 
             auto backBtn = arcade::gui::makeButton();
             backBtn->setText("Back");
             backBtn->setFunction([&]() { mp_activeMenu = &m_mainMenu; });
 
-            m_joinMenu.setTitle("", game.getWindow());
+            m_createLobbyMenu.setTitle("Create Lobby");
+            m_createLobbyMenu.addWidget(std::move(nameBox));
+            m_createLobbyMenu.addWidget(std::move(joinBtn));
+            m_createLobbyMenu.addWidget(std::move(backBtn));
+        }
+        {
+            auto ipBox = arcade::gui::makeTextBox(m_joinIp);
+            ipBox->setLabel("Enter host IP Address");
+
+            auto nameBox = arcade::gui::makeTextBox(m_name);
+            nameBox->setLabel("Enter your name");
+
+            auto joinBtn = arcade::gui::makeButton();
+            joinBtn->setText("Join Lobby");
+            joinBtn->setFunction([&]() {
+                if (m_name.empty()) {
+                    m_name = "Guest";
+                }
+                m_pGame->pushState<StateLobby>(*m_pGame, m_joinIp, m_name);
+            });
+
+            auto backBtn = arcade::gui::makeButton();
+            backBtn->setText("Back");
+            backBtn->setFunction([&]() { mp_activeMenu = &m_mainMenu; });
+
+            m_joinMenu.setTitle("");
+            m_joinMenu.addWidget(std::move(nameBox));
             m_joinMenu.addWidget(std::move(ipBox));
             m_joinMenu.addWidget(std::move(joinBtn));
             m_joinMenu.addWidget(std::move(backBtn));

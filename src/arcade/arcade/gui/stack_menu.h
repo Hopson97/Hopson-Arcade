@@ -42,7 +42,7 @@ namespace arcade {
                 m_widgets.push_back(std::move(w));
             }*/
 
-            void setTitle(const std::string& title, const sf::RenderTarget& target);
+            void setTitle(const std::string& title);
 
             void handleEvent(sf::Event e, const sf::RenderWindow& window);
             void render(sf::RenderTarget& renderer);

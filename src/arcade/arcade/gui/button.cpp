@@ -49,7 +49,7 @@ namespace arcade {
             auto pos = sf::Mouse::getPosition(window);
 
             switch (e.type) {
-                case sf::Event::MouseButtonPressed:
+                case sf::Event::MouseButtonReleased:
                     switch (e.mouseButton.button) {
                         case sf::Mouse::Left:
                             if (m_button.getGlobalBounds().contains((float)pos.x,

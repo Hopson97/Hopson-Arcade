@@ -30,7 +30,7 @@ namespace space_invaders {
         m_mainMenu.addWidget(std::move(playBtn));
         m_mainMenu.addWidget(std::move(highscoresBtn));
         m_mainMenu.addWidget(std::move(exitBtn));
-        m_mainMenu.setTitle("Choose Action", game.getWindow());
+        m_mainMenu.setTitle("Choose Action");
     }
 
     void StateMainMenu::handleEvent(sf::Event e)

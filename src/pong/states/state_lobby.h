@@ -17,8 +17,8 @@ namespace pong {
 
     class StateLobby : public arcade::StateBase {
       public:
-        StateLobby(arcade::Game& game);
-        StateLobby(arcade::Game& game, const std::string& ip);
+        StateLobby(arcade::Game& game, const std::string& name);
+        StateLobby(arcade::Game& game, const std::string& ip, const std::string& name);
 
         void handleEvent(sf::Event e) override;
         void handleInput() override{};
@@ -27,6 +27,7 @@ namespace pong {
 
       private:
         arcade::gui::StackMenu m_mainMenu;
+        arcade::gui::StackMenu m_playerList;
         sf::RectangleShape m_banner;
         bool m_isHost;
 
@@ -34,5 +35,8 @@ namespace pong {
         sf::TcpSocket m_socket;
 
         arcade::gui::Widget* m_startGameButton = nullptr;
+
+        const std::string m_name;
+        std::string m_opponentName;
     };
 } // namespace pong

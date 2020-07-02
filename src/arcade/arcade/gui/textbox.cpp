@@ -8,6 +8,7 @@ namespace arcade {
         TextBox::TextBox(std::string& modString)
             : m_pModString(&modString)
         {
+            m_text.setString(modString);
             m_label.setCharacterSize(15);
             m_rect.setFillColor({52, 152, 219});
             m_rect.setSize({256, 64});

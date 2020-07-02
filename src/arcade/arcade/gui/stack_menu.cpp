@@ -26,9 +26,11 @@ namespace arcade {
             : m_basePosition(position)
             , m_baseSize(width, 20)
         {
-            m_background.setFillColor({100, 100, 100, 128});
+            m_background.setOutlineThickness(2);
+            m_background.setOutlineColor(sf::Color::Green);
+            m_background.setFillColor({100, 100, 100, 230});
             m_background.setSize(m_baseSize);
-            m_background.setPosition(position);
+            m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, position.y - 30);
 
             m_titleText.setPosition(position.x, position.y - 35);
             m_titleText.setOutlineColor(sf::Color::Black);
@@ -71,12 +73,16 @@ namespace arcade {
             m_background.setSize(m_baseSize);
         }
 
-        void StackMenu::setTitle(const std::string& title, const sf::RenderTarget& target)
+        void StackMenu::setTitle(const std::string& title)
         {
             m_titleText.setString(title);
-            m_titleText.setPosition(target.getSize().x / 2 -
+            m_titleText.setPosition(m_background.getPosition().x +
+                                        m_background.getSize().x / 2 -
                                         m_titleText.getGlobalBounds().width / 2,
                                     m_titleText.getPosition().y);
+            m_basePosition.y += m_titleText.getGlobalBounds().height;
+            m_baseSize.y += m_titleText.getGlobalBounds().height;
+            m_background.setSize(m_baseSize);
         }
 
         void StackMenu::handleEvent(sf::Event e, const sf::RenderWindow& window)

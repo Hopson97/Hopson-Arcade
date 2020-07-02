@@ -17,9 +17,11 @@ namespace pong {
       private:
         arcade::gui::StackMenu m_mainMenu;
         arcade::gui::StackMenu m_joinMenu;
+        arcade::gui::StackMenu m_createLobbyMenu;
         arcade::gui::StackMenu* mp_activeMenu = nullptr;
         sf::RectangleShape m_banner;
 
-        std::string m_joinIp;
+        std::string m_joinIp = "192.168.0.19";
+        std::string m_name;
     };
 } // namespace pong
