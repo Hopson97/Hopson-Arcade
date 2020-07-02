@@ -28,6 +28,7 @@ add_executable(${PROJECT_NAME}
     src/pong/states/state_main_menu.cpp
     src/pong/states/state_lobby.cpp
     src/pong/states/state_error.cpp
+    src/pong/pong_server.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/arcade)

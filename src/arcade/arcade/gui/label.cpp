@@ -7,7 +7,7 @@ namespace arcade {
 
         Label::Label()
         {
-            m_label.setCharacterSize(15);
+            m_label.setCharacterSize(30);
         }
 
         void Label::setLabel(const std::string& str)
