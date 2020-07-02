@@ -46,6 +46,9 @@ namespace arcade {
 
         void Button::handleEvent(sf::Event e, const sf::RenderWindow& window)
         {
+            if (m_isDisabled) {
+                return;
+            }
             auto pos = sf::Mouse::getPosition(window);
 
             switch (e.type) {

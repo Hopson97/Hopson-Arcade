@@ -30,7 +30,8 @@ namespace arcade {
             m_background.setOutlineColor(sf::Color::Green);
             m_background.setFillColor({100, 100, 100, 230});
             m_background.setSize(m_baseSize);
-            m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, position.y - 30);
+            m_background.setPosition(m_basePosition.x - m_baseSize.x / 2,
+                                     position.y - 30);
 
             m_titleText.setPosition(position.x, position.y - 35);
             m_titleText.setOutlineColor(sf::Color::Black);

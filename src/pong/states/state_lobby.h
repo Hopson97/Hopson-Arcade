@@ -26,10 +26,13 @@ namespace pong {
         void render(sf::RenderTarget& renderer) override;
 
       private:
+        void clientHandlePacket(sf::Packet& packet);
+        void hostHandlePacket(sf::Packet& packet);
+
         arcade::gui::StackMenu m_mainMenu;
         arcade::gui::StackMenu m_playerList;
-        sf::RectangleShape m_banner;
         bool m_isHost;
+        bool m_hasConnection = false;
 
         sf::TcpListener m_tcpListener;
         sf::TcpSocket m_socket;
@@ -37,6 +40,7 @@ namespace pong {
         arcade::gui::Widget* m_startGameButton = nullptr;
 
         const std::string m_name;
+        std::string m_hostIp;
         std::string m_opponentName;
     };
 } // namespace pong
